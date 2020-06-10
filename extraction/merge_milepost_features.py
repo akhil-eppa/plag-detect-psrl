@@ -1,21 +1,29 @@
-# import os
+import os
 import glob
 import pickle
 
-progs = [[], []]
-for i in range(1, 301):
-    for j in (1, 2):
-        merged_vecs = {}
-        for k in glob.glob(f"result/milepost_features/n_{i}_{j}*.fre.ft"):
-            with open(k) as cur_vecs:
-                lines = cur_vecs.read().strip().split(",")
-            for line in lines:
-                k, v = line.strip().split("=")
-                # print(k,v)
-                try:
-                    merged_vecs[k] += float(v)
-                except:
-                    merged_vecs[k] = float(v)
-        progs[j-1].append(merged_vecs)
 
-pickle.dump(progs, open("result/merged_milepost_features.pkl", "wb"))
+def merge_features(out_file, proc):
+    if proc not in ("train", "test"):
+        raise ValueError('proc must be one of  "train", "test"')
+    prog_list = pickle.load(open(os.path.join(f"result_{proc}", "pairs.pkl"), "rb"))
+    progs = [[], []]
+    for prog in prog_list:
+        for idx in (0, 1):
+            merged_vecs = {}
+            for k in glob.glob(
+                os.path.join(
+                    "result_train", "milepost_features", f"{prog[idx]}*.fre.ft"
+                )
+            ):
+                with open(k) as cur_vecs:
+                    lines = cur_vecs.read().strip().split(",")
+                for line in lines:
+                    key, val = line.strip().split("=")
+                    try:
+                        merged_vecs[key] += float(val)
+                    except:
+                        merged_vecs[key] = float(val)
+            progs[idx].append(merged_vecs)
+
+    pickle.dump(progs, open(out_file, "wb"))
