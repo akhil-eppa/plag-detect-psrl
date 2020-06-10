@@ -15,7 +15,7 @@ prog=[]
 '''
 Pairs by Akhil
 1 to 192 are plagiarized
-193 to 374 are non plagiarized
+193 to 373 are non plagiarized
 '''
 for i in range(1,374):
     temp=[]
@@ -31,7 +31,7 @@ Pairs by Anirudh
 1 to 300 are non plagiarized
 301 to 425 are plagiarized
 '''
-for i in range(1,425):
+for i in range(1,424):
     temp=[]
     temp.append(str("n_"+str(i)+"_1.c"))
     temp.append(str("n_"+str(i)+"_2.c"))
@@ -45,7 +45,7 @@ Pairs by Santosh
 1 to 180 are plagiarized
 181 to 360 are non plagairized
 '''
-for i in range(1,360):
+for i in range(1,361):
     temp=[]
     temp.append(str("s"+str(i)+"_1.c"))
     temp.append(str("s"+str(i)+"_2.c"))
@@ -66,7 +66,7 @@ print("Number of plagiarized pairs=",p)
 print("Number of non plagiarized pairs=",np)
 print("Total number of pairs=",len(prog))
 
-with open('extraction/results/pairs.pkl','wb') as f:
+with open('pairs.pkl','wb') as f:
     pickle.dump(prog,f)
 
 
