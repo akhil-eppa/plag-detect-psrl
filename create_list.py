@@ -5,8 +5,8 @@ Created on Mon Jun  1 12:45:17 2020
 @author: Akhil
 """
 #prog is a list of lists
-#each element is prog is a list that contains the two programs of the pair 
-#and whether they are plagiarized or not. 
+#each element is prog is a list that contains the two programs of the pair
+#and whether they are plagiarized or not.
 #That is index 0 is the name of first program, index 1 is name of second program in pair
 #index 2 is 'p' or 'np' denoting plagiarized or non plagiarized
 import pickle
@@ -66,7 +66,7 @@ print("Number of plagiarized pairs=",p)
 print("Number of non plagiarized pairs=",np)
 print("Total number of pairs=",len(prog))
 
-with open('pairs.pkl','wb') as f:
+with open('extraction/results/pairs.pkl','wb') as f:
     pickle.dump(prog,f)
 
 

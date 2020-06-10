@@ -21,7 +21,7 @@ def file_length(fname):
     sumlength=sumlength/(i+1)#find avg by dividing by line count
     return i+1,sumlength
 
-with open('pairs.pkl','rb') as f:
+with open('result/pairs.pkl','rb') as f:
     prog=pickle.load(f)
 line_diff=[]#list containing line difference for every pair
 line_diff_ratio=[]
@@ -76,13 +76,13 @@ for i in range(370):
         common_comment_ratio.append(0)
     f1.close()
     f2.close()
-    
-    
+
+
 print(line_diff)
 print(line_diff_ratio)
-print(av_diff) 
-print(edit_dist)   
+print(av_diff)
+print(edit_dist)
 print(common_line)
 print(common_line_ratio)
 print(common_comment)
-print(common_comment_ratio)   
+print(common_comment_ratio)
