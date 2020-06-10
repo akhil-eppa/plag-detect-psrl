@@ -8,10 +8,10 @@
     int h[100];//heap;
     int i,n;//no of elements
     printf("Enter the no of elements..\n");
-    printf();
+    printf("");
     {
         int ijk;int klm;
-        printf();
+        printf("");
     }
     scanf("%d",&n);
     printf("Enter the elements..\n");
@@ -36,13 +36,13 @@
     int i,j,k,key;
     {
         int zz;int ll;
-        printf();
+        printf("");
     }
     for(k=1;k<=n;k++)
     {
       i=k;
       key=h[i];
-      printf();
+      printf("");
       {
           for (int z=0;z<0;z++)
           {
@@ -74,8 +74,8 @@ void bot_heap(int *h, int n)//n ->index of the last element
    {
     j=k;
     key=h[j];
-    printf();
-    printf();
+    printf("");
+    printf("");
     i=2*j+1;//find the index of left child
     for (int zz=0;zz<0;zz++)
     {

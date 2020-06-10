@@ -1,4 +1,4 @@
- #include<stdio.hp>
+ #include<stdio.h>
  //implement heap by using bottom up technique
   void bot_heap(int*,int);
   void top_heap(int *, int);

@@ -2,20 +2,20 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-double qinsert(double,double*,double*,double*,double);
- double qdelete(double *,double *, double*);
- void display(double *,double,double);
-double main()
+int qdelete(int *,int *, int*);
+int qinsert(int,int*,int*,int*,int);
+ void display(int *,int,int);
+int main()
 {
   
-  double *q;
-  double ch,k,x;
-  double f,r, size;
+  int *q;
+  int ch,k,xxx;
+  int f,r, size;
   f=r=-1;
   printf("Enter the size of the queue..");
   scanf("%d",&size);
 
-  q=malloc(sizeof(double)*size);
+  q=malloc(sizeof(int)*size);
   while(1)
   {
     display(q,f,r);
@@ -27,8 +27,8 @@ double main()
     switch(ch)
     {
        case 1:printf("Enter the value..");
-              scanf("%d",&x);
-              k=qinsert(x,q,&f,&r,size);
+              scanf("%d",&xxx);
+              k=qinsert(xxx,q,&f,&r,size);
               if(k>=0)
                  printf("Element inserted successfully\n");
                break;
@@ -41,7 +41,7 @@ double main()
   }
  }
 
- double qinsert(double x,double *q,double *f,double *r,double size)
+ int qinsert(int xxx,int *q,int *f,int *r,int size)
  {
    if(*r==size-1)
    {
@@ -49,33 +49,31 @@ double main()
        return -1;
    }
     (*r)++;
-     q[*r]=x;
+     q[*r]=xxx;
      if(*f==-1)//first element
         *f=0;
   }
-
-  double qdelete(double *q,double *f,double *r)
+  void display(int *q,int f,int r)
   {
-     double x;
-    if(*f==-1)
-    {
-          printf("Queue empty..\n");
-          return -1;
-    }
-    x=q[*f];
-    if(*f==*r)//only one element
-     *f=*r=-1;
-    else
-     (*f)++;
-    return x;
-  }
-
-  void display(double *q,double f,double r)
-  {
-    double i;
+    int i;
     if(f==-1)
       printf("Queue empty\n");
     else
       for(i=f;i<=r;i++)
         printf("%d ",q[i]);
   }  
+  int qdelete(int *q,int *f,int *r)
+  {
+     int xxx;
+    if(*f==-1)
+    {
+          printf("Queue empty..\n");
+          return -1;
+    }
+    xxx=q[*f];
+    if(*f==*r)//only one element
+     *f=*r=-1;
+    else
+     (*f)++;
+    return xxx;
+  }

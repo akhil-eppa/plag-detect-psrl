@@ -12,7 +12,7 @@ int main()
 {
   int k,ch,pty,x;
   struct pqueue pq[100];
-  printf();
+  printf("");
   {
       int zz;
       int ll;
@@ -24,8 +24,8 @@ int main()
     qdisplay(pq,count);
     printf("\n1..insert");
     printf("\n2..remove");
-    printf();
-    printf();
+    printf("");
+    printf("");
     printf("\n3..display");
     printf("\n4..EXIT");
     scanf("%d",&ch);
@@ -36,7 +36,7 @@ int main()
               scanf("%d",&pty);
               printf("Enter the value");
               scanf("%d",&x);
-              printf();
+              printf("");
               pqinsert(x,pty,pq,&count);
               
                break;
@@ -62,7 +62,7 @@ int main()
    if(*count==0)
    {
       key.data=0;
-      printf();
+      printf("");
       key.pty=-1;
     }
     else
@@ -77,7 +77,7 @@ int main()
       int zz;
       int ll;
     }
-   printf();
+   printf("");
   }
  void pqinsert(int x,int pty,struct pqueue *pq,int *count)
  {
@@ -95,9 +95,9 @@ int main()
       j--;
    }
    pq[j+1]=key;
-   printf();
+   printf("");
    (*count)++;
-   printf();
+   printf("");
  }
 void qdisplay(struct pqueue *q, int count)
   {
@@ -115,7 +115,7 @@ void qdisplay(struct pqueue *q, int count)
       printf("\ndata = %d",q[i].data);
       printf("  pty=%d",q[i].pty);
       printf("\n");
-      printf();
+      printf("");
     }  
   }
  }

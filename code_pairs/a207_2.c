@@ -20,7 +20,7 @@
   }
  void creategraph()
   {
-    intj,i;
+    int j,i;
     while(1)
     {
         printf("Enter the source and the destination vertex..");

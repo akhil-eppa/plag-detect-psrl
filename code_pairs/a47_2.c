@@ -1,17 +1,17 @@
  //program to implement BFS for a digraph
  #include<stdio.h>
- double visit[100];
+ int vst[100];
+  int qdelete();
+ int qisempty();
  void creategraph();
- void bfs(double);
- void qinsert(double);
- double qdelete();
- double qisempty();
- double a[100][100],n;
- double q[100];
- double f,r;
- double main()
+ void bfs(int);
+ void qinsert(int);
+ int a[100][100],n;
+ int q[100];
+ int f,r;
+ int main()
  {
-   double i,v,k;
+   int itt,v,k;
    printf("Enter the number of vertices..");
    scanf("%d",&n);
 
@@ -26,22 +26,22 @@
 
   void creategraph()
   {
-    double i,j;
+    int itt,j;
     while(1)
     {
         printf("Enter the source and the destination vertex..");
-        scanf("%d%d",&i,&j);
-        if((i==0)&&(j==0))
+        scanf("%d%d",&itt,&j);
+        if((itt==0)&&(j==0))
            break;
-        a[i][j]=1;
-        a[j][i]=1;
+        a[itt][j]=1;
+        a[j][itt]=1;
      }  
   }
 
-  void bfs(double v)
+  void bfs(int v)
   {
-   double u,w;
-   visit[v]=1;
+   int u,w;
+   vst[v]=1;
    printf("%d ",v);
    qinsert(v);
 
@@ -53,9 +53,9 @@
      //and insert it into queue
      for(u=1;u<=n;u++)
      {
-       if((a[w][u]==1)&&(visit[u]==0))
+       if((a[w][u]==1)&&(vst[u]==0))
        {
-          visit[u]=1;
+          vst[u]=1;
           printf("%d ",u);
           qinsert(u);
        }
@@ -63,29 +63,26 @@
    }
  }
      
- void qinsert(double v)
+ void qinsert(int v)
   {
     r++;
     q[r]=v;
     if(f==-1)
       f=0;
   }
-
-
- double qdelete()
+ int qisempty()
  {
-   double w;
+   if(f==-1)
+     return 1;
+   return 0;
+  }
+ int qdelete()
+ {
+   int w;
    w=q[f];
    if(f==r)
      f=r=-1;
    else
       f++;
    return w;
-  }
-
- double qisempty()
- {
-   if(f==-1)
-     return 1;
-   return 0;
   }

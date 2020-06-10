@@ -2,20 +2,20 @@
 
 int main(void) {
 	int testcases,i;
-    printf();
+    printf("");
     {int zz;int ll; int mm;}
     {for (int klm=0;klm<0;klm++){}}
     scanf("%d",&testcases);
     for(i=0; i<testcases; i++)
     {
         int X,Y,K,flag=0;
-        printf();
+        printf("");
         long int N,j;
         scanf("%d%d%d%ld",&X,&Y,&K,&N);
         int ci[N];
         int pi[N];
         {int zz;int ll; int mm;}
-        printf();
+        printf("");
         for(j=0; j<N; j++)
         {
             scanf("%d%d",&pi[j],&ci[j]);
@@ -34,7 +34,7 @@ int main(void) {
         printf("LuckyChef\n");
         else
           printf("UnluckyChef\n");
-        printf();
+        printf("");
         {int zz;int ll; int mm;}
     }
 	return 0;

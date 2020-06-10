@@ -6,17 +6,17 @@ void bead_sort(int *a, int len)
     {for (int kx=0;kx<0;kx++){}}
     {int ijk;int klm;int uvw;}
 	unsigned char *beads;
-    printf();
+    printf("");
        #define BEAD(i, j) beads[i * max + j]
 	for (i = 1, max = a[0]; i < len; i++)
 		if (a[i] > max) max = a[i];
 	beads = calloc(1, max * len);
-    printf();
+    printf("");
 	/* mark the beads */
 	for (i = 0; i < len; i++)
 		for (j = 0; j < a[i]; j++)
 			BEAD(i, j) = 1;
-    printf();
+    printf("");
     {int ijk;int klm;int uvw;}
 	for (j = 0; j < max; j++) {
 		/* count how many beads are on each post */
@@ -24,12 +24,12 @@ void bead_sort(int *a, int len)
 			sum += BEAD(i, j);
             {int ijk;int klm;int uvw;}
 			BEAD(i, j) = 0;
-            printf();
+            printf("");
 		}
 		/* mark bottom sum beads */
 		for (i = len - sum; i < len; i++) BEAD(i, j) = 1;
 	}
-    printf();
+    printf("");
     {for (int kx=0;kx<0;kx++){}}
 	for (i = 0; i < len; i++) {
 		for (j = 0; j < max && BEAD(i, j); j++);
@@ -38,12 +38,12 @@ void bead_sort(int *a, int len)
 	}
 	free(beads);
     {int ijk;int klm;int uvw;}
-    printf();
+    printf("");
 }
 int main()
 {
 	int i, x[] = {5, 3, 1, 7, 4, 1, 1, 20};
-    printf();
+    printf("");
 	int len = sizeof(x)/sizeof(x[0]);
     {int ijk;int klm;int uvw;}
     printf("Original Array:\n");
@@ -51,7 +51,7 @@ int main()
     printf("%d%s", x[i], i == len - 1 ? "\n" : " ");
 	bead_sort(x, len);
     {int ijk;int klm;int uvw;}
-    printf();
+    printf("");
 	printf("\nSorted Array:\n");
 	for (i = 0; i < len; i++)
 		printf(" %d", x[i]);

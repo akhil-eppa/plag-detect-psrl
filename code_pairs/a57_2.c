@@ -40,8 +40,8 @@
         if((i==-9)&&(j==-9))
            break;
         a[i][j]=a[j][i]=1;
-        printf();
-        printf();
+        printf("");
+        printf("");
      }
   }
   int component()
@@ -58,7 +58,7 @@
      {
        ++label;
        dfs(i);
-       printf();
+       printf("");
      }
   }
   return label;
@@ -77,5 +77,5 @@
        if((a[v][u]==1)&&(visit[u]==0))
            dfs(u);
     }
-    printf();
+    printf("");
   }

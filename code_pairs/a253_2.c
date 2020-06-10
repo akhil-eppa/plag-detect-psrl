@@ -1,11 +1,11 @@
 #include<stdio.h>
 //program to check if a goven array can represent 
 // a preorder traversal of a binary search tree
- checkbst(double*,double,double);
-double findmax(double*, double,double);
-double main()
+int checkbst(int*,int,int);
+int findmax(int*, int,int);
+int main()
 {
-  double p[100],n,i,r;
+  int p[100],n,i,r;
   printf("enter the no of elements..\n");
   scanf("%d",&n);
   printf("Enter the pre order traversal\n");
@@ -21,9 +21,9 @@ double main()
 
 
 
-double checkbst(double *p, double i, double n)
+int checkbst(int *p, int i, int n)
 {
-  double key,j,k;
+  int key,j,k;
   if(i==n)
    return 1;
   key=p[i];
@@ -41,9 +41,9 @@ double checkbst(double *p, double i, double n)
   return 0;
 }
 
- double findmax(double *p, double i, double n)
+ int findmax(int *p, int i, int n)
  {
-   double key,j;
+   int key,j;
    key=p[i];
    for(j=i+1;j<=n;j++)
    {

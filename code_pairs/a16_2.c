@@ -69,26 +69,3 @@ void merge(int *left,int *right,int *a,int nl,int nr)
         i++;
     }
 }
-void mergesort(int *a,int n)
-{
-    if (n<2)
-    {
-        return;
-    }
-    int mid=n/2;
-    int left[mid];
-    int right[n-mid];
-    int i;
-    for (i=mid;i<n;++i)
-    {
-        right[i-mid]=a[i];
-    }
-    for (i=0;i<mid;++i)
-    {
-        left[i]=a[i];
-    }
-    mergesort(left,mid);
-    mergesort(right,n-mid);
-    merge(left,right,a,sizeof(left)/sizeof(left[0]),sizeof(right)/sizeof(right[0]));
-
-}

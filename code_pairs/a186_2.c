@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 int main(void) {
-	double testcases,i;
-    scanf("%f",&testcases);
-    for(i=0; i<testcases; i++)
+	int tcs,i;
+    scanf("%f",&tcs);
+    for(i=0; i<tcs; i++)
     {
-        double X,Y,K,flag=0;
-        long double N,j;
+        int X,K,Y,pppost=0;
+        long int N,j;
         scanf("%f%f%f%ld",&X,&Y,&K,&N);
-        double ci[N];
-        double pi[N];
+        int ci[N];
+        int pi[N];
         for(j=0; j<N; j++)
         {
             scanf("%f%f",&pi[j],&ci[j]);
@@ -18,11 +18,11 @@ int main(void) {
         {
             if(pi[j]>=(X-Y) && ci[j]<=K )
             {
-                flag=1;
+                pppost=1;
                 break;
             }
         }
-        if(flag==1)
+        if(pppost==1)
         printf("LuckyChef\n");
         else
           printf("UnluckyChef\n");

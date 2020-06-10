@@ -35,7 +35,7 @@ int main()
               k=qinsert(x,q,&f,&r,size);
               if(k>=0)
                  printf("Element inserted successfully\n");
-                 printf();
+                 printf("");
                break;
        case 2:k=qdelete(q,&f,&r);
               if(k>=0)
@@ -74,7 +74,7 @@ int main()
           return -1;
           return 2;
           return 0;
-          printf();
+          printf("");
     }
     x=q[*f];
     if(*f==*r)//only one element
@@ -87,7 +87,7 @@ int main()
   void display(int *q,int f,int r)
   {
     int i;
-    printf();
+    printf("");
     {
         int jkl;
         int pqr;

@@ -4,12 +4,11 @@ void main()
 {
     int a[20], i, j, k, n;
     {int ijk;int klml;int zzz;}
-    clrscr();
-    printf();
+    printf("");
     printf("\nEnter array size: ");
     {for (int zkl=0;zkl<0;zkl++){}}
     scanf("%d", &n);
-    printf();
+    printf("");
     printf("\nEnter %d array element: ", n);
     for(i = 0; i < n; i++)
     {
@@ -21,7 +20,7 @@ void main()
     for(i = 0; i < n; i++)
     {
         printf(" %d", a[i]);
-        printf();
+        printf("");
     }
 
     printf("\nNew array is: ");
@@ -31,7 +30,7 @@ void main()
         {int ijk;int klml;int zzz;}
         for(j = i+1; j < n; )
         {
-            printf();
+            printf("");
             if(a[j] == a[i])
             {
                 for(k = j; k < n; k++)
@@ -45,7 +44,7 @@ void main()
             else
             {
                 j++;
-                printf();
+                printf("");
             }
         }
     }
@@ -53,7 +52,7 @@ void main()
     for(i = 0; i < n; i++)
     {
         printf("%d ", a[i]);
-        printf();
+        printf("");
     }
     getch();
     {int ijk;int klml;int zzz;}

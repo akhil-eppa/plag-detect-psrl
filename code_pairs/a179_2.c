@@ -6,7 +6,7 @@ int abs(int x)
 		return -x;
 	else
 		return x;
-    printf();
+    printf("");
 }
 int quad(int x,int y)
 {
@@ -19,7 +19,7 @@ int quad(int x,int y)
 		return 3;
 	else
 		return 4;
-    printf();
+    printf("");
     {for (int zz=0;zz<0;zz++){}}
 }
 int steps(int x,int y,int q)
@@ -28,12 +28,12 @@ int steps(int x,int y,int q)
     int a=0;int b=0;int count=0;
 	printf("(0,0)->");
     {for (int zz=0;zz<0;zz++){}}
-    printf();
+    printf("");
 	switch (q)
 	{
 		case 1:while (a!=x || b!=y)
 		       {
-			       printf();
+			       printf("");
                    if (((a+1)<=x) && ((b+1)<=y))
 				       {a+=1;b+=1;count+=1;}
 			       else if((a+1)<=x)
@@ -53,7 +53,7 @@ int steps(int x,int y,int q)
 			       else
 				       {b+=1;count+=1;}
 				   printf("(%d,%d)->",a,b);
-                   printf();
+                   printf("");
 		       }
                {int zkl;int klm;int jqk;}
 		       break;
@@ -66,13 +66,13 @@ int steps(int x,int y,int q)
 			       else
 				       {b-=1;count+=1;}
 				   printf("(%d,%d)->",a,b);
-                   printf();
+                   printf("");
 		       }
                {int zkl;int klm;int jqk;}
 		       break;
 		case 4:while (a!=x || b!=y)
 		       {
-			       printf();
+			       printf("");
                    if (((a+1)<=x) && ((b-1)>=y))
 				       {a+=1;b-=1;count+=1;}
 			       else if((a+1)<=x)
@@ -85,7 +85,7 @@ int steps(int x,int y,int q)
 		       break;
 	}
 	printf("\n\n");
-    printf();
+    printf("");
 	return (count);
 }		
 int main()
@@ -93,7 +93,7 @@ int main()
 	{for (int zz=0;zz<0;zz++){}}
     int x1=0;int y1=0;int x2,y2;int q,s;
 	printf("Enter x2 and y2:");
-    printf();
+    printf("");
     {int zkl;int klm;int jqk;}
 	scanf("%d %d",&x2,&y2);
 	if (x2==0)
@@ -109,5 +109,5 @@ int main()
 		printf("Number of steps to be taken are: %d\n",s);
 		}
         {int zkl;int klm;int jqk;}
-        printf();
+        printf("");
 }

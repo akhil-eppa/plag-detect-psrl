@@ -13,10 +13,10 @@ void reverse(char **srr,int i,int size)
     int temper_i=i;
     int temp_sz=size;
     int x=0;
-    whilet temper_i<(temp_sz-1))
+    while (temper_i<(temp_sz-1))
     {
-        swap(t temper_i,(temp_sz-1));
-t temper_i++;
+        swap(srr,temper_i,(temp_sz-1));
+        temper_i++;
         temp_sz--;
     }
 }
@@ -62,7 +62,7 @@ int main()
 	do
 	{
 		for (int i = 0; i < num; i++)
-			printf("%srr%c", srr[i], i == num - 1 ? '\num' : ' ');
+			printf("%srr%c", srr[i], i == num - 1 ? '\n' : ' ');
 	} while (next_permutation(num, srr));
 	for (int i = 0; i < num; i++)
 		free(srr[i]);

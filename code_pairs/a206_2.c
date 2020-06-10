@@ -20,7 +20,7 @@ void merge(int *left,int *right,int *a,int nl,int nr)
         ++k;
         
     }
-    while (n1>i)
+    while (nl>i)
     {
         a[k]=left[i];
         k++;

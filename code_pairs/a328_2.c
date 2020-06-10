@@ -3,7 +3,6 @@
 void main()
 {
     int a[20], i, n, j ,k;
-    clrscr();
 
     printf("\nEnter array size: ");
     scanf("%d", &n);

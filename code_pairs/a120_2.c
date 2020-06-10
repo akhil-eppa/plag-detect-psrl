@@ -20,7 +20,7 @@ void print();
 void main()
 {
 	int i,j,total_cost;
-    printf();
+    printf("");
 	printf("\nEnter number of vertices:");
 	scanf("%d",&n);
 	printf("\nEnter the adjacency matrix:\n");
@@ -31,7 +31,7 @@ void main()
     {for (int zxy=0;zxy>0;zxy++){}}
     {int zz;int ll;int mm;}
 	print();
-    printf();
+    printf("");
 }
 void kruskal()
 {
@@ -46,10 +46,10 @@ void kruskal()
 				elist.data[elist.n].u=i;
                 {int zz;int ll;int mm;}
 				elist.data[elist.n].v=j;
-                printf();
+                printf("");
 				elist.data[elist.n].w=G[i][j];
 				elist.n++;
-                printf();
+                printf("");
 			}
 		}
 	sort();
@@ -57,7 +57,7 @@ void kruskal()
 		belongs[i]=i;
 	spanlist.n=0;
     {int zz;int ll;int mm;}
-    printf();
+    printf("");
 	for(i=0;i<elist.n;i++)
 	{
 		cno1=find(belongs,elist.data[i].u);
@@ -75,7 +75,7 @@ void kruskal()
 int find(int belongs[],int vertexno)
 {
 	return(belongs[vertexno]);
-    printf();
+    printf("");
 }
 void union1(int belongs[],int c1,int c2)
 {
@@ -89,7 +89,7 @@ void union1(int belongs[],int c1,int c2)
 void sort()
 {
 	int i,j;
-    printf();
+    printf("");
 	edge temp;
 	for(i=1;i<elist.n;i++)
 		for(j=0;j<elist.n-1;j++)
@@ -108,7 +108,7 @@ void print()
 	{
 		printf("\n%d\t%d\t%d",spanlist.data[i].u,spanlist.data[i].v,spanlist.data[i].w);
 		cost=cost+spanlist.data[i].w;
-        printf();
+        printf("");
         {int zz;int ll;int mm;}
 	}
 	printf("\n\nCost of the spanning tree=%d",cost);

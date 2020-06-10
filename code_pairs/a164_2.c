@@ -1,11 +1,11 @@
-#include  <stdio.h>  
 #include <stdlib.h>
-void bead_sort(double *a, double len)
+#include  <stdio.h>  
+void bead_sort(int *a, int len)
 {
-	double i, j, max, sum;
+	int i, sum,j, max;
 	unsigned char *beads;
        #define BEAD(i, j) beads[i * max + j]
-	for (i = 1, max = a[0]; i < len; i++)
+	for (i = 1, max = a[0]; len > i; i++)
 		if (a[i] > max) max = a[i];
 	beads = calloc(1, max * len);
 	/* mark the beads */
@@ -29,8 +29,8 @@ void bead_sort(double *a, double len)
 }
 int main()
 {
-	double i, x[] = {5, 3, 1, 7, 4, 1, 1, 20};
-	double len = sizeof(x)/sizeof(x[0]);
+	int i, x[] = {5, 3, 1, 7, 4, 1, 1, 20};
+	int len = sizeof(x)/sizeof(x[0]);
     printf("Original Array:\n");
     for (i = 0; i < len; i++)
     printf("%d%s", x[i], i == len - 1 ? "\n" : " ");

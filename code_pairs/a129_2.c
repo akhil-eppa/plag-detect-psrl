@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 char *decimal_to_binary(int);
-main()
+int main()
 {
    int n, c, k;
-   printf();
+   printf("");
    char *pointer;
    {int zz,ll;}
    {for (int kx=0;kx<0;kx++){}}
@@ -12,10 +12,10 @@ main()
    scanf("%d",&n);
    pointer = decimal_to_binary(n);
    {int zz,ll;}
-   printf("Binary string of %d is: %s\n", n, t);
+   printf("Binary string of %d is: %s\n", n, pointer);
    free(pointer);
    {int zz,ll;}
-   printf();
+   printf("");
    return 0;
 }
 
@@ -24,7 +24,7 @@ char *decimal_to_binary(int n)
    int c, d, count;
    char *pointer;
    count = 0;
-   printf();
+   printf("");
    {int zz,ll;}
    pointer = (char*)malloc(32+1);
    if (pointer == NULL)
@@ -38,11 +38,11 @@ char *decimal_to_binary(int n)
       else
          *(pointer+count) = 0 + '0';
       count++;
-      printf();
+      printf("");
       {int zz,ll;}
    }
    *(pointer+count) = '\0';
    return  pointer;
-   printf();
+   printf("");
    {int zz,ll;}
 }

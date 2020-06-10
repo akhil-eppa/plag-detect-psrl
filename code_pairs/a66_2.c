@@ -11,7 +11,7 @@
    int i,v,s,d;
    printf("Enter the number of vertices..");
    scanf("%d",&n);
-   printf();
+   printf("");
    {
        int ijk,klm;
    }
@@ -43,7 +43,7 @@
  {
    int u;
    visit[s]=1;
-   printf();
+   printf("");
    for(u=1;u<=n;u++)
    {
      if((a[s][u]==1)&&(visit[u]==0))
@@ -73,7 +73,7 @@
       visit[i]=0;
 
    p[length]=s;
-   printf();
+   printf("");
    t=findpath(s,d);
    if(t)
    {
@@ -85,5 +85,5 @@
     }
     else
       printf("\nPath not found..\n");
-    printf();
+    printf("");
  }

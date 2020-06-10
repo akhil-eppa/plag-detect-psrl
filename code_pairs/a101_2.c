@@ -2,19 +2,19 @@
 #include<stdlib.h>
 struct pqueue
 {
-  double pty;
-  double data;
+  int pty;
+  int data;
 };
-void pqinsert(double,double,struct pqueue*,double*);
-struct pqueue pqdelete(struct pqueue*,double*);
-void qdisplay(struct pqueue*,double);
+void pqinsert(int,int,struct pqueue*,int*);
+struct pqueue pqdelete(struct pqueue*,int*);
+void qdisplay(struct pqueue*,int);
 int main()
 {
-  double k,ch,pty,x;
+  int k,ch,pty,x;
   struct pqueue pq[100];
   
   struct pqueue temp;
-  double count=0;
+  int count=0;
   while(1)
   {
     qdisplay(pq,count);
@@ -44,9 +44,9 @@ int main()
    }
   }
  }
-  struct pqueue pqdelete(struct pqueue *pq,double *count)
+  struct pqueue pqdelete(struct pqueue *pq,int *count)
   {
-   double i;
+   int i;
    struct pqueue key;
    if(*count==0)
    {
@@ -62,9 +62,9 @@ int main()
     }
    return key;
   }
- void pqinsert(double x,double pty,struct pqueue *pq,double *count)
+ void pqinsert(int x,int pty,struct pqueue *pq,int *count)
  {
-   double j;
+   int j;
    struct pqueue key;
    key.data=x;
    key.pty=pty;
@@ -80,9 +80,9 @@ int main()
    pq[j+1]=key;
    (*count)++;
  }
-void qdisplay(struct pqueue *q, double count)
+void qdisplay(struct pqueue *q, int count)
   {
-    double i;
+    int i;
     if(count==0)
      printf("Empty Queue");
    else

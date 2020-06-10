@@ -26,7 +26,7 @@ int main()
   {
       printf("\n Input elements in the first matrix :\n");
       i=0;
-      for(i<rone){
+      while(i<rone){
       for(j=0;j<cone;j++){
 	  	   printf(" element - [%d],[%d] : ",i,j);
            scanf("%d",&arm[i][j]);}

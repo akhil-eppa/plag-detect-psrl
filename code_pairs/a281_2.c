@@ -25,7 +25,7 @@ int steps(int x,int y,int q)
 	{
 		case 1:while (b!=y || a!=x)
 		       {
-			       if ((x>=(a+1)) && (y>=(b+1))
+			       if ((x>=(a+1)) && (y>=(b+1)))
 				       {b+=1;a+=1;count+=1;}
 			       else if(x>=(a+1))
 				       {count+=1;a+=1;}
@@ -38,7 +38,7 @@ int steps(int x,int y,int q)
 		       {
 			       if (((b+1)<=y)&&((a-1)>=x))
 				       {a-=1;count+=1;b+=1;}
-			       else if((x<=(a-1))
+			       else if((x<=(a-1)))
 				       {a-=1;count+=1;}
 			       else
 				       {b+=1;count+=1;}
@@ -49,7 +49,7 @@ int steps(int x,int y,int q)
 		       {
 			       if (((b-1)>=y)&&((a-1)>=x))
 				       {a-=1;count+=1;b-=1;}
-			       else if(x<=(a-1)
+			       else if(x<=(a-1))
 				       {a-=1;count+=1;}
 			       else
 				       {count+=1;b-=1;}

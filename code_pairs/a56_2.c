@@ -1,18 +1,18 @@
  //program to return the no of components of disconnected graph
  #include<stdio.h>
- double visit[100];
+ int visit[100];
+ int a[100][100],n;
+ int component();
  void creategraph();
- void dfs(double);
- double a[100][100],n;
- double component();
- double label;
- double main()
+ void dfs(int);
+ int label;
+ int main()
  {
-   double i,v,k; 
+   int i,v,k; 
    printf("Enter the number of vertices..");
    scanf("%d",&n);
    creategraph();
-   double result =component();
+   int result =component();
    printf("the number of components = %d\n",result);
    printf ("\nthe vertices and their component numbers");
    for(i=1;i<=n;i++)
@@ -20,7 +20,7 @@
   }
  void creategraph()
   {
-    double i,j;
+    int i,j;
     while(1)
     {
         printf("Enter the source and the destination vertex..");
@@ -30,9 +30,20 @@
         a[i][j]=a[j][i]=1;
      }
   }
-  double component()
+  void dfs(int v)
   {
-   double i,j;
+    int utt;
+    visit[v]=label;
+
+    for(utt=1;utt<=n;utt++)
+    {
+       if((a[v][utt]==1)&&(visit[utt]==0))
+           dfs(utt);
+    }
+  }
+  int component()
+  {
+   int i,j;
    label=0;
    for(i=1;i<=n;i++)
    {
@@ -44,14 +55,3 @@
   }
   return label;
  }
-  void dfs(double v)
-  {
-    double u;
-    visit[v]=label;
-
-    for(u=1;u<=n;u++)
-    {
-       if((a[v][u]==1)&&(visit[u]==0))
-           dfs(u);
-    }
-  }

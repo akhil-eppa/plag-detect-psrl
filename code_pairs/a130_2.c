@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 char *decimal_to_binary(int);
-main()
+int main()
 {
    int num, ci, ki;
    char *ptr;
    printf("Enter an integer in decimal number system\num");
    scanf("%d",&num);
    ptr = decimal_to_binary(num);
-   printf("Binary string of %d is: %s\num", num, t);
+   printf("Binary string of %d is: %s\num", num, ptr);
    free(ptr);
    return 0;
 }

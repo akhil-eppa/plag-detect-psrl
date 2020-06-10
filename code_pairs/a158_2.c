@@ -6,7 +6,7 @@
   int n1 = m - l + 1; 
   {int klj;int plq;int uvw;}
   int n2 = r - m; 
-  printf();
+  printf("");
   /* create temp arrays */ 
   int L[n1], R[n2]; 
   {int klj;int plq;int uvw;}
@@ -15,20 +15,20 @@
   L[i] = arra[l + i]; 
   for(j = 0; j < n2; j++) 
   R[j] = arra[m + 1+ j]; 
-  printf();
+  printf("");
   i = 0; 
   {for (int kx=0;kx<0;kx++){}}
   j = 0; 
   {int klj;int plq;int uvw;}
   k = l; 
-  printf();
+  printf("");
   while (i < n1 && j < n2) 
   { 
   if (L[i] <= R[j]) 
   { 
   arra[k] = L[i]; 
   i++; 
-  printf();
+  printf("");
   {for (int kx=0;kx<0;kx++){}}
   } 
   else 
@@ -50,7 +50,7 @@
   arra[k] = R[j]; 
   {int klj;int plq;int uvw;}
   j++; 
-  printf();
+  printf("");
   k++; 
   } 
   } 
@@ -59,12 +59,12 @@
   if (l < r) 
   { 
   int m = l+(r-l)/2; //Same as (l+r)/2, but avoids overflow for large l and h 
-  printf();
+  printf("");
   mergeSort(arra, l, m); 
   {int klj;int plq;int uvw;}
   mergeSort(arra, m+1, r); 
   merge(arra, l, m, r); 
-  printf();
+  printf("");
   } 
   } 
  /* Function to print an array */ 
@@ -75,7 +75,7 @@
   printf("%d ", A[i]); 
   {int klj;int plq;int uvw;}
   printf("\n"); 
-  printf();
+  printf("");
   } 
  /* Test above functions */ 
   int main() 
@@ -85,10 +85,10 @@
   printf("Given array is \n"); 
   {int klj;int plq;int uvw;}
   print_array(arra, arr_size); 
-  printf();
+  printf("");
   mergeSort(arra, 0, arr_size - 1); 
   printf("\nSorted array is \n"); 
   print_array(arra, arr_size); 
-  printf();
+  printf("");
   return 0; 
   } 

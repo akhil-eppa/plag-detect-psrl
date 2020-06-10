@@ -1,12 +1,12 @@
  #include<stdio.h>
  //implement heap by using bottom up technique
-  void bot_heap(double*,double);
-  void top_heap(double *, double);
+  void top_heap(int *, int);
+  void bot_heap(int*,int);
   
   int main()
   {
-    double h[100];//heap;
-    double i,n;//no of elements
+    int h[100];//heap;
+    int i,n;//no of elements
     printf("Enter the no of elements..\n");
     scanf("%d",&n);
     printf("Enter the elements..\n");
@@ -19,37 +19,14 @@
       printf("%d ",h[i]);
    
   }
-
-  void top_heap(double *h, double n)//n is the index of the last element
+  void bot_heap(int *h, int n)//n ->index of the last element
   {
-    double i,j,k,key;
-
-    for(k=1;k<=n;k++)
-    {
-      i=k;
-      key=h[i];
-
-      j=(i-1)/2;
-      
-      //repeat until value of key is greater than the parent
-      //or the root is reached(i=0)
-      while((i>0)&&(key>h[j]))
-      {
-        h[i]=h[j];
-        i=j;
-        j=(i-1)/2;
-      }
-     h[i]=key;
-   }
-}     
-void bot_heap(double *h, double n)//n ->index of the last element
-  {
-   double i,j,k,key;
+   int i,j,k,keyrs;
 
    for(k=(n-1)/2;k>=0;k--)//start from the last parent
    {
     j=k;
-    key=h[j];
+    keyrs=h[j];
     
     i=2*j+1;//find the index of left child
     
@@ -60,7 +37,7 @@ void bot_heap(double *h, double n)//n ->index of the last element
         if(h[i+1]>h[i]) //(REPLACING > WITH < WILL CREATE MIN HEAP)
          i++;//get the index of the largest child
       }
-      if(key<h[i])
+      if(keyrs<h[i])
         {//(REPLACING < WITH > WILL CREATE MIN HEAP)
         h[j]=h[i];//move the child up
         j=i;
@@ -69,6 +46,28 @@ void bot_heap(double *h, double n)//n ->index of the last element
      else
       break;
     }
-   h[j]=key;
+   h[j]=keyrs;
   }
 }
+  void top_heap(int *h, int n)//n is the index of the last element
+  {
+    int i,j,k,keyrs;
+
+    for(k=1;k<=n;k++)
+    {
+      i=k;
+      keyrs=h[i];
+
+      j=(i-1)/2;
+      
+      //repeat until value of keyrs is greater than the parent
+      //or the root is reached(i=0)
+      while((i>0)&&(keyrs>h[j]))
+      {
+        h[i]=h[j];
+        i=j;
+        j=(i-1)/2;
+      }
+     h[i]=keyrs;
+   }
+}     

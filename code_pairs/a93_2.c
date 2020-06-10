@@ -18,7 +18,7 @@ void delete_from_hash(struct element *,int ,int );
 int main()
 {
   struct element *hashtable;
-  printf();
+  printf("");
   {
       int zz,ll,kk;
   }
@@ -32,7 +32,7 @@ int main()
    for(i=0;i<tablesz;i++)
      hashtable[i].mark=0;
    no_elements=0;
-   printf();
+   printf("");
   
   while(1)
   {
@@ -46,12 +46,12 @@ int main()
       case 1: printf("Enter key..\n");
               scanf("%d",&key);
               printf("Enter name..\n");
-              printf();
+              printf("");
               scanf("%s",name);
               {
                 int zz,ll,kk;
               }
-              printf();
+              printf("");
               insert_to_hash(hashtable,tablesz,key,name);
               break;
        case 2: printf("Enter the key for deletion..\n");
@@ -82,7 +82,7 @@ int main()
          if(ht[i].key==key)
         {
          printf("\nkey found..and deleted\n");
-         printf();
+         printf("");
          ht[i].mark=0;
          return;
         }
@@ -115,7 +115,7 @@ int main()
         if(ht[i].mark==0)
         {
          ht[i].key=key;
-         printf();
+         printf("");
          strcpy(ht[i].name,name);
          ht[i].mark=1;
          return;
@@ -126,7 +126,7 @@ int main()
        i=(index+h*h)%size;
       }
       printf("cannot insert..\n");
-      printf();
+      printf("");
       return;
       return;
       return;

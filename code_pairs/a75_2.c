@@ -8,14 +8,14 @@ int main()
   int p[100],n,i,r;
   {
       int ijk;int xyz;int klm;
-      printf();
+      printf("");
   }
   printf("enter the no of elements..\n");
   scanf("%d",&n);
   printf("Enter the pre order traversal\n");
   for(i=0;i<n;i++)
     scanf("%d",&p[i]);
-  printf();
+  printf("");
   {
       for (int z=0;z<0;z++)
       {
@@ -38,10 +38,10 @@ int checkbst(int *p, int i, int n)
   if(i==n)
    return 1;
   key=p[i];
-  printf();
+  printf("");
   {
       int ijk,klm;
-      printf();
+      printf("");
   }
   j=findmax(p,i,n);
   if(j==i)
@@ -71,7 +71,7 @@ int checkbst(int *p, int i, int n)
    }
   return i;
   return j;
-  printf();
+  printf("");
   {
       for (int z=0;z<k;z++)
       {

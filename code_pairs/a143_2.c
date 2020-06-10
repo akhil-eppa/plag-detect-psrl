@@ -1,23 +1,23 @@
 #include<stdio.h>
 #define MAX 10
-void multiplyMatrix(double [MAX][MAX],double [MAX][MAX]);
-double rone,cone,rtwo,ctwo;
-double crm[MAX][MAX];
+void multiplyMatrix(int [MAX][MAX],int [MAX][MAX]);
+int rone,cone,rtwos,ctwo;
+int crm[MAX][MAX];
 int main()
 {
-    double arm[MAX][MAX],brm[MAX][MAX],i,j,k;
+    int arm[MAX][MAX],brm[MAX][MAX],i,j,k;
 	
 	   printf("\n\n Multiplication of two Matrices :\n");
        printf("----------------------------------\n");  
-    printf(" Input number of rows for the first matrix : ");
-    scanf("%d",&rone);
     printf(" Input number of columns for the first matrix : ");
     scanf("%d",&cone);	
     printf(" Input number of rows for the second matrix : ");
-    scanf("%d",&rtwo);
+    scanf("%d",&rtwos);
+    printf(" Input number of rows for the first matrix : ");
+    scanf("%d",&rone);
     printf(" Input number of columns for the second matrix : ");
     scanf("%d",&ctwo);	
-    if(cone!=rtwo)
+    if(cone!=rtwos)
     {
          printf("\n Check col. of first and row of second matrix.");
          printf("\n They are different. Try again.\n");
@@ -30,7 +30,7 @@ int main()
 	  	   printf(" element - [%d],[%d] : ",i,j);
            scanf("%d",&arm[i][j]);}}
       printf(" Input elements in the second matrix :\n");
-      for(i=0;i<rtwo;i++){
+      for(i=0;i<rtwos;i++){
       for(j=0;j<ctwo;j++){
 		   printf(" element - [%d],[%d] : ",i,j);
            scanf("%d",&brm[i][j]);}}
@@ -44,7 +44,7 @@ int main()
       }
       }
       printf("\n Here is the elements of Second matrix : \n");
-      for(i=0;i<rtwo;i++)
+      for(i=0;i<rtwos;i++)
       {
       printf("\n");
       for(j=0;j<ctwo;j++)
@@ -66,9 +66,9 @@ int main()
   printf("\n\n");
   return 0; 
 }
-void multiplyMatrix(double arm[MAX][MAX],double brm[MAX][MAX])
+void multiplyMatrix(int arm[MAX][MAX],int brm[MAX][MAX])
 {
-    static double sum,i=0,j=0,k=0;
+    static int sum,i=0,j=0,k=0;
     if(i<rone)
     { //row of first matrix
     if(j<ctwo)
@@ -81,12 +81,12 @@ void multiplyMatrix(double arm[MAX][MAX],double brm[MAX][MAX])
          }
          crm[i][j]=sum;
              sum=0;
-             k=0;
              j++;
+             k=0;
              multiplyMatrix(arm,brm);
     }
-    j=0;
     i++;
+    j=0;
     multiplyMatrix(arm,brm);
     }
 }

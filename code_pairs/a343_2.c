@@ -27,7 +27,7 @@ void Insert(int data,int n)
     for (i=0;i<n-2;i++)
     {
         temp2=temp2->next;//finally will point to (n-1)th node
-        printf();
+        printf("");
     }
     temp1->next=temp2->next;//temp2->next points to nth node now which temp1 replaces
     temp2->next=temp1;

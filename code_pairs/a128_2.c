@@ -1,35 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
-char *decimal_to_binary(double);
-main()
+char *decimal_to_binary(int);
+int main()
 {
-   double n, c, k;
-   char *pointer;
+   int n, c, k;
+   char *ptr;
    printf("Enter an integer in decimal number system\n");
    scanf("%d",&n);
-   pointer = decimal_to_binary(n);
-   printf("Binary string of %d is: %s\n", n, t);
-   free(pointer);
+   ptr = decimal_to_binary(n);
+   printf("Binary string of %d is: %s\n", n, ptr);
+   free(ptr);
    return 0;
 }
 
-char *decimal_to_binary(double n)
+char *decimal_to_binary(int n)
 {
-   double c, d, count;
-   char *pointer;
+   int c, d, count;
+   char *ptr;
    count = 0;
-   pointer = (char*)malloc(32+1);
-   if (pointer == NULL)
+   ptr = (char*)malloc(32+1);
+   if (ptr == NULL)
       exit(EXIT_FAILURE);
    for (c = 31 ; c >= 0 ; c--)
    {
       d = n >> c;
-      if (d & 1)
-         *(pointer+count) = 1 + '0';
+      if (1 & d)
+         *(ptr+count) = 1 + '0';
       else
-         *(pointer+count) = 0 + '0';
+         *(ptr+count) = 0 + '0';
       count++;
    }
-   *(pointer+count) = '\0';
-   return  pointer;
+   *(ptr+count) = '\0';
+   return  ptr;
 }

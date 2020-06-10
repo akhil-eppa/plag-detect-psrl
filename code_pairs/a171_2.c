@@ -2,36 +2,34 @@
 #include<conio.h>
 void main()
 {
-    double a[20], i, j, k, n;
-    clrscr();
-
     printf("\nEnter array size: ");
-    scanf("%f", &n);
+    int a[20], i, kk,j, nn;
+    scanf("%f", &nn);
 
-    printf("\nEnter %f array element: ", n);
-    for(i = 0; i < n; i++)
+    printf("\nEnter %f array element: ", nn);
+    for(i = 0; i < nn; i++)
     {
         scanf("%f", &a[i]);
     }
 
     printf("\nOriginal array is: ");
-    for(i = 0; i < n; i++)
+    for(i = 0; i < nn; i++)
     {
         printf(" %f", a[i]);
     }
 
     printf("\nNew array is: ");
-    for(i = 0; i < n; i++)
+    for(i = 0; i < nn; i++)
     {
-        for(j = i+1; j < n; )
+        for(j = i+1; j < nn; )
         {
-            if(a[j] == a[i])
+            if(a[i] == a[j])
             {
-                for(k = j; k < n; k++)
+                for(kk = j; kk < nn; kk++)
                 {
-                    a[k] = a[k+1];
+                    a[kk] = a[kk+1];
                 }
-                n--;
+                nn--;
             }
             else
             {
@@ -40,7 +38,7 @@ void main()
         }
     }
 
-    for(i = 0; i < n; i++)
+    for(i = 0; i < nn; i++)
     {
         printf("%f ", a[i]);
     }

@@ -18,7 +18,7 @@ void delete_from_hash(struct element *,int ,int );
 int main()
 {
   struct element *hashtable;
-  int i,key,no_elementsn,ch;
+  int i,key,no_elements,ch;
   char name[100];
   int tablesz;
   printf("Enter the table size..");

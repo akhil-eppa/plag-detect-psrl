@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-void merge(double *left,double *right,double *a,double nl,double nr)
+void merge(int *left,int *right,int *a,int nl,int nr)
 {
-    double i=0;
-    double j=0;
-    double k=0;
+    int i=0;
+    int j=0;
+    int k=0;
     while (i<nl && j<nr)
     {
         if (left[i]<=right[j])
@@ -33,16 +33,16 @@ void merge(double *left,double *right,double *a,double nl,double nr)
         ++j;
     }
 }
-void mergesort(double *a,double n)
+void mergesort(int *a,int n)
 {
     if (n<2)
     {
         return;
     }
-    double mid=n/2;
-    double left[mid];
-    double right[n-mid];
-    double i;
+    int mid=n/2;
+    int left[mid];
+    int right[n-mid];
+    int i;
     for (i=0;i<mid;++i)
     {
         left[i]=a[i];
@@ -56,11 +56,11 @@ void mergesort(double *a,double n)
     merge(left,right,a,sizeof(left)/sizeof(left[0]),sizeof(right)/sizeof(right[0]));
 
 }
-double main()
+int main()
 {
-    double a[]={8,7,6,5,4,3,2,1};
+    int a[]={8,7,6,5,4,3,2,1};
     mergesort(a,8);
-    double i;
+    int i;
     for (i=0;i<8;++i)
     {
         printf("%f\n",a[i]);

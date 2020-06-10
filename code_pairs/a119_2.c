@@ -2,24 +2,24 @@
 #define MAX 30
 typedef struct edge
 {
-	double u,v,w;
+	int u,v,w;
 }edge;
 typedef struct edgelist
 {
 	edge data[MAX];
-	double n;
+	int n;
 }edgelist;
 edgelist elist;
-double G[MAX][MAX],n;
+int G[MAX][MAX],n;
 edgelist spanlist;
-void kruskal();
-double find(double belongs[],double vertexno);
-void union1(double belongs[],double c1,double c2);
+int find(int belongs[],int vertexno);
+void union1(int belongs[],int c1,int c2);
 void sort();
+void kruskal();
 void print();
 void main()
 {
-	double i,j,total_cost;
+	int i,j,t_cost;
 	printf("\nEnter number of vertices:");
 	scanf("%d",&n);
 	printf("\nEnter the adjacency matrix:\n");
@@ -31,7 +31,7 @@ void main()
 }
 void kruskal()
 {
-	double belongs[MAX],i,j,cno1,cno2;
+	int belongs[MAX],i,j,cn1,cn2;
 	elist.n=0;
 	for(i=1;i<n;i++)
 		for(j=0;j<i;j++)
@@ -50,31 +50,41 @@ void kruskal()
 	spanlist.n=0;
 	for(i=0;i<elist.n;i++)
 	{
-		cno1=find(belongs,elist.data[i].u);
-		cno2=find(belongs,elist.data[i].v);
-		if(cno1!=cno2)
+		cn1=find(belongs,elist.data[i].u);
+		cn2=find(belongs,elist.data[i].v);
+		if(cn1!=cn2)
 		{
 			spanlist.data[spanlist.n]=elist.data[i];
 			spanlist.n=spanlist.n+1;
-			union1(belongs,cno1,cno2);
+			union1(belongs,cn1,cn2);
 		}
 	}
 }
-double find(double belongs[],double vertexno)
+int find(int belongs[],int vertexno)
 {
 	return(belongs[vertexno]);
 }
-void union1(double belongs[],double c1,double c2)
+void union1(int belongs[],int c1,int c2)
 {
-	double i;
+	int i;
 	
 	for(i=0;i<n;i++)
 		if(belongs[i]==c2)
 			belongs[i]=c1;
 }
+void print()
+{
+	int i,cost=0;
+	for(i=0;i<spanlist.n;i++)
+	{
+		printf("\n%d\t%d\t%d",spanlist.data[i].u,spanlist.data[i].v,spanlist.data[i].w);
+		cost=cost+spanlist.data[i].w;
+	}
+	printf("\n\nCost of the spanning tree=%d",cost);
+}
 void sort()
 {
-	double i,j;
+	int i,j;
 	edge temp;
 	for(i=1;i<elist.n;i++)
 		for(j=0;j<elist.n-1;j++)
@@ -84,14 +94,4 @@ void sort()
 				elist.data[j]=elist.data[j+1];
 				elist.data[j+1]=temp;
 			}
-}
-void print()
-{
-	double i,cost=0;
-	for(i=0;i<spanlist.n;i++)
-	{
-		printf("\n%d\t%d\t%d",spanlist.data[i].u,spanlist.data[i].v,spanlist.data[i].w);
-		cost=cost+spanlist.data[i].w;
-	}
-	printf("\n\nCost of the spanning tree=%d",cost);
 }

@@ -14,7 +14,7 @@
    int i,v,k;
    printf("Enter the number of vertices..");
    scanf("%d",&n);
-   printf();
+   printf("");
    {
        {
            for (int i=0;i<0;i++)
@@ -29,11 +29,11 @@
    }
    printf("Enter the source vertex..\n");
    scanf("%d",&v);
-   printf();
+   printf("");
    printf("The vertices reachable from %d using BFS are..\n",v);
    bfs(v);
    {
-   printf();
+   printf("");
    }
   }
 
@@ -80,7 +80,7 @@
           visit[u]=1;
           printf("%d ",u);
           qinsert(u);
-          printf();
+          printf("");
        }
      }
    }
@@ -92,7 +92,7 @@
     q[r]=v;
     if(f==-1)
       f=0;
-    printf();
+    printf("");
     {
         for (int i=0;i<0;i++)
         {

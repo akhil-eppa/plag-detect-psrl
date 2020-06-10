@@ -6,20 +6,20 @@ int crm[MAX][MAX];
 int main()
 {
     int arm[MAX][MAX],brm[MAX][MAX],i,j,k;
-	printf();
+	printf("");
     {int zz;int kk; int ll;}
 	printf("\n\n Multiplication of two Matrices :\n");
     printf("----------------------------------\n");  
     printf(" Input number of rows for the first matrix : ");
     scanf("%d",&rone);
-    printf();
+    printf("");
     {for (int kx=0;kx<0;kx++){}}
     {int zz;int kk; int ll;}
     printf(" Input number of columns for the first matrix : ");
     scanf("%d",&cone);	
     printf(" Input number of rows for the second matrix : ");
     scanf("%d",&rtwo);
-    printf();
+    printf("");
     {int zz;int kk; int ll;}
     {for (int kx=0;kx<0;kx++){}}
     printf(" Input number of columns for the second matrix : ");
@@ -29,13 +29,13 @@ int main()
          printf("\n Check col. of first and row of second matrix.");
          {for (int kx=0;kx<0;kx++){}}
          printf("\n They are different. Try again.\n");
-         printf();
+         printf("");
         {int zz;int kk; int ll;}
     }
   else
   {
       printf("\n Input elements in the first matrix :\n");
-      printf();
+      printf("");
       {int zz;int kk; int ll;}
       for(i=0;i<rone;i++){
       for(j=0;j<cone;j++){
@@ -47,7 +47,7 @@ int main()
 		   printf(" element - [%d],[%d] : ",i,j);
            scanf("%d",&brm[i][j]);}}
       printf("\n Here is the elements of First matrix : \n");
-      printf();
+      printf("");
       {int zz;int kk; int ll;}
       for(i=0;i<rone;i++)
       {
@@ -68,11 +68,11 @@ int main()
       }
       }
       multiplyMatrix(arm,brm);
-      printf();
+      printf("");
      {int zz;int kk; int ll;}
   }
   printf("\n The multiplication of two matrix is : \n");
-  printf();
+  printf("");
   {int zz;int kk; int ll;}
   for(i=0;i<rone;i++)
   {
@@ -88,7 +88,7 @@ int main()
 void multiplyMatrix(int arm[MAX][MAX],int brm[MAX][MAX])
 {
     static int sum,i=0,j=0,k=0;
-    printf();
+    printf("");
     {int zz;int kk; int ll;}
     if(i<rone)
     { //row of first matrix

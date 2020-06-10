@@ -1,57 +1,56 @@
 #include<stdio.h>
 //program to check if a goven array can represent 
 // a preorder traversal of a binary search tree
- checkbst(int*,int,int);
+int checkbst(int*,int,int);
 int findmax(int*, int,int);
 int main()
 {
-  int parr[100],num,index,r;
-  printf("enter the no of elements..\num");
-  scanf("%d",&num);
-  printf("Enter the pre order traversal\num");
-  for(index=0;index<num;index++)
-    scanf("%d",&parr[index]);
+  int p[100],n,i,r;
+  printf("enter the no of elements..\n");
+  scanf("%d",&n);
+  printf("Enter the pre order traversal\n");
+  for(i=0;i<n;i++)
+    scanf("%d",&p[i]);
 
-  r=checkbst(parr,0,num-1);
+  r=checkbst(p,0,n-1);
   if(r)
-   printf("binary search tree..\num");
+   printf("binary search tree..\n");
   else
-   printf("not a binary search tree..\num");
+   printf("not a binary search tree..\n");
 }
 
-
-
-int checkbst(int *parr, int index, int num)
-{
-  int k,j,k;
-  if(index==num)
-   return 1;
-  k=parr[index];
-  j=findmax(parr,index,num);
-  if(j==index)
-   return 1;
-  for(k=j+1;k<=num;k++)
+int findmax(int *p, int i, int n)
+ {
+   int keyrs,j;
+   keyrs=p[i];
+   for(j=i+1;j<=n;j++)
    {
-    if(parr[k]<k)
+    if(p[j]>keyrs)
+      return j;
+   }
+  return i;
+} 
+
+int checkbst(int *p, int i, int n)
+{
+  int keyrs,j,k;
+  if(i==n)
+   return 1;
+  keyrs=p[i];
+  j=findmax(p,i,n);
+  if(j==i)
+   return 1;
+  for(k=j+1;k<=n;k++)
+   {
+    if(p[k]<keyrs)
       return 0;
    }
   
-  if((checkbst(parr,index+1,j-1))&&(checkbst(parr,j,num)))
+  if((checkbst(p,i+1,j-1))&&(checkbst(p,j,n)))
      return 1;
   return 0;
 }
 
- int findmax(int *parr, int index, int num)
- {
-   int k,j;
-   k=parr[index];
-   for(j=index+1;j<=num;j++)
-   {
-    if(parr[j]>k)
-      return j;
-   }
-  return index;
-} 
 
   
 
