@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+void swp(char **s,int index_1,int index_2)
+{
+    char *temper;
+    temper=s[index_1];
+    s[index_1]=s[index_2];
+    s[index_2]=temper;
+}
 void reverse(char **s,int i,int sze)
 {
     int temp_i=i;
@@ -12,13 +19,6 @@ void reverse(char **s,int i,int sze)
         temp_i++;
         temp_size--;
     }
-}
-void swp(char **s,int index_1,int index_2)
-{
-    char *temper;
-    temper=s[index_1];
-    s[index_1]=s[index_2];
-    s[index_2]=temper;
 }
 int next_permutation(int n, char **s)
 {
