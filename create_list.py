@@ -42,14 +42,14 @@ for i in range(1,425):
     prog.append(temp)
 '''
 Pairs by Santosh
-1 to 173 are plagiarized
-174 to 346 are non plagairized
+1 to 180 are plagiarized
+181 to 360 are non plagairized
 '''
-for i in range(1,346):
+for i in range(1,360):
     temp=[]
     temp.append(str("s"+str(i)+"_1.c"))
     temp.append(str("s"+str(i)+"_2.c"))
-    if (i<=173):
+    if (i<=180):
         temp.append("p")
     else:
         temp.append("np")
