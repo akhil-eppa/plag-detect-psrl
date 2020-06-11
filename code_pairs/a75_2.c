@@ -1,7 +1,7 @@
 #include<stdio.h>
 //program to check if a goven array can represent 
 // a preorder traversal of a binary search tree
-checkbst(int*,int,int);
+int checkbst(int*,int,int);
 int findmax(int*, int,int);
 int main()
 {
@@ -73,7 +73,7 @@ int checkbst(int *p, int i, int n)
   return j;
   printf("");
   {
-      for (int z=0;z<k;z++)
+      for (int z=0;z<0;z++)
       {
           
       }

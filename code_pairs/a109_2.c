@@ -1,27 +1,48 @@
 #include <stdio.h>
-int main() {
-    int i, n, flag = 0;
-    printf("Enter a positive integer: ");
-    scanf("%d", &n);
+#include<stdlib.h>
 
-    for (i = 2;n/2 >= i; i++) {
-
-        // condition for non-prime
-        if (n % i == 0) {
-            flag = 1;
-            break;
-        }
-    }
-
-    if (1==n) {
-        printf("1 is neither prime nor composite.");
-    }
-    else {
-        if (flag == 0)
-            printf("%d is a prime number.", n);
-        else
-            printf("%d is not a prime number.", n);
-    }
-
-    return 0;
+int comparator(const void *a,const void *b)
+{
+ int r = *(const int *)b;
+ int l = *(const int *)a; 
+ return (l-r);
 }
+
+int main()
+{
+	long long int t;
+	scanf("%lld",&t);
+	
+	for(long long int iter=0;iter<t;iter++)
+	{
+		int n,*arr,val,pos,k;
+		
+		scanf("%d",&n);
+		
+		arr=(int*)malloc(n*sizeof(int));
+		
+		for(int i=0;n>i;++i)
+			scanf("%d",arr+i);
+			
+		scanf("%d",&k);
+		
+		val=arr[k-1];
+		
+		qsort((void*)arr,n,sizeof(int), comparator);
+		
+		for(int i=0;n>i;++i)
+		{
+			if(val==arr[i])
+			{
+				pos=i+1;
+				break;
+			}
+		}
+		
+		printf("%d\n",pos);
+		
+	}
+	
+	return 0;
+}
+ 

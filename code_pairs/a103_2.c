@@ -1,104 +1,54 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct pqueue//implementing a queue
-{
-  int pty;//stores the priority number
-  int data;//stores the data
-};
-//we can insert into the queue
-void pqinsert(int,int,struct pqueue*,int*);
-//delete from the priority queue
-struct pqueue pqdelete(struct pqueue*,int*);
-void qdisplay(struct pqueue*,int);
+#include <stdio.h>
+ 
 int main()
 {
-   //main function from where all the execution begins
-   //all the user choices are made here
-   //it calls all the helper functions 
-  int k,ch,pty,x;
-  struct pqueue pq[100];
-  //structure
-  struct pqueue temp;
-  int count=0;
-  while(1)
+  int mxx, n, p, qxx, c, d, k, sum = 0;
+  int fst[10][10], snd[10][10], multiply[10][10];
+  printf("Enter number of rows and columns of fst matrix\n");
+  scanf("%d%d", &mxx, &n);
+  printf("Enter elements of fst matrix\n");
+  c=0;
+  while (c < mxx)
   {
-    //this diplays the menu as required
-    //user makes a choice
-    qdisplay(pq,count);
-    printf("\n1..insert");//to insert
-    printf("\n2..remove");//to delete
-    printf("\n3..display");//to display
-    printf("\n4..EXIT");//to exit from the program
-    scanf("%d",&ch);
-    switch(ch)
-    {
-       case 1:printf("Enter the priority..");//we need to enter the priority
-              
-              scanf("%d",&pty);//pty
-              printf("Enter the value");//then the value
-              scanf("%d",&x);
-              pqinsert(x,pty,pq,&count);
-              
-               break;
-      case 2:temp=pqdelete(pq,&count);
-              if(temp.data>0)
-              {
-                printf("deleted element:- data=%d",temp.data);
-                printf("   priority=%d\n",temp.pty);
-               }
-              break;
-        case 4:exit(0); 
-   }
+    for (d = 0; d < n; d++)
+      scanf("%d", &fst[c][d]);
+    c++;
   }
- }
-  struct pqueue pqdelete(struct pqueue *pq,int *count)//to delete something from the priority queue
+  printf("Enter number of rows and columns of snd matrix\n");
+  scanf("%d%d", &p, &qxx);
+  if (n != p)
+    printf("The multiplication isn't possible.\n");
+  else
   {
-   int i;
-   struct pqueue key;//this is the key
-   if(*count==0)
-   {
-      key.data=0;
-      key.pty=-1;
-    }
-    else
+    printf("Enter elements of snd matrix\n");
+    c=0;
+    while (c < p)
     {
-    key=pq[0];
-    for(i=1;i<=*count-1;i++)
-      pq[i-1]=pq[i];
-    (*count)--;
+      for (d = 0; d < qxx; d++)
+        scanf("%d", &snd[c][d]);
+      c++;
     }
-   return key;//return it
-  }
- void pqinsert(int x,int pty,struct pqueue *pq,int *count)//insert into the priority queue
- {
-   int j;
-   struct pqueue key;//structure
-   key.data=x;
-   key.pty=pty;//priority
-
-   //pq[*count]=key;
-   j=*count-1;
-
-   while((j>=0)&&(pq[j].pty<key.pty))
-   {
-      pq[j+1]=pq[j];
-      j--;
-   }
-   pq[j+1]=key;
-   (*count)++;
- }
-void qdisplay(struct pqueue *q, int count)//to diplay the queue structure
-  {
-    int i;
-    if(count==0)
-     printf("Empty Queue");//if queue is empty
-   else
-   {
-    for(i=0;i<count;i++)//for loop
-    {
-      printf("\ndata = %d",q[i].data);//print data 
-      printf("  pty=%d",q[i].pty);//print pty
+    c=0;
+    while (c < mxx) {
+      d=0;
+      while(d < qxx) {
+        for (k = 0; k < p; k++) {
+          sum = sum + fst[c][k]*snd[k][d];
+        }
+        multiply[c][d] = sum;
+        sum = 0;
+        d++;
+      }
+      c++;
+    }
+    printf("Product of the matrices:\n");
+    c=0;
+    while (c < mxx) {
+      for (d = 0; d < qxx; d++)
+        printf("%d\t", multiply[c][d]);
       printf("\n");
-    }  
+      c++;
+    }
   }
- }
+  return 0;
+}

@@ -1,4 +1,4 @@
-#include  <stdio.h>  
+#include  <stdio.h>
 #include <stdlib.h>
 void bead_sort(int *a, int len)
 {
@@ -15,7 +15,7 @@ void bead_sort(int *a, int len)
 	beads = calloc(1, max * len);
 	/* mark the beads */
     i=0;
-	for (i < len)
+	while (i < len)
     {
 		for (j = 0; j < a[i]; j++)
 			BEAD(i, j) = 1;

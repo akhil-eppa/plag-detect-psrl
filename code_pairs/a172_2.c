@@ -1,59 +1,57 @@
-#include<stdio.h>
-#include<conio.h>
-void main()
-{
-    int a[20], i, j, k, n;
-    {int ijk;int klml;int zzz;}
-    printf("");
-    printf("\nEnter array size: ");
-    {for (int zkl=0;zkl<0;zkl++){}}
-    scanf("%d", &n);
-    printf("");
-    printf("\nEnter %d array element: ", n);
-    for(i = 0; i < n; i++)
+ //program to return the no of components of disconnected graph
+ #include<stdio.h>
+ int visit[100];
+ void creategraph();
+ void dfs(int);
+ int n,a[100][100];
+ int component();
+ int label;
+ int main()
+ {
+   int kix,i,vix; 
+   printf("Enter the number of vertices..");
+   scanf("%d",&n);
+   creategraph();
+   int resulted =component();
+   printf("the number of components = %d\n",resulted);
+   printf ("\nthe vertices and their component numbers");
+   for(i=1;n>=i;++i)
+     printf("%d---> %d\n",i,visit[i]);
+  }
+ void creategraph()
+  {
+    int j,i;
+    while(1)
     {
-        scanf("%d", &a[i]);
-        {int ijk;int klml;int zzz;}
-    }
+        printf("Enter the source and the destination vertex..");
+        scanf("%d%d",&i,&j);
+        if((j==-9)&&(i==-9))
+           break;
+        a[j][i]=a[i][j]=1;
+     }
+  }
+  int component()
+  {
+   int j,i;
+   label=0;
+   for(i=1;n>=i;++i)
+   {
+     if(visit[i]==0)
+     {
+       label++;
+       dfs(i);
+     }
+  }
+  return label;
+ }
+  void dfs(int vix)
+  {
+    int u;
+    visit[vix]=label;
 
-    printf("\nOriginal array is: ");
-    for(i = 0; i < n; i++)
+    for(u=1;n>=u;++u)
     {
-        printf(" %d", a[i]);
-        printf("");
+       if((visit[u]==0)&&(a[vix][u]==0))
+           dfs(u);
     }
-
-    printf("\nNew array is: ");
-    {for (int zkl=0;zkl<0;zkl++){}}
-    for(i = 0; i < n; i++)
-    {
-        {int ijk;int klml;int zzz;}
-        for(j = i+1; j < n; )
-        {
-            printf("");
-            if(a[j] == a[i])
-            {
-                for(k = j; k < n; k++)
-                {
-                    a[k] = a[k+1];
-                    {int ijk;int klml;int zzz;}
-                }
-                n--;
-                {int ijk;int klml;int zzz;}
-            }
-            else
-            {
-                j++;
-                printf("");
-            }
-        }
-    }
-    {for (int zkl=0;zkl<0;zkl++){}}
-    for(i = 0; i < n; i++)
-    {
-        printf("%d ", a[i]);
-        printf("");
-    }
-    getch();
-    {int ijk;int klml;int zzz;}
-}
+  }

@@ -23,7 +23,7 @@
     for(i=0;i<n;i++)
       printf("%d ",h[i]);
     {
-        for (int x=0;z<0;z++)
+        for (int x=0;x<0;x++)
         {
 
         }

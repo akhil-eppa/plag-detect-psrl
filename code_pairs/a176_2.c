@@ -1,55 +1,57 @@
-#include<stdio.h>
-#include<conio.h>
-void main()
-{
-    int a[20], i, j, k, n;
-
-    printf("\nEnter array size: ");
-    scanf("%d", &n);
-
-    printf("\nEnter %d array element: ", n);
-    i=0;
-    while (i < n)
+ //program to return the no of components of disconnected graph
+ #include<stdio.h>
+ int visit[100];
+ int component();
+ int label;
+  void creategraph();
+ void dfs(int);
+ int n,a[100][100];
+  void creategraph()
+  {
+    int j,i;
+    while(1)
     {
-        scanf("%d", &a[i]);
-        i++;
-    }
+        printf("Enter the source and the destination vertex..");
+        scanf("%d%d",&i,&j);
+        if((j==-9)&&(i==-9))
+           break;
+        a[j][i]=a[i][j]=1;
+     }
+  }
+ int main()
+ {
+   int kix,i,vix; 
+   printf("Enter the number of vertices..");
+   scanf("%d",&n);
+   creategraph();
+   int resulted =component();
+   printf("the number of components = %d\n",resulted);
+   printf ("\nthe vertices and their component numbers");
+   for(i=1;i<=n;i++)
+     printf("%d---> %d\n",i,visit[i]);
+  }
+    void dfs(int vix)
+  {
+    int u;
+    visit[vix]=label;
 
-    printf("\nOriginal array is: ");
-    i=0;
-    while (i < n)
+    for(u=1;u<=n;u++)
     {
-        printf(" %d", a[i]);
-        i++;
+       if((visit[u]==0)&&(a[vix][u]==0))
+           dfs(u);
     }
-
-    printf("\nNew array is: ");
-    i=0;
-    while (i < n)
-    {
-        j=i+1;
-        while (j < n)
-        {
-            if(a[j] == a[i])
-            {
-                for(k = j; k < n; k++)
-                {
-                    a[k] = a[k+1];
-                }
-                n--;
-            }
-            else
-            {
-                j++;
-            }
-        }
-        i++;
-    }
-    i=0;
-    while (i < n)
-    {
-        printf("%d ", a[i]);
-        i++;
-    }
-    getch();
-}
+  }
+  int component()
+  {
+   int j,i;
+   label=0;
+   for(i=1;i<=n;i++)
+   {
+     if(visit[i]==0)
+     {
+       label++;
+       dfs(i);
+     }
+  }
+  return label;
+ }
