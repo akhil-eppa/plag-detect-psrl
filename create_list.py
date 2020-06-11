@@ -19,14 +19,20 @@ Pairs by Akhil
 1 to 192 are plagiarized
 193 to 373 are non plagiarized
 """
-for i in range(1, 374):
+'''
+added 374 to 434 non plagiarized
+435 to 458 plagiarized
+'''
+for i in range(1, 459):
     temp = []
     temp.append(str("a" + str(i) + "_1.c"))
     temp.append(str("a" + str(i) + "_2.c"))
     if i <= 192:
         temp.append("p")
-    else:
+    elif i>192 and i<=434:
         temp.append("np")
+    else:
+        temp.append("p")
     prog.append(temp)
 """
 Pairs by Anirudh
