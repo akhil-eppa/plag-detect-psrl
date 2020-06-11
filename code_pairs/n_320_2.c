@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include<string.h>
 #include<math.h>
-#include<conio.h>
 void main()
 {
     long i,j,m,n,t,sum,k,det;

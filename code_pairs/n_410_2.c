@@ -12,7 +12,7 @@ int main()
 		{
 			x=x*2;
 			y=y+x;
-			if(n%!==0)
+			if(n%y!=0)
 			{
 				continue;
 			}
