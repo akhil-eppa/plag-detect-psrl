@@ -1,6 +1,5 @@
 // Calculator example using C code
 #include<stdio.h>
-#include<conio.h>
 #include<math.h>
 #include<stdlib.h>
 
@@ -22,7 +21,7 @@ int main()
     int X=1;
     char Calc_oprn;
 
-    // Function call 
+    // Function call
     calculator_operations();
 
     while(X)
@@ -30,7 +29,7 @@ int main()
         printf("\n");
         printf("%s : ", KEY);
 
-        Calc_oprn=getche();
+        Calc_oprn=getchar();
 
         switch(Calc_oprn)
         {
@@ -82,7 +81,7 @@ int main()
 
 void calculator_operations()
 {
-    //system("cls");  use system function to clear 
+    //system("cls");  use system function to clear
     //screen instead of clrscr();
     printf("\n             Welcome to C calculator \n\n");
 
@@ -109,7 +108,7 @@ void addition()
     scanf("%d",&n);
     printf("Please enter %d numbers one by one: \n",n);
     while(k<n)
-    { 
+    {
         scanf("%d",&number);
         total=total+number;
         k=k+1;
@@ -118,22 +117,22 @@ void addition()
 }
 
 void subtraction()
-{ 
-    int a, b, c = 0; 
-    printf("\nPlease enter first number  : "); 
-    scanf("%d", &a); 
-    printf("Please enter second number : "); 
-    scanf("%d", &b); 
-    c = a - b; 
-    printf("\n%d - %d = %d\n", a, b, c); 
+{
+    int a, b, c = 0;
+    printf("\nPlease enter first number  : ");
+    scanf("%d", &a);
+    printf("Please enter second number : ");
+    scanf("%d", &b);
+    c = a - b;
+    printf("\n%d - %d = %d\n", a, b, c);
 }
 
 void multiplication()
 {
-    int a, b, mul=0; 
-    printf("\nPlease enter first numb   : "); 
-    scanf("%d", &a); 
-    printf("Please enter second number: "); 
+    int a, b, mul=0;
+    printf("\nPlease enter first numb   : ");
+    scanf("%d", &a);
+    printf("Please enter second number: ");
     scanf("%d", &b);
     mul=a*b;
     printf("\nMultiplication of entered numbers = %d\n",mul);
@@ -141,10 +140,10 @@ void multiplication()
 
 void division()
 {
-    int a, b, d=0; 
-    printf("\nPlease enter first number  : "); 
-    scanf("%d", &a); 
-    printf("Please enter second number : "); 
+    int a, b, d=0;
+    printf("\nPlease enter first number  : ");
+    scanf("%d", &a);
+    printf("Please enter second number : ");
     scanf("%d", &b);
     d=a/b;
     printf("\nDivision of entered numbers=%d\n",d);
@@ -152,10 +151,10 @@ void division()
 
 void modulus()
 {
-    int a, b, d=0; 
-    printf("\nPlease enter first number   : "); 
-    scanf("%d", &a); 
-    printf("Please enter second number  : "); 
+    int a, b, d=0;
+    printf("\nPlease enter first number   : ");
+    scanf("%d", &a);
+    printf("Please enter second number  : ");
     scanf("%d", &b);
     d=a%b;
     printf("\nModulus of entered numbers = %d\n",d);
@@ -190,7 +189,7 @@ int factorial()
         printf("\nFactorial can't be found for negative");
         printf(" values. It can be only positive or 0  \n");
         return 1;
-    }               
+    }
 
     for(i=1;i<=num;i++)
     fact=fact*i;

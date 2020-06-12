@@ -16,11 +16,11 @@ struct T {
 };
 
 int main() {
-   printf("%zu ", offsetof(S, i));
-   printf("%zu ", offsetof(S, j));
-   printf("%zu\n", offsetof(S, k));
+   printf("%zu ", offsetof(struct S, i));
+   printf("%zu ", offsetof(struct S, j));
+   printf("%zu\n", offsetof(struct S, k));
 
-   printf("%zu ", offsetof(T, i));
-   printf("%zu ", offsetof(T, j));
-   printf("%zu\n", offsetof(T, k));
+   printf("%zu ", offsetof(struct T, i));
+   printf("%zu ", offsetof(struct T, j));
+   printf("%zu\n", offsetof(struct T, k));
 }

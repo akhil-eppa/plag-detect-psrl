@@ -1,8 +1,7 @@
 /* Program to merge two 1-D arrays. */
 
 #include <stdio.h>
-#include <conio.h>
-#include <alloc.h>
+#include <malloc.h>
 
 #define MAX1 5
 #define MAX2 7
@@ -17,7 +16,6 @@ void main( )
 {
 	int *a, *b, *c ;
 
-	clrscr( ) ;
 
 	printf (  "\nEnter elements for first array: \n\n" ) ;
 	a = create ( MAX1 ) ;
@@ -37,7 +35,7 @@ void main( )
 	c = merge ( a, b ) ;
 	display ( c, MAX1 + MAX2 ) ;
 
-	getch( ) ;
+	getchar( ) ;
 }
 
 /* creates array of given size, dynamically */

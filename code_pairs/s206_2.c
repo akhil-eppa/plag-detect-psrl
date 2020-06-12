@@ -1,7 +1,6 @@
 /* Program to implement an array. */
 
 #include <stdio.h>
-#include <conio.h>
 
 #define MAX 5
 
@@ -15,7 +14,6 @@ void main( )
 {
 	int arr[5] ;
 
-	clrscr( ) ;
 
 	insert ( arr, 1, 11 ) ;
 	insert ( arr, 2, 12 ) ;
@@ -41,7 +39,7 @@ void main( )
 	search ( arr, 222 ) ;
 	search ( arr, 666 ) ;
 
-	getch( ) ;
+	getchar( ) ;
 }
 
 /* inserts an element num at given position pos */
@@ -85,7 +83,7 @@ void search ( int *arr, int num )
 	{
 		if ( arr[i] == num )
 		{
-			printf ( "\n\nThe element %d is present at %dth position.", num, 
+			printf ( "\n\nThe element %d is present at %dth position.", num,
 					i + 1 ) ;
 			return ;
 		}
