@@ -40,5 +40,3 @@ def merge_features(out_file, proc):
         prog_diff.append(features)
 
     pickle.dump(prog_diff, open(out_file, "wb"))
-
-merge_features("merged_milepost_features_diff.pkl", "train")
