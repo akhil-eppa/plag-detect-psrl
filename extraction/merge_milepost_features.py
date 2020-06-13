@@ -1,6 +1,7 @@
 import os
 import glob
 import pickle
+from math import fabs
 
 
 def merge_features(out_file, proc):
@@ -33,10 +34,9 @@ def merge_features(out_file, proc):
     prog_diff = []
     order = sorted(list(progs[0][0].keys()))
     for pair_a, pair_b in zip(progs[0], progs[1]):
-        print(pair_a, pair_b)
         features = []
         for key in order:
-            features.append(pair_a[key] - pair_b[key])
+            features.append(fabs(pair_a[key] - pair_b[key]))
         prog_diff.append(features)
 
     pickle.dump(prog_diff, open(out_file, "wb"))

@@ -86,21 +86,24 @@ def generate_text_features():
         f1.close()
         f2.close()
 
-    with open(os.path.join("features", "ld.pkl"), "wb") as f:
+    features_path = os.path.join("extraction", "result_train", "text_features")
+    if not os.path.isdir(features_path):
+        os.mkdir(features_path)
+    with open(os.path.join(features_path, "ld.pkl"), "wb") as f:
         pickle.dump(line_diff, f)
-    with open(os.path.join("features", "ld_rat.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "ld_rat.pkl"), "wb") as f:
         pickle.dump(line_diff_ratio, f)
-    with open(os.path.join("features", "ad.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "ad.pkl"), "wb") as f:
         pickle.dump(av_diff, f)
-    with open(os.path.join("features", "ed.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "ed.pkl"), "wb") as f:
         pickle.dump(edit_dist, f)
-    with open(os.path.join("features", "cl.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "cl.pkl"), "wb") as f:
         pickle.dump(common_line, f)
-    with open(os.path.join("features", "cl_rat.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "cl_rat.pkl"), "wb") as f:
         pickle.dump(common_line_ratio, f)
-    with open(os.path.join("features", "cc.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "cc.pkl"), "wb") as f:
         pickle.dump(common_comment, f)
-    with open(os.path.join("features", "cc_rat.pkl"), "wb") as f:
+    with open(os.path.join(features_path, "cc_rat.pkl"), "wb") as f:
         pickle.dump(common_comment_ratio, f)
 
 

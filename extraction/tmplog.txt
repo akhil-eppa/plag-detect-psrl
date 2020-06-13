@@ -10,10 +10,10 @@ Extracting program features ...
 [xsb_configuration loaded]
 [sysinitrc loaded]
 [Compiling ./featlstn]
-[featlstn compiled, cpu time used: 0.0320 seconds]
+[featlstn compiled, cpu time used: 0.0350 seconds]
 [featlstn loaded]
 [Compiling ./featuresall]
-[featuresall compiled, cpu time used: 0.1000 seconds]
+[featuresall compiled, cpu time used: 0.0900 seconds]
 [featuresall loaded]
 ICI: work dir  ...
 
