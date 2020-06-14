@@ -17,7 +17,9 @@ subprocess.run(
         "train",
     ]
 )
-merge_features(os.path.join("result_train", "merged_milepost_features_diff.pkl"), "train")
+merge_features(
+    os.path.join("result_train", "merged_milepost_features_diff.pkl"), "train"
+)
 generate_text_features()
 
 with open(os.path.join("result_train", "feat_v1.csv"), "w") as writefile:
@@ -39,13 +41,15 @@ with open(os.path.join("result_train", "feat_v1.csv"), "w") as writefile:
     txt_feat_5 = pickle.load(
         open(os.path.join("result_train", "text_features", "ld_rat.pkl"), "rb")
     )
+    pair_type = pickle.load(open(os.path.join("result_train", "pairs.pkl"), "rb"))
     writer = csv.writer(writefile)
     for features in zip(
-        mp_feat, txt_feat_1, txt_feat_2, txt_feat_3, txt_feat_4, txt_feat_5
+        mp_feat, txt_feat_1, txt_feat_2, txt_feat_3, txt_feat_4, txt_feat_5, pair_type
     ):
         fl = []
         fl.extend(features[0])
-        fl.extend(features[1:])
+        fl.extend(features[1:-1])
+        fl.append(int(features[-1][2] == "p"))
         writer.writerow(fl)
 
 
@@ -68,11 +72,13 @@ with open(os.path.join("result_train", "feat_v2.csv"), "w") as writefile:
     txt_feat_5 = pickle.load(
         open(os.path.join("result_train", "text_features", "ld.pkl"), "rb")
     )
+    pair_type = pickle.load(open(os.path.join("result_train", "pairs.pkl"), "rb"))
     writer = csv.writer(writefile)
     for features in zip(
-        mp_feat, txt_feat_1, txt_feat_2, txt_feat_3, txt_feat_4, txt_feat_5
+        mp_feat, txt_feat_1, txt_feat_2, txt_feat_3, txt_feat_4, txt_feat_5, pair_type
     ):
         fl = []
         fl.extend(features[0])
-        fl.extend(features[1:])
+        fl.extend(features[1:-1])
+        fl.append(int(features[-1][2] == "p"))
         writer.writerow(fl)
