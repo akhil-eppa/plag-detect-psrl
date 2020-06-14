@@ -14,6 +14,9 @@ from sklearn import svm
 import pandas as pd
 import numpy as np
 from sklearn.decomposition import PCA
+from matplotlib import pyplot
+from sklearn.inspection import permutation_importance
+
 '''
 LabelEncoder is used to label as 0 or 1 or 2 based on category
 '''
@@ -93,3 +96,14 @@ grid_pred=grid.predict(X_test)
 print("Accuracy:",metrics.accuracy_score(y_test, grid_pred))
 print(confusion_matrix(y_test,grid_pred))
 print(classification_report(y_test,grid_pred))
+
+
+results = permutation_importance(grid, X_train, y_train, scoring='accuracy')
+# get importance
+importance = results.importances_mean
+# summarize feature importance
+for i,v in enumerate(importance):
+	print('Feature: %0d, Score: %.5f' % (i,v))
+# plot feature importance
+pyplot.bar([x for x in range(len(importance))], importance)
+pyplot.show()

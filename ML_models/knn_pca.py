@@ -91,3 +91,13 @@ Print accuracy and the confusion matrix
 '''
 print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
 print(confusion_matrix(y_test,y_pred))
+
+results = permutation_importance(model, X_train, y_train, scoring='accuracy')
+# get importance
+importance = results.importances_mean
+# summarize feature importance
+for i,v in enumerate(importance):
+	print('Feature: %0d, Score: %.5f' % (i,v))
+# plot feature importance
+pyplot.bar([x for x in range(len(importance))], importance)
+pyplot.show()
