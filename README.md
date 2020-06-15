@@ -22,7 +22,7 @@ ratio is calculated as **number of common comments / max(number of comments in e
 
 # ML Models
 ## 1. KNN without PCA 
-Got accuracy of 84.67 %
+Got accuracy of 96.37 %
 ```
 Accuracy: 0.9637096774193549
 [[147   5]
