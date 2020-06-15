@@ -16,12 +16,12 @@ import numpy as np
 from sklearn.decomposition import PCA
 from matplotlib import pyplot
 from sklearn.inspection import permutation_importance
-
+import pickle
 '''
 LabelEncoder is used to label as 0 or 1 or 2 based on category
 '''
 labels=preprocessing.LabelEncoder()
-dataset_name="iris.csv"
+dataset_name="feat_v1.csv"
 x=pd.read_csv(dataset_name)
 '''
 Shuffling the order of rows in file
@@ -43,7 +43,7 @@ Y=labels.fit_transform(Y)
 '''
 Getting the principal components
 '''
-comp=2
+comp=30
 pca=PCA(n_components=comp)
 principalComponent=pca.fit_transform(X)
 cols=list()
@@ -68,18 +68,21 @@ weights are not uniform but nearer elements will have more weight
 like cosine similarity
 algorithm is set as suto
 '''
+'''
 model=svm.SVC(kernel='rbf')
 model.fit(X_train,y_train)
 y_pred=model.predict(X_test)
 print(y_test)
 print(y_pred)
 '''
+'''
 Print accuracy and the confusion matrix
+'''
 '''
 print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
 print(confusion_matrix(y_test,y_pred))
 print(classification_report(y_test,y_pred))
-
+'''
 
 
 '''
@@ -89,6 +92,7 @@ Using GridSearchCV to tune svm hyperparameters
 '''
 from sklearn.model_selection import GridSearchCV
 param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['rbf', 'poly', 'sigmoid']}
+#param_grid = {'C': [0.1,1, 10, 100], 'gamma': [1,0.1,0.01,0.001],'kernel': ['poly']}
 grid = GridSearchCV(svm.SVC(),param_grid,refit=True,verbose=2)
 grid.fit(X_train,y_train)
 print(grid.best_estimator_)
@@ -96,7 +100,6 @@ grid_pred=grid.predict(X_test)
 print("Accuracy:",metrics.accuracy_score(y_test, grid_pred))
 print(confusion_matrix(y_test,grid_pred))
 print(classification_report(y_test,grid_pred))
-
 
 results = permutation_importance(grid, X_train, y_train, scoring='accuracy')
 # get importance
@@ -107,3 +110,6 @@ for i,v in enumerate(importance):
 # plot feature importance
 pyplot.bar([x for x in range(len(importance))], importance)
 pyplot.show()
+pkl_filename = "model_svm_pca.pkl"
+with open(pkl_filename, 'wb') as file:
+    pickle.dump(grid, file)

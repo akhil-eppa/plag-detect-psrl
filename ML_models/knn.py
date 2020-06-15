@@ -30,7 +30,8 @@ Labels are the last column
 Features are all the remaining columns
 '''
 X=x.iloc[:,:-1]
-X=preprocessing.normalize(X)
+mm_scaler = preprocessing.MinMaxScaler()
+X=mm_scaler.fit_transform(X)
 Y=x.iloc[:,-1:]
 #print(X)
 #print(Y)
