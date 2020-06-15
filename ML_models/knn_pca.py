@@ -20,12 +20,14 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 from sklearn.decomposition import PCA
 from matplotlib import pyplot
+from sklearn.inspection import permutation_importance
+
 
 '''
 LabelEncoder is used to label as 0 or 1 or 2 based on category
 '''
 labels=preprocessing.LabelEncoder()
-dataset_name="iris.csv"
+dataset_name="feat_v1.csv"
 x=pd.read_csv(dataset_name)
 '''
 Shuffling the order of rows in file
@@ -46,7 +48,7 @@ Y=labels.fit_transform(Y)
 '''
 Getting the principal components
 '''
-comp=2
+comp=30
 pca=PCA(n_components=comp)
 principalComponent=pca.fit_transform(X)
 cols=list()
