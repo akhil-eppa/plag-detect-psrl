@@ -2,9 +2,9 @@
 Machine Learning Based Source Code Plagiarism Detector
 
 ## Dataset Created
-* Approximately 1100 pairs of source codes
-* Approximately 600 non plagiarized pairs
-* Approximately 500 plagiarized pairs
+* Approximately 1250 pairs of source codes
+* Approximately 550 non plagiarized pairs
+* Approximately 700 plagiarized pairs
 
 ## Feature Extraction :
 ### Textual Features :
