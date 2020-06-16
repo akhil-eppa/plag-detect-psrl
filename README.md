@@ -286,3 +286,173 @@ Feature: 29, Score: -0.00121
 ```
 
 ![svm2](https://user-images.githubusercontent.com/42675875/84622703-42dc9c80-aefb-11ea-8ccc-02f74cf5345d.png)
+
+## 5. Decision Tree Without PCA 
+With Gini Index got accuracy of 96.77%
+With Entropy got accuracy of 95.56%
+
+```
+Results Using Gini Index:
+Confusion Matrix:  [[134   7]
+ [  1 106]]
+Accuracy :  96.7741935483871
+Report :                precision    recall  f1-score   support
+
+           0       0.99      0.95      0.97       141
+           1       0.94      0.99      0.96       107
+
+    accuracy                           0.97       248
+   macro avg       0.97      0.97      0.97       248
+weighted avg       0.97      0.97      0.97       248
+
+Results Using Entropy:
+Confusion Matrix:  [[134   7]
+ [  4 103]]
+Accuracy :  95.56451612903226
+Report :                precision    recall  f1-score   support
+
+           0       0.97      0.95      0.96       141
+           1       0.94      0.96      0.95       107
+
+    accuracy                           0.96       248
+   macro avg       0.95      0.96      0.95       248
+weighted avg       0.96      0.96      0.96       248
+
+Feature: 0, Score: 0.00000
+Feature: 1, Score: 0.00000
+Feature: 2, Score: 0.00000
+Feature: 3, Score: 0.00000
+Feature: 4, Score: 0.00000
+Feature: 5, Score: 0.00000
+Feature: 6, Score: 0.00000
+Feature: 7, Score: 0.00000
+Feature: 8, Score: 0.00000
+Feature: 9, Score: 0.00000
+Feature: 10, Score: 0.00000
+Feature: 11, Score: 0.00000
+Feature: 12, Score: 0.00000
+Feature: 13, Score: 0.00000
+Feature: 14, Score: 0.00000
+Feature: 15, Score: 0.00000
+Feature: 16, Score: 0.00000
+Feature: 17, Score: 0.00000
+Feature: 18, Score: 0.00000
+Feature: 19, Score: 0.00181
+Feature: 20, Score: 0.00000
+Feature: 21, Score: 0.00000
+Feature: 22, Score: 0.00000
+Feature: 23, Score: 0.00000
+Feature: 24, Score: 0.00000
+Feature: 25, Score: 0.00000
+Feature: 26, Score: 0.00000
+Feature: 27, Score: 0.00000
+Feature: 28, Score: 0.00000
+Feature: 29, Score: 0.00000
+Feature: 30, Score: 0.00000
+Feature: 31, Score: 0.00000
+Feature: 32, Score: 0.00000
+Feature: 33, Score: 0.00000
+Feature: 34, Score: 0.00000
+Feature: 35, Score: 0.00000
+Feature: 36, Score: 0.00000
+Feature: 37, Score: 0.00000
+Feature: 38, Score: 0.00000
+Feature: 39, Score: 0.00000
+Feature: 40, Score: 0.00000
+Feature: 41, Score: 0.00000
+Feature: 42, Score: 0.00000
+Feature: 43, Score: 0.03831
+Feature: 44, Score: 0.00000
+Feature: 45, Score: 0.00000
+Feature: 46, Score: 0.00000
+Feature: 47, Score: 0.00000
+Feature: 48, Score: 0.00000
+Feature: 49, Score: 0.00000
+Feature: 50, Score: 0.00000
+Feature: 51, Score: 0.00000
+Feature: 52, Score: 0.00000
+Feature: 53, Score: 0.09435
+Feature: 54, Score: 0.00000
+Feature: 55, Score: 0.00000
+Feature: 56, Score: 0.00000
+Feature: 57, Score: 0.00000
+Feature: 58, Score: 0.00000
+Feature: 59, Score: 0.00000
+Feature: 60, Score: 0.00000
+Feature: 61, Score: 0.00000
+Feature: 62, Score: 0.00000
+Feature: 63, Score: 0.00000
+Feature: 64, Score: 0.00000
+Feature: 65, Score: 0.02097
+Feature: 66, Score: 0.00000
+Feature: 67, Score: 0.35444
+Feature: 68, Score: 0.00000
+Feature: 69, Score: 0.00323
+```
+
+![dtree1](https://user-images.githubusercontent.com/42675875/84737054-bbf3f680-afc4-11ea-878f-0261cb581a37.png)
+
+## 6. Decision Tree With PCA
+With Gini Index got accuracy of 96.37%
+With Entropy got accuracy of 95.37%
+
+```
+Results Using Gini Index:
+Confusion Matrix:  [[139   2]
+ [  7 100]]
+Accuracy :  96.37096774193549
+Report :                precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97       141
+           1       0.98      0.93      0.96       107
+
+    accuracy                           0.96       248
+   macro avg       0.97      0.96      0.96       248
+weighted avg       0.96      0.96      0.96       248
+
+Results Using Entropy:
+Confusion Matrix:  [[139   2]
+ [  7 100]]
+Accuracy :  96.37096774193549
+Report :                precision    recall  f1-score   support
+
+           0       0.95      0.99      0.97       141
+           1       0.98      0.93      0.96       107
+
+    accuracy                           0.96       248
+   macro avg       0.97      0.96      0.96       248
+weighted avg       0.96      0.96      0.96       248
+
+Feature: 0, Score: 0.46331
+Feature: 1, Score: 0.00000
+Feature: 2, Score: 0.00000
+Feature: 3, Score: 0.00000
+Feature: 4, Score: 0.00000
+Feature: 5, Score: 0.00000
+Feature: 6, Score: 0.00000
+Feature: 7, Score: 0.00000
+Feature: 8, Score: 0.00000
+Feature: 9, Score: 0.00000
+Feature: 10, Score: 0.00000
+Feature: 11, Score: 0.00000
+Feature: 12, Score: 0.00000
+Feature: 13, Score: 0.00000
+Feature: 14, Score: 0.00000
+Feature: 15, Score: 0.00000
+Feature: 16, Score: 0.00000
+Feature: 17, Score: 0.00000
+Feature: 18, Score: 0.01089
+Feature: 19, Score: 0.00000
+Feature: 20, Score: 0.00000
+Feature: 21, Score: 0.00000
+Feature: 22, Score: 0.00000
+Feature: 23, Score: 0.01028
+Feature: 24, Score: 0.00000
+Feature: 25, Score: 0.00000
+Feature: 26, Score: 0.00000
+Feature: 27, Score: 0.00000
+Feature: 28, Score: 0.00000
+Feature: 29, Score: 0.00000
+```
+
+![dtree2](https://user-images.githubusercontent.com/42675875/84737240-1ee58d80-afc5-11ea-9d7c-e3eaeb2d7d70.png)
