@@ -1,6 +1,11 @@
 # plag-detect-psrl
 Machine Learning Based Source Code Plagiarism Detector
 
+## Contributors  
+* Akhil Eppa
+* Anirudh Murali
+* Santosh Vasisht  
+
 ## Dataset Created
 * Approximately 1250 pairs of source codes
 * Approximately 550 non plagiarized pairs
