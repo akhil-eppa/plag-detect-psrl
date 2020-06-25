@@ -1,1 +1,14 @@
-s41_2.c
+mul-3.ir.c
+f_3.ir.c
+f_2.ir.c
+f_5.ir.c
+f-1.ir.c
+f_4.ir.c
+pd-1.ir.c
+s_2.c
+s_3.c
+s_6.c
+f_5.c
+fib-1.c
+fib-2.c
+pd_1.c

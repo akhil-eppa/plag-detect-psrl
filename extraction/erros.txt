@@ -1,0 +1,10 @@
+Type 1
+/tmp/s_2.c:6: error: redeclaration of 'a' with no linkage
+/tmp/s_2.c:6: error: redeclaration of 'b' with no linkage
+/tmp/s_2.c:6: error: redeclaration of 'a' with no linkage
+/tmp/s_2.c:6: error: redeclaration of 'b' with no linkage
+/tmp/s_2.c:6:9: error: redeclaration of 'a' with no linkage
+/tmp/s_2.c:6:12: error: redeclaration of 'b' with no linkage
+
+Type 2 (returns vector)
+ML-FEAT-PROC Error: Query Error: existence_error/++Error[XSB/Runtime/P]: [Existence (No procedure :(usermod,/(expr_var,2)) exists)]

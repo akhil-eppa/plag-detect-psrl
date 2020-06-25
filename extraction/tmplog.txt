@@ -4,30 +4,32 @@ Extracting program structure ...
 
 Compling with MILEPOST GCC:
 
-/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/s9_2.c -lm 
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/pd_3.c -lm 
 
 Extracting program features ...
 [xsb_configuration loaded]
 [sysinitrc loaded]
 [Compiling ./featlstn]
-[featlstn compiled, cpu time used: 0.0350 seconds]
+[featlstn compiled, cpu time used: 0.0340 seconds]
 [featlstn loaded]
 [Compiling ./featuresall]
-[featuresall compiled, cpu time used: 0.0900 seconds]
+[featuresall compiled, cpu time used: 0.0210 seconds]
 [featuresall loaded]
+[xsb_configuration loaded]
+[sysinitrc loaded]
+[Compiling ./featlstn]
+[featlstn compiled, cpu time used: 0.0290 seconds]
+[featlstn loaded]
+[Compiling ./featuresall]
+[featuresall compiled, cpu time used: 0.0280 seconds]
+[featuresall loaded]
+ICI: work dir  ...
 ICI: work dir  ...
 
 Compling with MILEPOST GCC:
 
-/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/s9_2.c -lm 
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/pd_3.c -lm 
 
 Compiling with native compiler:
 
-gcc -O3 -std=c99 /tmp/s9_2.c -lm 
-/tmp/s9_2.c: In function 'main':
-/tmp/s9_2.c:19:5: warning: ignoring return value of 'scanf', declared with attribute warn_unused_result [-Wunused-result]
-     scanf("%c", &operator);
-     ^
-/tmp/s9_2.c:21:5: warning: ignoring return value of 'scanf', declared with attribute warn_unused_result [-Wunused-result]
-     scanf("%lf %lf", &first, &second);
-     ^
+gcc -O3 -std=c99 /tmp/pd_3.c -lm 

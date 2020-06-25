@@ -13,6 +13,7 @@ import pickle
 import os
 
 prog = []
+root_path = os.path.abspath("code_pairs_train")
 
 """
 Pairs by Akhil
@@ -25,8 +26,8 @@ added 374 to 434 non plagiarized
 '''
 for i in range(1, 459):
     temp = []
-    temp.append(str("a" + str(i) + "_1.c"))
-    temp.append(str("a" + str(i) + "_2.c"))
+    temp.append(os.path.join(root_path, str("a" + str(i) + "_1.c")))
+    temp.append(os.path.join(root_path, str("a" + str(i) + "_2.c")))
     if i <= 192:
         temp.append("p")
     elif i>192 and i<=434:
@@ -41,8 +42,8 @@ Pairs by Anirudh
 """
 for i in range(1, 424):
     temp = []
-    temp.append(str("n_" + str(i) + "_1.c"))
-    temp.append(str("n_" + str(i) + "_2.c"))
+    temp.append(os.path.join(root_path, str("n_" + str(i) + "_1.c")))
+    temp.append(os.path.join(root_path, str("n_" + str(i) + "_2.c")))
     if i <= 300:
         temp.append("np")
     else:
@@ -55,8 +56,8 @@ Pairs by Santosh
 """
 for i in range(1, 361):
     temp = []
-    temp.append(str("s" + str(i) + "_1.c"))
-    temp.append(str("s" + str(i) + "_2.c"))
+    temp.append(os.path.join(root_path, str("s" + str(i) + "_1.c")))
+    temp.append(os.path.join(root_path, str("s" + str(i) + "_2.c")))
     if i <= 180:
         temp.append("p")
     else:

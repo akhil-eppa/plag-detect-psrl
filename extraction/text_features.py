@@ -4,11 +4,12 @@ Created on Tue Jun  2 13:45:23 2020
 
 @author: Akhil
 """
-import pickle
-import Levenshtein
-from difflib import Differ
-import re
 import os
+import pickle
+import re
+from difflib import Differ
+
+import Levenshtein
 
 
 def get_comments(text):
@@ -27,10 +28,14 @@ def file_length(fname):
     return i + 1, sumlength
 
 
-def generate_text_features():
-    with open(os.path.join("result_train", "pairs.pkl"), "rb") as f:
+def generate_text_features(train=True, pairs_file="pairs.pkl", res_dir=None):
+    if not res_dir:
+        if train:
+            res_dir = "result_train"
+        else:
+            res_dir = "result_test"
+    with open(os.path.join(res_dir, pairs_file), "rb") as f:
         prog = pickle.load(f)
-    os.getcwd()
     os.chdir("..")
     line_diff = []  # list containing line difference for every pair
     line_diff_ratio = []
@@ -42,16 +47,16 @@ def generate_text_features():
     common_comment_ratio = []
     d = Differ()
     for i in range(len(prog)):
-        l1, a1 = file_length(os.path.join("code_pairs", prog[i][0]))
-        l2, a2 = file_length(os.path.join("code_pairs", prog[i][1]))
+        l1, a1 = file_length(prog[i][0])
+        l2, a2 = file_length(prog[i][1])
         diff = abs(l1 - l2)
         diff2 = abs(a1 - a2)
         line_diff.append(diff)
         line_diff_ratio.append(diff / max(l1, l2))
         av_diff.append(diff2)
         # Below is to find edit distance
-        f1 = open(os.path.join("code_pairs", prog[i][0]), "r")
-        f2 = open(os.path.join("code_pairs", prog[i][1]), "r")
+        f1 = open(prog[i][0], "r")
+        f2 = open(prog[i][1], "r")
         x1 = f1.read()
         x2 = f2.read()
         # print(x1)
@@ -86,7 +91,7 @@ def generate_text_features():
         f1.close()
         f2.close()
 
-    features_path = os.path.join("extraction", "result_train", "text_features")
+    features_path = os.path.join("extraction", res_dir, "text_features")
     if not os.path.isdir(features_path):
         os.mkdir(features_path)
     with open(os.path.join(features_path, "ld.pkl"), "wb") as f:
@@ -115,5 +120,3 @@ def generate_text_features():
 # print(common_line_ratio)
 # print(common_comment)
 # print(common_comment_ratio)
-
-

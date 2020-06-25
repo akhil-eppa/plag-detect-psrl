@@ -4,10 +4,16 @@ import pickle
 from math import fabs
 
 
-def merge_features(out_file, proc):
-    if proc not in ("train", "test"):
-        raise ValueError('proc must be one of  "train", "test"')
-    prog_list = pickle.load(open(os.path.join(f"result_{proc}", "pairs.pkl"), "rb"))
+def merge_features(out_file, proc=None, root_dir=None, pairs_file="pairs.pkl"):
+    if not proc and not root_dir:
+        raise ValueError("Either process or root directory must be specified")
+    if not proc:
+        pairs_path = os.path.join(root_dir, pairs_file)
+    else:
+        if proc not in ("train", "test"):
+            raise ValueError('proc must be one of  "train", "test"')
+        pairs_path = os.path.join(f"result_{proc}", pairs_file)
+    prog_list = pickle.load(open(pairs_path, "rb"))
     progs = [[], []]
     for prog in prog_list:
         for idx in (0, 1):
@@ -15,7 +21,7 @@ def merge_features(out_file, proc):
             counter = 0
             for k in glob.glob(
                 os.path.join(
-                    "result_train", "milepost_features", f"{prog[idx]}*.fre.ft"
+                    os.path.dirname(pairs_path), "milepost_features", f"{os.path.basename(prog[idx])}*.fre.ft"
                 )
             ):
                 with open(k) as cur_vecs:
