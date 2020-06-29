@@ -51,6 +51,7 @@ with open("misclassified_svmpca_before.txt", "w") as wr:
 print(confusion_matrix(y_before, grid_pred))
 print(classification_report(y_before, grid_pred))
 print("Accuracy:", metrics.accuracy_score(y_before, grid_pred))
+'''
 results = permutation_importance(grid, X_before, y_before, scoring="accuracy")
 # get importance
 importance = results.importances_mean
@@ -59,7 +60,7 @@ for i, v in enumerate(importance):
     print("Feature: %0d, Score: %.5f" % (i, v))
 # plot feature importance
 pyplot.bar([x for x in range(len(importance))], importance)
-
+'''
 grid_pred = grid.predict(X_after)
 with open("misclassified_svmpca_after.txt", "w") as wr:
     for idx,pair in enumerate(zip(y_after, grid_pred)):
@@ -70,6 +71,7 @@ with open("misclassified_svmpca_after.txt", "w") as wr:
 print(confusion_matrix(y_after, grid_pred))
 print(classification_report(y_after, grid_pred))
 print("Accuracy:", metrics.accuracy_score(y_after, grid_pred))
+'''
 results = permutation_importance(grid, X_after, y_after, scoring="accuracy")
 # get importance
 importance = results.importances_mean
@@ -80,3 +82,4 @@ for i, v in enumerate(importance):
 pyplot.bar([x for x in range(len(importance))], importance)
 
 pyplot.show()
+'''
