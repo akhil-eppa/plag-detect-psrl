@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main() {
-	int a = 3;
-	int b = 5;
+	int pq = 3;
+	int rs = 5;
 	int temp;
     int a, b, c;
 
@@ -16,13 +16,13 @@ int main() {
     b = 20;
     c = 30;
 
-	temp = a;
-	a = b;
-	b = temp;   
+	temp = pq;
+	pq = rs;
+	rs = temp;   
 
     a = 10;
     b = 20;
     c = 30;
 
-	printf("The swapped numbers are %d and %d",a,b);
+	printf("The swapped numbers are %d and %d",pq,rs);
 }

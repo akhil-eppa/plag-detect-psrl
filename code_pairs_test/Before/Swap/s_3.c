@@ -1,5 +1,5 @@
 #include<stdio.h>
-void swap(int *a, int *b){
+void swap(int *pq, int *rs){
 	int temp;
     int a, b, c;
 
@@ -18,25 +18,25 @@ void swap(int *a, int *b){
         b--;
         c--;
     }
-    temp = *a;
-    *a = *b;
-    *b = temp;
+    temp = *pq;
+    *pq = *rs;
+    *rs = *pq;
     a= 10;
     b= 20;
     c = 30;
 }
 
 int main() {
-	int a = 3;
-	int b = 5;
+	int pq = 3;
+	int rs = 5;
     int a, b, c;
 
     a= 10;
     b= 20;
     c = 30;
-    swap(&a, &b);
+    swap(&pq, &rs);
     a= 10;
     b= 20;
     c = 30;
-	printf("The swapped numbers are %d and %d",a,b);
+	printf("The swapped numbers are %d and %d",pq,rs);
 }

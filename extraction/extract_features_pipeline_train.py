@@ -13,7 +13,7 @@ subprocess.run(
         "exec",
         "-it",
         "psrl_plagdetect",
-        "sh",
+        "bash",
         "/home/data/plag-detect-psrl/extraction/milepost_features.sh",
         "train",
     ]

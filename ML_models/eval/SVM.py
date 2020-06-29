@@ -1,0 +1,55 @@
+import pickle
+
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot
+from sklearn import metrics, preprocessing
+from sklearn.inspection import permutation_importance
+from sklearn.metrics import classification_report, confusion_matrix
+
+labels = preprocessing.LabelEncoder()
+dataset_before = "../../extraction/result_test/Before/features.csv"
+dataset_after = "../../extraction/result_test/After/features.csv"
+x_before = pd.read_csv(dataset_before)
+x_after = pd.read_csv(dataset_after)
+X_before = x_before.iloc[:, 1:-1]
+mm_scaler = preprocessing.MinMaxScaler()
+X_before = mm_scaler.fit_transform(X_before)
+Y_before = x_before.iloc[:, -1:]
+X_after = x_after.iloc[:, 1:-1]
+X_after = mm_scaler.fit_transform(X_after)
+Y_after = x_after.iloc[:, -1:]
+# print(X)
+# print(Y)
+y_before = labels.fit_transform(Y_before)
+y_after = labels.fit_transform(Y_after)
+# print(Y)
+grid = pickle.load(open("../pickled models/model_svm.pkl", "rb"))
+
+grid_pred = grid.predict(X_before)
+print(confusion_matrix(y_before, grid_pred))
+print(classification_report(y_before, grid_pred))
+print("Accuracy:", metrics.accuracy_score(y_before, grid_pred))
+results = permutation_importance(grid, X_before, y_before, scoring="accuracy")
+# get importance
+importance = results.importances_mean
+# summarize feature importance
+for i, v in enumerate(importance):
+    print("Feature: %0d, Score: %.5f" % (i, v))
+# plot feature importance
+pyplot.bar([x for x in range(len(importance))], importance)
+
+grid_pred = grid.predict(X_after)
+print(confusion_matrix(y_after, grid_pred))
+print(classification_report(y_after, grid_pred))
+print("Accuracy:", metrics.accuracy_score(y_after, grid_pred))
+results = permutation_importance(grid, X_after, y_after, scoring="accuracy")
+# get importance
+importance = results.importances_mean
+# summarize feature importance
+for i, v in enumerate(importance):
+    print("Feature: %0d, Score: %.5f" % (i, v))
+# plot feature importance
+pyplot.bar([x for x in range(len(importance))], importance)
+
+pyplot.show()

@@ -1,0 +1,382 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 26 files
+Detected 37 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: code2seq-2/reader.py
+--------------------------------------------------------------------------------
+code2seq-2/reader.py:65:15: ERROR: Using member tf.contrib.lookup.HashTable in deprecated module tf.contrib. tf.contrib.lookup.HashTable cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/reader.py:66:12: ERROR: Using member tf.contrib.lookup.KeyValueTensorInitializer in deprecated module tf.contrib. tf.contrib.lookup.KeyValueTensorInitializer cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/reader.py:190:24: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+File: code2seq-2/model.py
+--------------------------------------------------------------------------------
+code2seq-2/model.py:165:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+code2seq-2/model.py:345:29: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:351:33: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:357:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:417:31: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:417:31: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:418:39: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:418:39: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:420:30: WARNING: Using member tf.contrib.seq2seq.LuongAttention in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:420:30: ERROR: Using member tf.contrib.seq2seq.LuongAttention in deprecated module tf.contrib. tf.contrib.seq2seq.LuongAttention cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:426:23: WARNING: Using member tf.contrib.seq2seq.AttentionWrapper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:426:23: ERROR: Using member tf.contrib.seq2seq.AttentionWrapper in deprecated module tf.contrib. tf.contrib.seq2seq.AttentionWrapper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:434:31: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:434:31: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:435:26: WARNING: Using member tf.contrib.seq2seq.BeamSearchDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:435:26: ERROR: Using member tf.contrib.seq2seq.BeamSearchDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BeamSearchDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:445:25: WARNING: Using member tf.contrib.seq2seq.GreedyEmbeddingHelper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:445:25: ERROR: Using member tf.contrib.seq2seq.GreedyEmbeddingHelper in deprecated module tf.contrib. tf.contrib.seq2seq.GreedyEmbeddingHelper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:447:26: WARNING: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:447:26: ERROR: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BasicDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:453:37: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+code2seq-2/model.py:456:21: WARNING: Using member tf.contrib.seq2seq.TrainingHelper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:456:21: ERROR: Using member tf.contrib.seq2seq.TrainingHelper in deprecated module tf.contrib. tf.contrib.seq2seq.TrainingHelper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:462:22: WARNING: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:462:22: ERROR: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BasicDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:464:56: WARNING: Using member tf.contrib.seq2seq.dynamic_decode in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+code2seq-2/model.py:464:56: ERROR: Using member tf.contrib.seq2seq.dynamic_decode in deprecated module tf.contrib. tf.contrib.seq2seq.dynamic_decode cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+code2seq-2/model.py:515:28: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+code2seq-2/model.py:517:21: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+code2seq-2/model.py:519:28: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+code2seq-2/model.py:556:29: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:559:33: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:562:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+code2seq-2/model.py:660:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: 'code2seq-2'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/extractor.py'
+ outputting to 'code2seq_tf_v2/extractor.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/reader.py'
+ outputting to 'code2seq_tf_v2/reader.py'
+--------------------------------------------------------------------------------
+
+65:15: ERROR: Using member tf.contrib.lookup.HashTable in deprecated module tf.contrib. tf.contrib.lookup.HashTable cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+66:12: ERROR: Using member tf.contrib.lookup.KeyValueTensorInitializer in deprecated module tf.contrib. tf.contrib.lookup.KeyValueTensorInitializer cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+71:16: INFO: Added keywords to args of function 'tf.io.decode_csv'
+81:37: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+82:39: INFO: Added keywords to args of function 'tf.reduce_min'
+86:27: INFO: Renamed 'tf.random_shuffle' to 'tf.random.shuffle'
+92:25: INFO: Renamed 'tf.string_split' to 'tf.compat.v1.string_split'
+100:30: INFO: Renamed 'tf.string_split' to 'tf.compat.v1.string_split'
+101:44: INFO: Changed tf.to_int64 call to tf.cast(..., dtype=tf.int64).
+108:25: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+109:24: INFO: Added keywords to args of function 'tf.reduce_min'
+118:23: INFO: Renamed 'tf.string_split' to 'tf.compat.v1.string_split'
+123:77: INFO: Changed tf.to_int64 call to tf.cast(..., dtype=tf.int64).
+129:30: INFO: Added keywords to args of function 'tf.reduce_sum'
+134:21: INFO: Renamed 'tf.string_split' to 'tf.compat.v1.string_split'
+141:23: INFO: Added keywords to args of function 'tf.reduce_sum'
+146:23: INFO: Renamed 'tf.string_split' to 'tf.compat.v1.string_split'
+150:77: INFO: Changed tf.to_int64 call to tf.cast(..., dtype=tf.int64).
+156:30: INFO: Added keywords to args of function 'tf.reduce_sum'
+159:30: INFO: Changed tf.to_float call to tf.cast(..., dtype=tf.float32).
+160:12: INFO: Added keywords to args of function 'tf.reduce_max'
+160:53: INFO: Added keywords to args of function 'tf.reduce_max'
+160:87: INFO: Added keywords to args of function 'tf.reduce_max'
+189:35: INFO: Renamed 'tf.contrib.data.AUTOTUNE' to 'tf.data.experimental.AUTOTUNE'
+190:24: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+239:11: INFO: Renamed 'tf.InteractiveSession' to 'tf.compat.v1.InteractiveSession'
+240:13: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+240:48: INFO: Renamed 'tf.local_variables_initializer' to 'tf.compat.v1.local_variables_initializer'
+240:82: INFO: Renamed 'tf.tables_initializer' to 'tf.compat.v1.tables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/interactive_predict.py'
+ outputting to 'code2seq_tf_v2/interactive_predict.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/code2seq.py'
+ outputting to 'code2seq_tf_v2/code2seq.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/__init__.py'
+ outputting to 'code2seq_tf_v2/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/common.py'
+ outputting to 'code2seq_tf_v2/common.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/model.py'
+ outputting to 'code2seq_tf_v2/model.py'
+--------------------------------------------------------------------------------
+
+82:64: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+157:25: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+165:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+344:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+345:29: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+345:29: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+348:57: INFO: Changing tf.contrib.layers.variance_scaling_initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+351:33: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+351:33: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+354:61: INFO: Changing tf.contrib.layers.variance_scaling_initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+357:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+357:26: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+359:54: INFO: Changing tf.contrib.layers.variance_scaling_initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+370:25: INFO: Added keywords to args of function 'tf.shape'
+382:19: INFO: Added keywords to args of function 'tf.reduce_sum'
+382:68: INFO: Changed tf.to_float call to tf.cast(..., dtype=tf.float32).
+385:32: INFO: tf.train.exponential_decay requires manual check. To use learning rate decay schedules with TensorFlow 2.0, switch to the schedules in `tf.keras.optimizers.schedules`.
+
+385:32: INFO: Renamed 'tf.train.exponential_decay' to 'tf.compat.v1.train.exponential_decay'
+388:28: INFO: Renamed 'tf.train.MomentumOptimizer' to 'tf.compat.v1.train.MomentumOptimizer'
+391:25: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+392:28: INFO: Added keywords to args of function 'tf.gradients'
+394:28: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+397:25: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+403:35: INFO: Renamed 'tf.count_nonzero' to 'tf.math.count_nonzero'
+407:23: INFO: Renamed 'tf.nn.rnn_cell.MultiRNNCell' to 'tf.compat.v1.nn.rnn_cell.MultiRNNCell'
+408:12: INFO: Renamed 'tf.nn.rnn_cell.LSTMCell' to 'tf.compat.v1.nn.rnn_cell.LSTMCell'
+410:23: INFO: Added keywords to args of function 'tf.reduce_sum'
+412:51: INFO: Changed tf.to_float call to tf.cast(..., dtype=tf.float32).
+413:35: INFO: Renamed 'tf.nn.rnn_cell.LSTMStateTuple' to 'tf.compat.v1.nn.rnn_cell.LSTMStateTuple'
+415:27: INFO: Renamed 'tf.layers.Dense' to 'tf.compat.v1.layers.Dense'
+417:31: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+417:31: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+418:39: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+418:39: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+420:30: WARNING: Using member tf.contrib.seq2seq.LuongAttention in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+420:30: ERROR: Using member tf.contrib.seq2seq.LuongAttention in deprecated module tf.contrib. tf.contrib.seq2seq.LuongAttention cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+426:23: WARNING: Using member tf.contrib.seq2seq.AttentionWrapper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+426:23: ERROR: Using member tf.contrib.seq2seq.AttentionWrapper in deprecated module tf.contrib. tf.contrib.seq2seq.AttentionWrapper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+434:31: WARNING: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+434:31: ERROR: Using member tf.contrib.seq2seq.tile_batch in deprecated module tf.contrib. tf.contrib.seq2seq.tile_batch cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+435:26: WARNING: Using member tf.contrib.seq2seq.BeamSearchDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+435:26: ERROR: Using member tf.contrib.seq2seq.BeamSearchDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BeamSearchDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+445:25: WARNING: Using member tf.contrib.seq2seq.GreedyEmbeddingHelper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+445:25: ERROR: Using member tf.contrib.seq2seq.GreedyEmbeddingHelper in deprecated module tf.contrib. tf.contrib.seq2seq.GreedyEmbeddingHelper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+447:26: WARNING: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+447:26: ERROR: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BasicDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+451:27: INFO: Renamed 'tf.nn.rnn_cell.DropoutWrapper' to 'tf.compat.v1.nn.rnn_cell.DropoutWrapper'
+453:37: INFO: Added keywords to args of function 'tf.nn.embedding_lookup'
+453:37: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+456:21: WARNING: Using member tf.contrib.seq2seq.TrainingHelper in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+456:21: ERROR: Using member tf.contrib.seq2seq.TrainingHelper in deprecated module tf.contrib. tf.contrib.seq2seq.TrainingHelper cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+462:22: WARNING: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+462:22: ERROR: Using member tf.contrib.seq2seq.BasicDecoder in deprecated module tf.contrib. tf.contrib.seq2seq.BasicDecoder cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+464:56: WARNING: Using member tf.contrib.seq2seq.dynamic_decode in deprecated module tf.contrib.seq2seq. (Manual edit required) tf.contrib.seq2seq.* have been migrated to `tfa.seq2seq.*` in TensorFlow Addons. Please see https://github.com/tensorflow/addons for more info.
+464:56: ERROR: Using member tf.contrib.seq2seq.dynamic_decode in deprecated module tf.contrib. tf.contrib.seq2seq.dynamic_decode cannot be converted automatically. tf.contrib will not be distributed with TensorFlow 2.0, please consider an alternative in non-contrib TensorFlow, a community-maintained repository such as tensorflow/addons, or fork the required code.
+475:23: INFO: Added keywords to args of function 'tf.shape'
+482:26: INFO: Renamed 'tf.nn.rnn_cell.LSTMCell' to 'tf.compat.v1.nn.rnn_cell.LSTMCell'
+483:26: INFO: Renamed 'tf.nn.rnn_cell.LSTMCell' to 'tf.compat.v1.nn.rnn_cell.LSTMCell'
+485:30: INFO: Renamed 'tf.nn.rnn_cell.DropoutWrapper' to 'tf.compat.v1.nn.rnn_cell.DropoutWrapper'
+487:30: INFO: Renamed 'tf.nn.rnn_cell.DropoutWrapper' to 'tf.compat.v1.nn.rnn_cell.DropoutWrapper'
+489:38: INFO: Renamed 'tf.nn.bidirectional_dynamic_rnn' to 'tf.compat.v1.nn.bidirectional_dynamic_rnn'
+497:23: INFO: Renamed 'tf.nn.rnn_cell.LSTMCell' to 'tf.compat.v1.nn.rnn_cell.LSTMCell'
+499:27: INFO: Renamed 'tf.nn.rnn_cell.DropoutWrapper' to 'tf.compat.v1.nn.rnn_cell.DropoutWrapper'
+500:23: INFO: Renamed 'tf.nn.dynamic_rnn' to 'tf.compat.v1.nn.dynamic_rnn'
+515:28: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+517:21: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+519:28: WARNING: tf.nn.embedding_lookup requires manual check. `partition_strategy` has been removed from tf.nn.embedding_lookup.  The 'div' strategy will be used by default.
+529:27: INFO: Added keywords to args of function 'tf.reduce_sum'
+533:27: INFO: Added keywords to args of function 'tf.reduce_sum'
+538:28: INFO: Changing keep_prob arg of tf.nn.dropout to rate, and recomputing value.
+
+540:24: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+555:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+556:29: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+556:29: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+559:33: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+559:33: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+562:26: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+562:26: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+575:94: INFO: Added keywords to args of function 'tf.shape'
+596:39: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+607:25: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+660:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+709:26: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+709:61: INFO: Renamed 'tf.local_variables_initializer' to 'tf.compat.v1.local_variables_initializer'
+709:95: INFO: Renamed 'tf.tables_initializer' to 'tf.compat.v1.tables_initializer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/preprocess.py'
+ outputting to 'code2seq_tf_v2/preprocess.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/config.py'
+ outputting to 'code2seq_tf_v2/config.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/CSharpExtractor/extract.py'
+ outputting to 'code2seq_tf_v2/CSharpExtractor/extract.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/Python150kExtractor/extract.py'
+ outputting to 'code2seq_tf_v2/Python150kExtractor/extract.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/JavaExtractor/extract.py'
+ outputting to 'code2seq_tf_v2/JavaExtractor/extract.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/subtokenize_nmt_baseline.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/subtokenize_nmt_baseline.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/parser.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/parser.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/__init__.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/javadoc.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/javadoc.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/ast.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/ast.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/util.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/util.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/parse.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/parse.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/tokenizer.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/tokenizer.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/tree.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/tree.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/test/test_util.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/test/test_util.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/test/test_javadoc.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/test/test_javadoc.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/test/__init__.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/test/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/test/test_package_declaration.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/test/test_package_declaration.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file 'code2seq-2/baseline_tokenization/javalang/test/test_java_8_syntax.py'
+ outputting to 'code2seq_tf_v2/baseline_tokenization/javalang/test/test_java_8_syntax.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+

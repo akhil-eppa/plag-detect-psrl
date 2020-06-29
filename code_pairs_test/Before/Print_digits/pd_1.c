@@ -12,9 +12,9 @@ int print_digits(int n) {
 
 int main() {
 	int p,q,r;
-	int p = 1;
-	int q = p+1;
-	int r = p+2;
+	p = 1;
+	q = p+1;
+	r = p+2;
 
 	int n = 12345;
 	int l = print_digits(n);

@@ -1,5 +1,5 @@
-import os
 import glob
+import os
 import pickle
 from math import fabs
 
@@ -21,7 +21,9 @@ def merge_features(out_file, proc=None, root_dir=None, pairs_file="pairs.pkl"):
             counter = 0
             for k in glob.glob(
                 os.path.join(
-                    os.path.dirname(pairs_path), "milepost_features", f"{os.path.basename(prog[idx])}*.fre.ft"
+                    os.path.dirname(pairs_path),
+                    "milepost_features",
+                    f"{os.path.basename(prog[idx])}*.fre.ft",
                 )
             ):
                 with open(k) as cur_vecs:
@@ -42,7 +44,9 @@ def merge_features(out_file, proc=None, root_dir=None, pairs_file="pairs.pkl"):
     for pair_a, pair_b in zip(progs[0], progs[1]):
         features = []
         for key in order:
-            features.append(fabs(pair_a[key] - pair_b[key]))
+            val1 = pair_a.get(key, 0)
+            val2 = pair_b.get(key, 0)
+            features.append(fabs(val1 - val2))
         prog_diff.append(features)
 
     pickle.dump(prog_diff, open(out_file, "wb"))
