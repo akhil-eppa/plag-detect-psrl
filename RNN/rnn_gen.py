@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 from keras.callbacks import EarlyStopping
 from keras.layers import LSTM, Dense, Dropout
@@ -8,9 +10,12 @@ SEQ_LENGTH = 100
 EPOCHS = 100
 BATCH_SIZE = 128
 TRAIN_FILENAME = "linux_utf8_nocomments.c"
+FT_FILENAME = "fine_tune_data_utf8.txt"
 txtfile = open(TRAIN_FILENAME).read().lower()
+ftfile = open(FT_FILENAME).read().lower()
 INPUT_FILE_LEN = len(txtfile)
-chars = sorted(list(set(txtfile)))
+chars = sorted(list(set(txtfile).union(set(ftfile))))
+pickle.dump(chars, open("chars.pkl", "wb"))
 VOCAB_LENGTH = len(chars)
 print("The length of the file is : ", INPUT_FILE_LEN)
 print("The vocab length is : ", VOCAB_LENGTH)
@@ -30,7 +35,6 @@ class DataGenerator(Sequence):
         batch_size=128,
         dim=(1, 1, 1),
         n_classes=10,
-        n_channels=1,
         seq_length=100,
         sample_size=100000,
         shuffle=False,
@@ -38,12 +42,11 @@ class DataGenerator(Sequence):
         "Initialization"
         self.data_file = data_file
         self.seq_length = seq_length
-        self.sample_size=sample_size
+        self.sample_size = sample_size
         self.dim = dim
         self.batch_size = batch_size
         self.list_IDs = list_IDs
         self.n_classes = n_classes
-        self.n_channels = n_channels
         self.shuffle = shuffle
         self.on_epoch_end()
 
@@ -73,22 +76,23 @@ class DataGenerator(Sequence):
     def __data_generation(self, list_IDs_temp):
         "Generates data containing batch_size samples"  # X : (n_samples, *dim, n_channels)
         # Initialization
-        X = np.empty((self.batch_size, self.seq_length, self.n_channels))
+        X = np.empty((self.batch_size, self.seq_length, 1))
         y = np.empty((self.batch_size), dtype=int)
 
         # Generate data
         for i, ID in enumerate(list_IDs_temp):
             # Store sample
             seq_in = self.data_file[ID : ID + self.seq_length]
-            X[i,] = (np.array([char_to_int[char] for char in seq_in]) / float(
-                VOCAB_LENGTH
-            )).reshape((-1,1))
+            X[i,] = (
+                np.array([char_to_int[char] for char in seq_in]) / float(VOCAB_LENGTH)
+            ).reshape(-1, 1)
 
             # Store class
             seq_out = self.data_file[ID + self.seq_length]
             y[i] = char_to_int[seq_out]
 
         return X, np_utils.to_categorical(y, num_classes=self.n_classes)
+
 
 # Creating the model
 model = Sequential()
@@ -102,22 +106,20 @@ model.add(Dense(len(chars), activation="softmax"))
 model.compile(loss="categorical_crossentropy", optimizer="adam")
 print(model.summary())
 early_stop = EarlyStopping(monitor="val_loss", patience=20, verbose=1, mode="min")
-
 samples_train = int((INPUT_FILE_LEN - SEQ_LENGTH) * 0.9)
 samples_val = INPUT_FILE_LEN - SEQ_LENGTH - samples_train
 data_gen_train = DataGenerator(
     list(range(samples_train)),
     txtfile,
     dim=(samples_train, SEQ_LENGTH, 1),
-    n_classes=len(chars),
+    n_classes=VOCAB_LENGTH,
 )
 data_gen_val = DataGenerator(
     list(range(samples_train, samples_train + samples_val)),
     txtfile,
     dim=(samples_val, SEQ_LENGTH, 1),
-    n_classes=len(chars),
+    n_classes=VOCAB_LENGTH,
 )
-
 char_rnn = model.fit_generator(
     data_gen_train,
     epochs=EPOCHS,

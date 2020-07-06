@@ -6,7 +6,7 @@ before = []
 after = []
 
 for folder in ("Before", "After"):
-    root_path = os.path.join("code_pairs_test", folder)
+    root_path = os.path.join(os.path.abspath("code_pairs_test"), folder)
     for sf in os.listdir(root_path):
         root_file_path = os.path.join(root_path, sf)
         files = os.listdir(root_file_path)
