@@ -50,8 +50,7 @@ grid = pickle.load(open("../pickled models/svm_pca_prob.pkl", "rb"))
 y_prob2=grid.predict_proba(X_before_pca)
 count=0
 for i in range(len(y_prob2)):
-    if y_before[i]==0:
-        print(y_prob2[i],y_before[i])
+    print(y_prob2[i],y_before[i])
     if y_before[i]==0 and y_prob2[i][1]<0.5:
         count+=1
     elif y_before[i]==1 and y_prob2[i][1]>=0.5:
