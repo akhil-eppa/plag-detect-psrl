@@ -4,6 +4,7 @@ import numpy as np
 from keras.models import Model, load_model
 from sklearn.svm import SVC
 from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
 
 # SEQ_LENGTH = 100
 # chars = pickle.load(open("chars.pkl", "rb"))
@@ -95,6 +96,7 @@ pca = PCA(n_components=250)
 
 X = v1_arr - v2_arr
 X_red = pca.fit_transform(X)
-model = SVC()
+# model = SVC()
+model= KMeans(n_clusters=2)
 classifier = model.fit(X_red, y_actual)
 pickle.dump(classifier, open("SVM_RNN.pkl", "wb"))
