@@ -1,9 +1,11 @@
 import os
 import pickle
 import random
+import shutil
 
 prog = []
 root_path = os.path.abspath("code_pairs_train")
+copy_path = os.path.abspath("code_pairs_eval")
 
 # a_plag = random.sample(range(1, 193), 20)
 # a_nonplag = random.sample(range(193, 434), 20)
@@ -60,6 +62,10 @@ for idx, plagtype in enumerate(n_pairs):
         temp.append(idx)
         temp.append("p")
         prog.append(temp)
+
+for f1, f2, _, _ in prog:
+    shutil.copyfile(f1, os.path.join(copy_path, os.path.basename(f1)))
+    shutil.copyfile(f2, os.path.join(copy_path, os.path.basename(f2)))
 
 # for i in a_plag:
 #     temp = []

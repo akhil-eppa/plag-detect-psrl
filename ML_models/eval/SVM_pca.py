@@ -21,7 +21,7 @@ pairs = pickle.load(open("../../extraction/result_test/pairs_graph.pkl", "rb"))
 x = pd.read_csv(dataset, header=None)
 # X_before = x_before.iloc[:, 1:-1]
 X = x.iloc[:, 0:-1]
-mm_scaler = preprocessing.MinMaxScaler()
+mm_scaler = pickle.load(open(r"../pickled models/mmscaler.pkl", "rb"))
 X = mm_scaler.fit_transform(X)
 Y = x.iloc[:, -1:]
 # X_before = mm_scaler.fit_transform(X_before)

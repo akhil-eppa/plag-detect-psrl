@@ -35,6 +35,8 @@ Features are all the remaining columns
 X=x.iloc[:,:-1]
 X=preprocessing.scale(X)
 mm_scaler = preprocessing.MinMaxScaler()
+fitter = mm_scaler.fit(X)
+pickle.dump(fitter, open(r"pickled models/mmscaler.pkl", "wb"))
 X=mm_scaler.fit_transform(X)
 Y=x.iloc[:,-1:]
 #print(X)
