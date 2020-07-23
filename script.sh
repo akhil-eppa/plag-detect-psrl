@@ -1,0 +1,10 @@
+python create_list_graph.py
+cd extraction
+python extract_features_pipeline_test.py
+cd ..
+cd ML_models/eval
+python SVM.py
+python SVM_pca.py
+python SVM_prob_eval.py
+cd ../../RNN
+python rnn_test.py

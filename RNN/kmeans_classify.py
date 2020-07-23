@@ -10,34 +10,51 @@ chars = pickle.load(open("chars.pkl", "rb"))
 VOCAB_LENGTH = len(chars)
 char_to_int = dict((c, i) for i, c in enumerate(chars))
 
-tf1 = "/home/anirudh/Projects/PlagDetect/plag-detect-psrl/code_pairs_train/n_1_1.c"
-tf2 = "/home/anirudh/Projects/PlagDetect/plag-detect-psrl/code_pairs_train/n_1_2.c"
-tf3 = "/home/anirudh/Projects/PlagDetect/plag-detect-psrl/code_pairs_train/n_301_1.c"
-tf4 = "/home/anirudh/Projects/PlagDetect/plag-detect-psrl/code_pairs_train/n_301_2.c"
+pairs = pickle.load(
+    open(
+        os.path.join(
+            os.path.dirname(os.getcwd()), "extraction", "result_train", "pairs.pkl"
+        ),
+        "rb",
+    )
+)
+
+cache = {}
 
 model = load_model("char_rnn_model_ft")
 vector_gen = Model(inputs=model.inputs, outputs=model.layers[-3].output)
 classifier = pickle.load(open("kmeans_1000.pkl", "rb"))
 
 vectorized_windows = []
+yval = []
 
-for file in (tf1, tf2, tf3, tf4):
-    txt = open(file).read().lower()
-    FILE_LEN = len(txt)
-    windows = []
-    for i in range(FILE_LEN - SEQ_LEN):
-        windows.append(
-            np.array(
-                [char_to_int[a] if a in chars else 0 for a in txt[i : i + SEQ_LEN]]
-            ).reshape(-1, 1)
-        )
-    windows = np.array(windows)
-    vect = vector_gen.predict(windows)
-    vectorized_windows.append(vect)
+print("Making windows...")
+for idx, pair in enumerate(pairs, 1):
+    print(f"{idx}/{len(pairs)}")
+    for file in pair[0:2]:
+        txt = open(file).read().lower()
+        if cache.get(txt, None) is not None:
+            vectorized_windows.append(cache[txt])
+            continue
+        FILE_LEN = len(txt)
+        windows = []
+        for i in range(FILE_LEN - SEQ_LEN):
+            windows.append(
+                np.array(
+                    [char_to_int[a] if a in chars else 0 for a in txt[i : i + SEQ_LEN]]
+                ).reshape(-1, 1)
+            )
+        windows = np.array(windows)
+        vect = vector_gen.predict(windows)
+        vectorized_windows.append(vect)
+        cache[txt] = vect
+    yval.append(pair[-1])
 
+print("Making count vectors...")
 count_vectors = []
-for vect in vectorized_windows:
-    classes = classifier.predict(vect).reshape(1,-1)
+for idx, vect in enumerate(vectorized_windows, 1):
+    print(f"{idx}/{len(vectorized_windows)}")
+    classes = classifier.predict(vect).reshape(1, -1)
     classes = list(classes[0])
     count = Counter(classes)
     v = np.zeros((1000,), dtype="int64")
@@ -47,4 +64,10 @@ for vect in vectorized_windows:
 
     count_vectors.append(v)
 
-print(v)
+count_vectors = np.array(count_vectors).reshape(-1, 1000, 2)
+yval = np.array(yval).reshape(-1,1)
+# res = np.concatenate((count_vectors, yval), axis=1)
+# print(res.shape)
+
+pickle.dump(count_vectors, open("count_vect_X.pkl", "wb"))
+pickle.dump(yval, open("count_vect_y.pkl", "wb"))

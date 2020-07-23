@@ -45,7 +45,10 @@ Getting the principal components
 '''
 comp=30
 pca=PCA(n_components=comp)
-principalComponent=pca.fit_transform(X)
+fitter=pca.fit(X)
+principalComponent = fitter.transform(X)
+with open(r"pickled models/PCA.pkl", "wb") as f:
+    pickle.dump(fitter, f)
 cols=list()
 for i in range(comp):
     cols.append('principal_comp_'+str(i+1))
@@ -101,15 +104,15 @@ print("Accuracy:",metrics.accuracy_score(y_test, grid_pred))
 print(confusion_matrix(y_test,grid_pred))
 print(classification_report(y_test,grid_pred))
 
-results = permutation_importance(grid, X_train, y_train, scoring='accuracy')
-# get importance
-importance = results.importances_mean
-# summarize feature importance
-for i,v in enumerate(importance):
-	print('Feature: %0d, Score: %.5f' % (i,v))
-# plot feature importance
-pyplot.bar([x for x in range(len(importance))], importance)
-pyplot.show()
+# results = permutation_importance(grid, X_train, y_train, scoring='accuracy')
+# # get importance
+# importance = results.importances_mean
+# # summarize feature importance
+# for i,v in enumerate(importance):
+# 	print('Feature: %0d, Score: %.5f' % (i,v))
+# # plot feature importance
+# pyplot.bar([x for x in range(len(importance))], importance)
+# pyplot.show()
 pkl_filename = "model_svm_pca.pkl"
 with open(pkl_filename, 'wb') as file:
     pickle.dump(grid, file)

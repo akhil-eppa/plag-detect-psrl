@@ -2,22 +2,39 @@ import csv
 import os
 import pickle
 import subprocess
+import shutil
 
 from merge_milepost_features import merge_features
 from text_features import generate_text_features
 
 pwd = os.getcwd()
-subprocess.run(
-    [
-        "docker",
-        "exec",
-        "-it",
-        "psrl_plagdetect",
-        "bash",
-        "/home/data/plag-detect-psrl/extraction/milepost_features.sh",
-        "train",
-    ]
-)
+tmpdir = os.path.join(pwd, "result_train", "milepost_features")
+if os.path.isdir(tmpdir):
+    shutil.rmtree(tmpdir)
+os.mkdir(tmpdir)
+
+paths = []
+pairs = pickle.load(open(os.path.join(pwd, "result_train", "pairs_graph.pkl"), "rb"))
+PATH_PREFIX = "/home/data/plag-detect-psrl/code_pairs_train"
+
+for pair in pairs:
+    paths.append(PATH_PREFIX + os.path.basename(pair[0]))
+    paths.append(PATH_PREFIX + os.path.basename(pair[1]))
+
+for path in paths:
+    subprocess.run(
+        [
+            "docker",
+            "exec",
+            "-it",
+            "psrl_plagdetect",
+            "bash",
+            "/home/data/plag-detect-psrl/extraction/milepost_features.sh",
+            "train",
+            path,
+        ]
+    )
+
 merge_features(
     os.path.join("result_train", "merged_milepost_features_diff.pkl"), proc="train"
 )
