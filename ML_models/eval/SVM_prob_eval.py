@@ -116,4 +116,7 @@ for idx, (x, y) in enumerate(zip(X_pca_list, Y_list)):
 x_labels = ["Variable name change", "Redundant lines", "Reorder lines", "Variable type change", "Change loop type", "Reorder blocks"]
 plt.bar(x_labels, yval)
 plt.xticks(rotation=20)
+plt.ylim(0,100)
+plt.ylabel("Accuracy(%)")
+plt.title("Milepost GCC + text features classification accuracy for various categories of plagiarism")
 plt.show()

@@ -31,10 +31,10 @@ with open("matches_avg.csv") as f:
     r = csv.reader(f, delimiter=";")
     for row in r:
         if not chk[mapchk[row[0]]]:
-            chk[mapchk[row[0]]] = 1
             pair = mappair1.get(row[0], mappair2.get(row[0]))
             if pair in row:
                 cnt[mapclass[pair]] += 1
+                chk[mapchk[row[0]]] = 1
 
 yval = np.array(cnt) / np.array(tot) * 100
 
@@ -48,4 +48,7 @@ x_labels = [
 ]
 plt.bar(x_labels, yval)
 plt.xticks(rotation=20)
+plt.ylim(0,100)
+plt.ylabel("Accuracy(%)")
+plt.title("JPlag classification accuracy for various categories of plagiarism")
 plt.show()
