@@ -63,6 +63,7 @@ for row in table:
             chk[mapchk[row[0]]] = 1
 
 yval = np.array(cnt) / np.array(tot) * 100
+pickle.dump(yval, open("acc_moss.pkl", "wb"))
 
 x_labels = [
     "Variable name change",

@@ -217,6 +217,7 @@ for i, j, k in zip(categories, y_actual_before, y_pred_before):
         cnt[i] += 1
 
 yval = np.array(cnt) / np.array(tot) * 100
+pickle.dump(yval, open("../acc_rnn.pkl", "wb"))
 x_labels = [
     "Variable name change",
     "Redundant lines",

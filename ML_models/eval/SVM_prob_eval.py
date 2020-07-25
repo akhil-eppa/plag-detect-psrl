@@ -113,6 +113,8 @@ for idx, (x, y) in enumerate(zip(X_pca_list, Y_list)):
     yval.append(acc)
     print(f"Accuracy for category {idx} = ", acc)
 
+pickle.dump(yval, open("../../acc_milepost.pkl", "wb"))
+
 x_labels = ["Variable name change", "Redundant lines", "Reorder lines", "Variable type change", "Change loop type", "Reorder blocks"]
 plt.bar(x_labels, yval)
 plt.xticks(rotation=20)

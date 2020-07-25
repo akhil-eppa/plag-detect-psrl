@@ -37,6 +37,7 @@ with open("matches_avg.csv") as f:
                 chk[mapchk[row[0]]] = 1
 
 yval = np.array(cnt) / np.array(tot) * 100
+pickle.dump(yval, open("acc_jplag.pkl", "wb"))
 
 x_labels = [
     "Variable name change",

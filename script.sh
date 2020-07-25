@@ -1,10 +1,6 @@
-python create_list_graph.py
-cd extraction
-python extract_features_pipeline_test.py
-cd ..
+python jplag_results.py
+python moss_results.py
 cd ML_models/eval
-python SVM.py
-python SVM_pca.py
 python SVM_prob_eval.py
 cd ../../RNN
 python rnn_test.py
