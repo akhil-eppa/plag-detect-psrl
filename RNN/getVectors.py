@@ -6,6 +6,8 @@ from keras.models import Model, load_model
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
 from text_features import generate_text_features
 
@@ -88,13 +90,13 @@ for idx, pair in enumerate(pairs, 1):
 #     else:
 #         v2_arr.append(a)
 
-pwd = os.getcwd()
-generate_text_features(
-    train=True,
-    res_dir="",
-    pairs_file="/home/anirudh/Projects/PlagDetect/plag-detect-psrl/extraction/result_train/pairs.pkl",
-)
-os.chdir(pwd)
+# pwd = os.getcwd()
+# generate_text_features(
+#     train=True,
+#     res_dir="",
+#     pairs_file="/home/anirudh/Projects/PlagDetect/plag-detect-psrl/extraction/result_train/pairs.pkl",
+# )
+# os.chdir(pwd)
 # 
 # pickle.dump(v1_arr, open("v1_arr.pkl", "wb"))
 # pickle.dump(v2_arr, open("v2_arr.pkl", "wb"))
@@ -116,8 +118,16 @@ X = v1_arr - v2_arr
 pca_mod = pca.fit(X)
 X_red = pca_mod.transform(X)
 X_red = np.concatenate((X_red, ld_rat, ad, ed, cl_rat, cc_rat), axis=1)
+mmscaler = MinMaxScaler()
+scaler = mmscaler.fit(X_red)
+X_red = scaler.transform(X_red)
+# X_train, X_test, y_train, y_test = train_test_split(X_red, y_actual, test_size=0.3)
 model = SVC()
 # model= KMeans(n_clusters=2)
 classifier = model.fit(X_red, y_actual)
+# classifier = model.fit(X_train, y_train)
+# print(model.score(X_test, y_test))
 pickle.dump(classifier, open("SVM_RNN.pkl", "wb"))
+pickle.dump(scaler, open("mmscaler.pkl", "wb"))
 pickle.dump(pca_mod, open("PCA.pkl", "wb"))
+pickle.dump(X_red, open("X.pkl", "wb"))
