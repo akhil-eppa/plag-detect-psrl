@@ -24,5 +24,5 @@ x_labels = ["JPlag", "MOSS", "Milepost GCC", "Char-RNN"]
 for cat, col in zip(categories, res.T):
     plt.bar(x_labels, col)
     plt.title(f"Plagiarism type - {cat}")
-    plt.show()
     plt.savefig(f"acc_{cat.replace(' ', '_')}.png")
+    plt.cla()

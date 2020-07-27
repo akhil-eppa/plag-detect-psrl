@@ -5,3 +5,5 @@ v1_arr*
 v2_arr*
 fine_tune_data*
 code_vectors/
+CodeBERTo/
+runs/
