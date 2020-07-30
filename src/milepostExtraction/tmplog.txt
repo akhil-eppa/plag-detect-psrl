@@ -1,0 +1,36 @@
+CK environment found using tags "compiler,ctuning-cc" : 6e64c6487b852b53
+
+Extracting program structure ...
+
+Compling with MILEPOST GCC:
+
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/n_301_1.c -lm 
+
+Extracting program features ...
+[xsb_configuration loaded]
+[sysinitrc loaded]
+[Compiling ./featlstn]
+[featlstn compiled, cpu time used: 0.0330 seconds]
+[featlstn loaded]
+[Compiling ./featuresall]
+[featuresall compiled, cpu time used: 0.1040 seconds]
+[featuresall loaded]
+ICI: work dir  ...
+
+Compling with MILEPOST GCC:
+
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/n_301_1.c -lm 
+
+Compiling with native compiler:
+
+gcc -O3 -std=c99 /tmp/n_301_1.c -lm 
+/tmp/n_301_1.c: In function 'main':
+/tmp/n_301_1.c:6:2: warning: ignoring return value of 'scanf', declared with attribute warn_unused_result [-Wunused-result]
+  scanf("%d",&t);
+  ^
+/tmp/n_301_1.c:8:3: warning: ignoring return value of 'scanf', declared with attribute warn_unused_result [-Wunused-result]
+   scanf("%d",&n);
+   ^
+/tmp/n_301_1.c:14:4: warning: ignoring return value of 'scanf', declared with attribute warn_unused_result [-Wunused-result]
+    scanf("%d",a+i);
+    ^

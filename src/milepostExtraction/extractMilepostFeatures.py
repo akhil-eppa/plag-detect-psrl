@@ -10,7 +10,7 @@ from .mergeMilepostFeatures import mergeMilepostFeatures
 
 def extractMilepostFeatures(file_pairs, root_dir, train=False):
     pwd = Path.cwd()
-    res_dir = Path("extraction/result")
+    res_dir = Path("milepostExtraction/result")
     tmpdir = res_dir / "milepost_features"
     tmpdir.mkdir(parents=True, exist_ok=True)
     try:
@@ -51,7 +51,7 @@ def extractMilepostFeatures(file_pairs, root_dir, train=False):
                 "-it",
                 "psrl_plagdetect",
                 "bash",
-                "/home/src/extraction/milepost_features.sh",
+                "/home/src/milepostExtraction/milepost_features.sh",
                 path,
             ],
             check=True,
