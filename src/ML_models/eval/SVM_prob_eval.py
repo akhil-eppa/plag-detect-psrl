@@ -38,12 +38,7 @@ loop_indices = list(b-1 for b in a_loop_change + tuple(i + 458 for i in n_loop_c
 reorder_block_indices = list(b-1 for b in a_reorder_block + tuple(i + 458 for i in n_reorder_block))
 
 labels = preprocessing.LabelEncoder()
-# dataset_before = "../../extraction/result_test/Before/features.csv"
-# dataset_after = "../../extraction/result_test/After/features.csv"
 dataset = "../../extraction/result_train/feat_v1.csv"
-# x_before = pd.read_csv(dataset_before)
-# x_after = pd.read_csv(dataset_after)
-# X_before = x_before.iloc[:, 1:-1]
 x = pd.read_csv(dataset, header=None)
 
 X_var = x.iloc[var_indices, 0:-1]
@@ -54,11 +49,6 @@ X_loop = x.iloc[loop_indices, 0:-1]
 X_reorder_block = x.iloc[reorder_block_indices, 0:-1]
 
 mm_scaler = pickle.load(open(r"../pickled models/mmscaler.pkl", "rb"))
-# X_before = mm_scaler.fit_transform(X_before)
-# Y_before = x_before.iloc[:, -1:]
-# X_after = x_after.iloc[:, 1:-1]
-# X_after = mm_scaler.fit_transform(X_after)
-# Y_after = x_after.iloc[:, -1:]
 X_list = [X_var, X_red, X_reorder_lines, X_type, X_loop, X_reorder_block]
 for i in range(len(X_list)):
     X_list[i] = mm_scaler.transform(X_list[i])
@@ -70,55 +60,31 @@ Y_type = x.iloc[type_indices, -1]
 Y_loop = x.iloc[loop_indices, -1]
 Y_reorder_block = x.iloc[reorder_block_indices, -1]
 Y_list = [Y_var, Y_red, Y_reorder_lines, Y_type, Y_loop, Y_reorder_block]
-# print(X)
-# print(Y)
-# y_before = labels.fit_transform(Y_before)
-# y_after = labels.fit_transform(Y_after)
 for i in range(len(Y_list)):
     Y_list[i] = labels.fit_transform(Y_list[i])
-# print(Y)
 comp = 30
 pca = pickle.load(open(r"../pickled models/PCA.pkl", "rb"))
 cols = list()
 for i in range(comp):
     cols.append("principal_comp_" + str(i + 1))
 
-# X_before_pca = pca.fit_transform(X_before)
-# X_after_pca = pca.fit_transform(X_after)
 X_pca_list = []
 for x in X_list:
     X_pca_list.append(pca.transform(x))
 
-# Y=pd.DataFrame(Y)
-# X_before = pd.DataFrame(data=X_before_pca, columns=cols)
-# X_after = pd.DataFrame(data=X_after_pca, columns=cols)
 yval = []
 for idx, (x, y) in enumerate(zip(X_pca_list, Y_list)):
     X = pd.DataFrame(data=x, columns=cols)
     grid = pickle.load(open("../pickled models/svm_pca_prob.pkl", "rb"))
-    # y_prob2=grid.predict_proba(X_before_pca)
     y_prob2 = grid.predict_proba(x)
     count = 0
     for i in range(len(y_prob2)):
-        # print(y_prob2[i],y_before[i])
-        # print(y_prob2[i], y[i])
-        # if y_before[i]==0 and y_prob2[i][1]<0.5:
         if y[i] == 0 and y_prob2[i][1] < 0.5:
             count += 1
-        # elif y_before[i]==1 and y_prob2[i][1]>=0.5:
         elif y[i] == 1 and y_prob2[i][1] >= 0.5:
             count += 1
-    # acc=(count/len(y_before))*100
     acc = (count / len(y)) * 100
     yval.append(acc)
     print(f"Accuracy for category {idx} = ", acc)
 
 pickle.dump(yval, open("../../acc_milepost.pkl", "wb"))
-
-x_labels = ["Variable name change", "Redundant lines", "Reorder lines", "Variable type change", "Change loop type", "Reorder blocks"]
-plt.bar(x_labels, yval)
-plt.xticks(rotation=20)
-plt.ylim(0,100)
-plt.ylabel("Accuracy(%)")
-plt.title("Milepost GCC + text features classification accuracy for various categories of plagiarism")
-plt.show()

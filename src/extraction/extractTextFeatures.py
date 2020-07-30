@@ -8,6 +8,7 @@ import os
 import pickle
 import re
 from difflib import Differ
+from pathlib import Path
 
 import Levenshtein
 
@@ -38,7 +39,7 @@ def extractTextFeatures(file_pairs, root_dir, res_dir):
     common_comment = []
     common_comment_ratio = []
     d = Differ()
-    file_pairs = [(os.path.join(root_dir,i[0]), os.path.join(root_dir,i[1])) for i in file_pairs]
+    file_pairs = [((root_dir / i[0]), (root_dir / i[1])) for i in file_pairs]
     for i in range(len(file_pairs)):
         l1, a1 = file_length(file_pairs[i][0])
         l2, a2 = file_length(file_pairs[i][1])
@@ -84,32 +85,22 @@ def extractTextFeatures(file_pairs, root_dir, res_dir):
         f1.close()
         f2.close()
 
-    features_path = os.path.join(res_dir, "text_features")
-    if not os.path.isdir(features_path):
-        os.mkdir(features_path)
-    with open(os.path.join(features_path, "ld.pkl"), "wb") as f:
+    if not res_dir.is_dir():
+        res_dir.mkdir()
+
+    with open(res_dir / "ld.pkl", "wb") as f:
         pickle.dump(line_diff, f)
-    with open(os.path.join(features_path, "ld_rat.pkl"), "wb") as f:
+    with open(res_dir / "ld_rat.pkl", "wb") as f:
         pickle.dump(line_diff_ratio, f)
-    with open(os.path.join(features_path, "ad.pkl"), "wb") as f:
+    with open(res_dir / "ad.pkl", "wb") as f:
         pickle.dump(av_diff, f)
-    with open(os.path.join(features_path, "ed.pkl"), "wb") as f:
+    with open(res_dir / "ed.pkl", "wb") as f:
         pickle.dump(edit_dist, f)
-    with open(os.path.join(features_path, "cl.pkl"), "wb") as f:
+    with open(res_dir / "cl.pkl", "wb") as f:
         pickle.dump(common_line, f)
-    with open(os.path.join(features_path, "cl_rat.pkl"), "wb") as f:
+    with open(res_dir / "cl_rat.pkl", "wb") as f:
         pickle.dump(common_line_ratio, f)
-    with open(os.path.join(features_path, "cc.pkl"), "wb") as f:
+    with open(res_dir / "cc.pkl", "wb") as f:
         pickle.dump(common_comment, f)
-    with open(os.path.join(features_path, "cc_rat.pkl"), "wb") as f:
+    with open(res_dir / "cc_rat.pkl", "wb") as f:
         pickle.dump(common_comment_ratio, f)
-
-
-# print(line_diff)
-# print(line_diff_ratio)
-# print(av_diff)
-# print(edit_dist)
-# print(common_line)
-# print(common_line_ratio)
-# print(common_comment)
-# print(common_comment_ratio)

@@ -1,10 +1,10 @@
 import argparse
-import os
+from pathlib import Path
 from utils import listUtils
 from extraction.extractMilepostFeatures import extractMilepostFeatures
 
-ROOT_DIR = os.path.abspath("../code_sample")
+ROOT_DIR = Path("../code_sample").resolve()
 files = listUtils.getSubmissions(ROOT_DIR)
 pairs = listUtils.getCombinations(files)
-print(pairs)
 extractMilepostFeatures(pairs, ROOT_DIR, train=False)
+pickle.dump(pairs, open("pairs.pkl", "wb"))
