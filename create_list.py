@@ -54,15 +54,15 @@ Pairs by Santosh
 1 to 180 are plagiarized
 181 to 360 are non plagairized
 """
-for i in range(1, 361):
-    temp = []
-    temp.append(os.path.join(root_path, str("s" + str(i) + "_1.c")))
-    temp.append(os.path.join(root_path, str("s" + str(i) + "_2.c")))
-    if i <= 180:
-        temp.append("p")
-    else:
-        temp.append("np")
-    prog.append(temp)
+# for i in range(1, 361):
+#     temp = []
+#     temp.append(os.path.join(root_path, str("s" + str(i) + "_1.c")))
+#     temp.append(os.path.join(root_path, str("s" + str(i) + "_2.c")))
+#     if i <= 180:
+#         temp.append("p")
+#     else:
+#         temp.append("np")
+#     prog.append(temp)
 np = 0
 p = 0
 for i in prog:
