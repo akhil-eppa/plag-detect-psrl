@@ -1,0 +1,22 @@
+CK environment found using tags "compiler,ctuning-cc" : 6e64c6487b852b53
+cp: cannot stat '/home/data/plag-detect-psrl/extraction/*.c': No such file or directory
+
+Extracting program structure ...
+gcc: /tmp/*.c: No such file or directory
+
+Compling with MILEPOST GCC:
+
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/*.c -lm 
+
+Extracting program features ...
+gcc: /tmp/*.c: No such file or directory
+
+Compling with MILEPOST GCC:
+
+/CK-TOOLS/gcc-milepost-4.4.4-linux-64/bin/gcc  -O3 -std=c99 /tmp/*.c -lm 
+
+Compiling with native compiler:
+
+gcc -O3 -std=c99 /tmp/*.c -lm 
+gcc: error: /tmp/*.c: No such file or directory
+objdump: 'a.out': No such file
