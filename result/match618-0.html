@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a48_1.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<HR>
+<H3><CENTER>a48_1.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A> //program to implement BFS for a digraph
+ #include&lt;stdio.h&gt;
+<FONT color="#0000ff"><A HREF="javascript:ZweiFrames('match618-1.html#0',3,'match618-top.html#0',1)"><IMG SRC="forward.gif" ALT="other" BORDER="0" ALIGN="right"></A><B> int visit[100];
+ void creategraph();
+ void bfs(int);
+ void qinsert(int);
+ int qdelete();
+ int qisempty();
+ int a[100][100],n;
+ int q[100];
+ int f,r;
+ int main()
+ {
+   int i,v,k;
+   printf(&quot;Enter the number of vertices..&quot;);
+   scanf(&quot;%d&quot;,&amp;n);
+
+   creategraph();
+   printf(&quot;Enter the source vertex..\n&quot;);
+   scanf(&quot;%d&quot;,&amp;v);
+
+   printf(&quot;The vertices reachable from %d using BFS are..\n&quot;,v);
+   bfs(v);
+ 
+  }
+
+  void creategraph()
+  {
+    int i,j;
+    while(1)
+    {
+        printf(&quot;Enter the source and the destination vertex..&quot;);
+        scanf(&quot;%d%d&quot;,&amp;i,&amp;j);
+        if((i==0)&amp;&amp;(j==0))
+           break;
+        a[i][j]=1;
+        a[j][i]=1;
+     }  
+  }
+
+  void bfs(int v)
+  {
+   int u,w;
+   visit[v]=1;
+   printf(&quot;%d &quot;,v);
+   qinsert(v);
+
+   while(!qisempty())
+   {
+     w=qdelete();
+     //for each of the vertices adjacent to w,
+     //if it is not visited, mark it as visited
+     //and insert it into queue
+     for(u=1;u&lt;=n;u++)
+     {
+       if((a[w][u]==1)&amp;&amp;(visit[u]==0))
+       {
+          visit[u]=1;
+          printf(&quot;%d &quot;,u);
+          qinsert(u);
+       }
+     }
+   }
+ }
+     
+ void qinsert(int v)
+  {
+    r++;
+    q[r]=v;
+    if(f==-1)
+      f=0;
+  }
+
+
+ int qdelete()
+ {
+   int w;
+   w=q[f];
+   if(f==r)
+     f=r=-1;
+   else
+      f++;
+   return w;
+  }
+
+ int qisempty()
+ {
+   if(f==-1)
+     return 1;
+   return 0;
+  }</B></FONT>
+</PRE>
+</BODY>
+</HTML>

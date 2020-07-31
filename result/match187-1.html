@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a2_2.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>a2_2.c</CENTER></H3><HR>
+<PRE>
+#include &lt;stdio.h&gt;
+<A NAME="0"></A>#include &lt;stdlib.h&gt;
+
+//Function to swap 2 variables
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match187-0.html#0',2,'match187-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>void swap(int *x,int *y)
+{
+    int temp=*x;
+    *x=*y;
+    *y=temp;
+}
+int partition(int *arra,int strt,int end)
+{
+    /*Pivot can be any random element of the array, but
+    I have taken it to be the last element*/
+    int pIndex=strt;
+    int pivot=arra[end];
+    int i;
+    for (i=strt;i&lt;end;++i)
+    {
+        if (arra[i]&lt;=pivot)
+        {
+            swap(&amp;arra[i],&amp;arra[pIndex]);
+            ++pIndex;
+        }
+
+    }
+    swap(&amp;arra[pIndex],&amp;arra[end]);
+    return pIndex;
+}
+void Quicksort(int *arra,int strt,int end)
+{
+    if (strt&lt;end)
+    {
+        int pIndex=partition(arra,strt,end);
+        Quicksort(arra,strt,pIndex-1);
+        Quicksort(arra,pIndex+1,end);
+    }
+}
+int main()
+{
+    int arra[10]={24,23,11,45,7,79,55,21,54,10};
+    Quicksort(arra,0,9);
+    int i;
+    for (i=0;i&lt;10;++i)
+    {
+        printf(&quot;%f\n&quot;,arra[i]);
+    }
+}</B></FONT>
+</PRE>
+</BODY>
+</HTML>

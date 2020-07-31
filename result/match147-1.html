@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a123_2.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>a123_2.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A>#include&lt;stdio.h&gt;
+#define MAX 30
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match147-0.html#0',2,'match147-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>typedef struct edge
+{
+	int u,v,w;
+}edge;
+typedef struct edgelist
+{
+	edge data[MAX];
+	int n;
+}edgelist;
+edgelist elist;
+int G[MAX][MAX],n;
+edgelist spanlist;
+void kruskal();
+int find(int belong[],int vertexno);
+void union1(int belong[],int c1,int c2);
+void sort();
+void print();</B></FONT>
+void main()
+{
+	int ind,j,total_cost;
+	printf(&quot;\nEnter number of vertices:&quot;);
+	scanf(&quot;%d&quot;,&amp;n);
+	printf(&quot;\nEnter the adjacency matrix:\n&quot;);
+	for(ind=0;ind&lt;n;ind++)
+		for(j=0;j&lt;n;j++)
+			scanf(&quot;%d&quot;,&amp;G[ind][j]);
+<A NAME="1"></A>	kruskal();
+	print();
+}
+<FONT color="#f63526"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match147-0.html#1',2,'match147-top.html#1',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>void kruskal()
+{
+	int belong[MAX],ind,j,cn1,cn2;
+	elist.n=0;
+	for(ind=1;ind&lt;n;ind++)
+		for(j=0;j&lt;ind;j++)
+		{
+			if(G[ind][j]!=0)
+			{
+				elist.data[elist.n].u=ind;
+				elist.data[elist.n].v=j;
+				elist.data[elist.n].w=G[ind][j];
+				elist.n++;
+			}
+		}
+	sort();
+	for(ind=0;ind&lt;n;ind++)
+		belong[ind]=ind;
+	spanlist.n=0;
+	for(ind=0;ind&lt;elist.n;ind++)
+	{
+		cn1=find(belong,elist.data[ind].u);
+		cn2=find(belong,elist.data[ind].v);
+		if(cn1!=cn2)
+		{
+			spanlist.data[spanlist.n]=elist.data[ind];
+			spanlist.n=spanlist.n+1;
+			union1(belong,cn1,cn2);
+		}
+	}
+}</B></FONT>
+<A NAME="3"></A>int find(int belong[],int vertexno)
+{
+	return(belong[vertexno]);
+<FONT color="#6cc417"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match147-0.html#3',2,'match147-top.html#3',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>}
+void union1(int belong[],int c1,int c2)
+{
+	int ind;
+	
+	for(ind=0;ind&lt;n;ind++)
+<A NAME="2"></A>		if(belong[ind]==c2)
+			belong[ind]=c1;
+}</B></FONT>
+<FONT color="#77bfc7"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match147-0.html#2',2,'match147-top.html#2',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>void sort()
+{
+	int ind,j;
+	edge temper;
+	for(ind=1;ind&lt;elist.n;ind++)
+		for(j=0;j&lt;elist.n-1;j++)
+			if(elist.data[j].w&gt;elist.data[j+1].w)
+			{
+				temper=elist.data[j];
+				elist.data[j]=elist.data[j+1];
+				elist.data[j+1]=temper;
+			}
+}
+void print()
+{
+	int ind,cost=0;</B></FONT>
+	for(ind=0;ind&lt;spanlist.n;ind++)
+	{
+		printf(&quot;\n%d\t%d\t%d&quot;,spanlist.data[ind].u,spanlist.data[ind].v,spanlist.data[ind].w);
+		cost=cost+spanlist.data[ind].w;
+	}
+	printf(&quot;\n\nCost of the spanning tree=%d&quot;,cost);
+}
+</PRE>
+</BODY>
+</HTML>

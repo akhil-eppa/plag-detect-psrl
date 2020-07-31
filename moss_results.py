@@ -1,7 +1,6 @@
 import os
 import pickle
 
-import matplotlib.pyplot as plt
 import mosspy
 import numpy as np
 from bs4 import BeautifulSoup
@@ -64,18 +63,3 @@ for row in table:
 
 yval = np.array(cnt) / np.array(tot) * 100
 pickle.dump(yval, open("acc_moss.pkl", "wb"))
-
-x_labels = [
-    "Variable name change",
-    "Redundant lines",
-    "Reorder lines",
-    "Variable type change",
-    "Change loop type",
-    "Reorder blocks",
-]
-plt.bar(x_labels, yval)
-plt.xticks(rotation=20)
-plt.ylim(0,100)
-plt.ylabel("Accuracy(%)")
-plt.title("MOSS classification accuracy for various categories of plagiarism")
-plt.show()

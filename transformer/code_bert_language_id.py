@@ -24,6 +24,7 @@ print("Model loaded")
 
 cache = {}
 
+
 def get_vector(path):
     y = open(path, "r")
     x = y.read()
@@ -45,12 +46,12 @@ def get_vector(path):
 
 
 def euc_dist(a, b):
-    print(np.linalg.norm(a-b))
-    return np.linalg.norm(a-b)
+    print(np.linalg.norm(a - b))
+    return np.linalg.norm(a - b)
 
 
 # pairs1 = pickle.load(open("../extraction/result_test/pairs_graph.pkl", "rb"))
-pairs = pickle.load(open("../extraction/result_train/pairs.pkl", "rb"))
+pairs = pickle.load(open("../extraction/result_test/pairs_graph.pkl", "rb"))
 
 # pairs2 = [
 #     (f"../code_pairs_train/n_{i}_1.c", f"../code_pairs_train/n_{i}_2.c")
@@ -58,48 +59,46 @@ pairs = pickle.load(open("../extraction/result_train/pairs.pkl", "rb"))
 # ]
 
 diff = []
+cat = []
 y_actual = []
 for idx, pair in enumerate(pairs, 1):
     print(f"{idx}/{len(pairs)}")
     diff.append(euc_dist(get_vector(pair[0]), get_vector(pair[1])))
-    y_actual.append(1 if pair[-1]=="p" else 0)
+    cat.append(pair[2])
+    y_actual.append(1 if pair[-1] == "p" else 0)
 
-# print(max(diff[0:len(pairs1)]), min(diff(len(pairs1):)))
-
-# y_actual = [1] * len(pairs1) + [0] * len(pairs2)
-y_pred0 = [0 if x > 0.75 else 1 for x in diff]
-y_pred1 = [0 if x > 1.00 else 1 for x in diff]
-y_pred2 = [0 if x > 1.25 else 1 for x in diff]
-y_pred3 = [0 if x > 1.50 else 1 for x in diff]
-y_pred4 = [0 if x > 1.75 else 1 for x in diff]
-y_pred5 = [0 if x > 2.00 else 1 for x in diff]
-y_pred6 = [0 if x > 2.25 else 1 for x in diff]
+# y_pred0 = [0 if x > 0.75 else 1 for x in diff]
+# y_pred1 = [0 if x > 1.00 else 1 for x in diff]
+# y_pred2 = [0 if x > 1.25 else 1 for x in diff]
+# y_pred3 = [0 if x > 1.50 else 1 for x in diff]
+# y_pred4 = [0 if x > 1.75 else 1 for x in diff]
+# y_pred5 = [0 if x > 2.00 else 1 for x in diff]
+# y_pred6 = [0 if x > 2.25 else 1 for x in diff]
 y_pred7 = [0 if x > 2.50 else 1 for x in diff]
 
-print("Threshold: 0.75")
-print(classification_report(y_actual, y_pred0))
-print("Threshold: 1.00")
-print(classification_report(y_actual, y_pred1))
-print("Threshold: 1.25")
-print(classification_report(y_actual, y_pred2))
-print("Threshold: 1.50")
-print(classification_report(y_actual, y_pred3))
-print("Threshold: 1.75")
-print(classification_report(y_actual, y_pred4))
-print("Threshold: 2.00")
-print(classification_report(y_actual, y_pred5))
-print("Threshold: 2.25")
-print(classification_report(y_actual, y_pred6))
+# print("Threshold: 0.75")
+# print(classification_report(y_actual, y_pred0))
+# print("Threshold: 1.00")
+# print(classification_report(y_actual, y_pred1))
+# print("Threshold: 1.25")
+# print(classification_report(y_actual, y_pred2))
+# print("Threshold: 1.50")
+# print(classification_report(y_actual, y_pred3))
+# print("Threshold: 1.75")
+# print(classification_report(y_actual, y_pred4))
+# print("Threshold: 2.00")
+# print(classification_report(y_actual, y_pred5))
+# print("Threshold: 2.25")
+# print(classification_report(y_actual, y_pred6))
 print("Threshold: 2.50")
 print(classification_report(y_actual, y_pred7))
+acc = [0] * 6
+tot = [0] * 6
+for c, y, p in zip(cat, y_actual, y_pred7):
+    if y == p:
+        acc[c] += 1
+    tot[c] += 1
 
-
-"""
-l=[0 for i in range(6)]
-for i in range(len(x)//512):
-  temp=pipe(x[i*512:(i+1)*512])
-  print(temp)
-  l=l+temp[0]
-  print(l)
-r=[i/(len(x)//512) for i in l]
-"""
+res = np.array(acc) / np.array(tot)
+print(res)
+pickle.dump(res, open("../acc_transformer.pkl", "wb"))

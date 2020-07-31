@@ -2,7 +2,6 @@ import csv
 import os
 import pickle
 
-import matplotlib.pyplot as plt
 
 import numpy as np
 
@@ -38,18 +37,3 @@ with open("matches_avg.csv") as f:
 
 yval = np.array(cnt) / np.array(tot) * 100
 pickle.dump(yval, open("acc_jplag.pkl", "wb"))
-
-x_labels = [
-    "Variable name change",
-    "Redundant lines",
-    "Reorder lines",
-    "Variable type change",
-    "Change loop type",
-    "Reorder blocks",
-]
-plt.bar(x_labels, yval)
-plt.xticks(rotation=20)
-plt.ylim(0,100)
-plt.ylabel("Accuracy(%)")
-plt.title("JPlag classification accuracy for various categories of plagiarism")
-plt.show()

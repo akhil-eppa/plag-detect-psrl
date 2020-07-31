@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a81_2.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<HR>
+<H3><CENTER>a81_2.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A>#include&lt;stdio.h&gt;
+//program to check if a goven array can represent 
+// a preorder traversal of a binary search tree
+<FONT color="#0000ff"><A HREF="javascript:ZweiFrames('match411-1.html#0',3,'match411-top.html#0',1)"><IMG SRC="forward.gif" ALT="other" BORDER="0" ALIGN="right"></A><B>int checkbst(int*,int,int);
+int findmax(int*, int,int);
+int main()
+{
+  int p[100],n,i,r;
+  printf(&quot;enter the no of elements..\n&quot;);
+  scanf(&quot;%d&quot;,&amp;n);
+  printf(&quot;Enter the pre order traversal\n&quot;);
+  for(i=0;i&lt;n;i++)
+    scanf(&quot;%d&quot;,&amp;p[i]);
+
+  r=checkbst(p,0,n-1);
+  if(r)
+   printf(&quot;binary search tree..\n&quot;);
+  else
+   printf(&quot;not a binary search tree..\n&quot;);
+}
+
+
+
+int checkbst(int *p, int i, int n)
+{
+  int key,j,k;
+  if(i==n)
+   return 1;
+  key=p[i];
+  j=findmax(p,i,n);
+  if(j==i)
+   return 1;</B></FONT>
+  k=j+1;
+  while (k&lt;=n)
+   {
+<A NAME="1"></A>    if(p[k]&lt;key)
+      return 0;
+    k++;
+<FONT color="#f63526"><A HREF="javascript:ZweiFrames('match411-1.html#1',3,'match411-top.html#1',1)"><IMG SRC="forward.gif" ALT="other" BORDER="0" ALIGN="right"></A><B>   }
+  
+  if((checkbst(p,i+1,j-1))&amp;&amp;(checkbst(p,j,n)))
+     return 1;
+  return 0;
+}
+
+ int findmax(int *p, int i, int n)
+ {
+   int key,j;
+   key=p[i];</B></FONT>
+   j=i+1;
+   while (j&lt;=n)
+   {
+    if(p[j]&gt;key)
+      return j;
+    j++;
+   }
+  return i;
+} 
+
+  
+
+</PRE>
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>n_341_1.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>n_341_1.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A>#include&lt;stdio.h&gt;
+#define ll long long
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match587-0.html#0',2,'match587-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>int main(){
+	int t;
+	scanf(&quot;%d&quot;,&amp;t);
+	ll a,k;
+	while(t--) {
+		scanf(&quot;%lld%lld&quot;,&amp;a,&amp;k);
+		k--;
+		while(k--) {
+			ll aa=a;
+			int maxn=-1,minn=10;
+			while(aa) {
+				ll n=aa%10;
+				if(maxn&lt;n) maxn=n;
+				if(minn&gt;n) minn=n;
+				aa/=10;
+			}
+			if(minn==0) break;
+			a+=maxn*minn;
+		}
+		printf(&quot;%lld\n&quot;,a);
+	}
+	return 0;
+}</B></FONT>
+</PRE>
+</BODY>
+</HTML>

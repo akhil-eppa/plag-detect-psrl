@@ -9,7 +9,6 @@ import pickle
 
 import numpy as np
 import pandas as pd
-from matplotlib import pyplot as plt
 from sklearn import metrics, preprocessing, svm
 from sklearn.calibration import CalibratedClassifierCV
 from sklearn.decomposition import PCA
@@ -30,12 +29,24 @@ n_loop_change = (306, 313, 318, 336, 340, 345)
 a_reorder_block = (7, 16, 25, 34, 43, 52, 61, 70, 79, 88, 97, 106, 115, 124)
 n_reorder_block = (312,)
 
-var_indices = list(b-1 for b in a_var_name_change + tuple(i + 458 for i in n_var_name_change))
-redundant_indices = list(b-1 for b in a_redundant + tuple(i + 458 for i in n_redundant))
-reorder_lines_indices = list(b-1 for b in a_reorder_lines + tuple(i + 458 for i in n_reorder_lines))
-type_indices = list(b-1 for b in a_type_change + tuple(i + 458 for i in n_type_change))
-loop_indices = list(b-1 for b in a_loop_change + tuple(i + 458 for i in n_loop_change))
-reorder_block_indices = list(b-1 for b in a_reorder_block + tuple(i + 458 for i in n_reorder_block))
+var_indices = list(
+    b - 1 for b in a_var_name_change + tuple(i + 458 for i in n_var_name_change)
+)
+redundant_indices = list(
+    b - 1 for b in a_redundant + tuple(i + 458 for i in n_redundant)
+)
+reorder_lines_indices = list(
+    b - 1 for b in a_reorder_lines + tuple(i + 458 for i in n_reorder_lines)
+)
+type_indices = list(
+    b - 1 for b in a_type_change + tuple(i + 458 for i in n_type_change)
+)
+loop_indices = list(
+    b - 1 for b in a_loop_change + tuple(i + 458 for i in n_loop_change)
+)
+reorder_block_indices = list(
+    b - 1 for b in a_reorder_block + tuple(i + 458 for i in n_reorder_block)
+)
 
 labels = preprocessing.LabelEncoder()
 # dataset_before = "../../extraction/result_test/Before/features.csv"
@@ -114,11 +125,3 @@ for idx, (x, y) in enumerate(zip(X_pca_list, Y_list)):
     print(f"Accuracy for category {idx} = ", acc)
 
 pickle.dump(yval, open("../../acc_milepost.pkl", "wb"))
-
-x_labels = ["Variable name change", "Redundant lines", "Reorder lines", "Variable type change", "Change loop type", "Reorder blocks"]
-plt.bar(x_labels, yval)
-plt.xticks(rotation=20)
-plt.ylim(0,100)
-plt.ylabel("Accuracy(%)")
-plt.title("Milepost GCC + text features classification accuracy for various categories of plagiarism")
-plt.show()

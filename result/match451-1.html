@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a93_1.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>a93_1.c</CENTER></H3><HR>
+<PRE>
+//program to implement quadratic probing
+// if collision compute
+// index=(hash(key)+i*i)%size for i=1,2,...tablesize
+// hash(key)=key%size;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+struct element
+{
+   int key;
+   char name[100];
+   int mark;
+};
+void display(struct element *, int);
+void insert_to_hash(struct element*, int,int, char*);
+void delete_from_hash(struct element *,int ,int );
+ 
+int main()
+{
+  struct element *hashtable;
+  int i,n,ch,key,no_elements;
+  char name[100];
+  int tablesz;
+<A NAME="0"></A>  printf(&quot;Enter the table size..&quot;);
+  scanf(&quot;%d&quot;,&amp;tablesz);
+  //create hash table
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match451-0.html#0',2,'match451-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>  hashtable=(struct element*)malloc(tablesz* sizeof(struct element));
+   for(i=0;i&lt;tablesz;i++)
+     hashtable[i].mark=0;
+   no_elements=0;
+  
+  while(1)
+  {
+    printf(&quot;\n1. Insert..&quot;);
+    printf(&quot;\n2. Delete..&quot;);
+    printf(&quot;\n3. Search..&quot;);
+    printf(&quot;\n4. Display..&quot;);
+    scanf(&quot;%d&quot;,&amp;ch);
+    switch(ch)
+    {
+      case 1: printf(&quot;Enter key..\n&quot;);
+              scanf(&quot;%d&quot;,&amp;key);
+              printf(&quot;Enter name..\n&quot;);
+              scanf(&quot;%s&quot;,name);
+              insert_to_hash(hashtable,tablesz,key,name);
+              break;
+       case 2: printf(&quot;Enter the key for deletion..\n&quot;);
+               scanf(&quot;%d&quot;,&amp;key);
+               delete_from_hash(hashtable,tablesz,key);
+               break;
+       /*case 3: printf(&quot;Enter the key to search..\n&quot;);
+               scanf(&quot;%d&quot;,&amp;key);
+               search_in_hash(hashtable,tablesz,key);
+               break;*/
+        case 4:display(hashtable,tablesz);
+    }
+  }
+ 
+}
+ void delete_from_hash(struct element *ht,int size,int key )
+  {
+    int i,index,h;
+    
+    index=key %size;
+     i=index;
+     h=1;
+     
+     for(h=1;h&lt;=size;h++)
+     {
+         if(ht[i].key==key)
+        {
+         printf(&quot;\nkey found..and deleted\n&quot;);
+         ht[i].mark=0;
+         return;
+        }
+       i=(index+h*h)%size;
+      }
+      printf(&quot;key not found\n&quot;);
+    }
+  void display(struct element *ht, int size)
+  {
+    int i;
+    for(i=0;i&lt;size;i++)
+    {
+      printf(&quot;%d :&quot;, i);
+      if (ht[i].mark!=0)
+         printf(&quot;Key = %d, name = %s&quot;,ht[i].key,ht[i].name);
+      printf(&quot;\n&quot;);
+    }
+  }  
+   void insert_to_hash(struct element*ht, int size,int key, char *name )
+   {
+     int index,i,h;
+     index=key %size;
+     i=index;
+     //h=1;
+     
+     for(h=1;h&lt;=size;h++)
+     {
+        if(ht[i].mark==0)
+        {
+         ht[i].key=key;
+         strcpy(ht[i].name,name);
+         ht[i].mark=1;
+         return;
+         }
+       i=(index+h*h)%size;
+      }
+      printf(&quot;cannot insert..\n&quot;);
+      return;
+  }</B></FONT>
+</PRE>
+</BODY>
+</HTML>

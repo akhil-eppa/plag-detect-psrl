@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a60_2.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<HR>
+<H3><CENTER>a60_2.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A> //program to return the no of components of disconnected graph
+ #include&lt;stdio.h&gt;
+<FONT color="#0000ff"><A HREF="javascript:ZweiFrames('match333-1.html#0',3,'match333-top.html#0',1)"><IMG SRC="forward.gif" ALT="other" BORDER="0" ALIGN="right"></A><B> int vis[100];
+ void creategraph();
+ void dfs(int);
+ int arr[100][100],num;
+ int component();
+ int label;
+ int main()
+ {
+   int i_index,v_index,k_index; 
+   printf(&quot;Enter the number of vertices..&quot;);
+   scanf(&quot;%d&quot;,&amp;num);
+   creategraph();
+   int result =component();
+   printf(&quot;the number of components = %d\num&quot;,result);
+   printf (&quot;\nthe vertices and their component numbers&quot;);
+   for(i_index=1;i_index&lt;=num;i_index++)
+     printf(&quot;%d---&gt; %d\num&quot;,i_index,vis[i_index]);
+  }
+ void creategraph()
+  {
+    int i_index,j_index;
+    while(1)
+    {
+        printf(&quot;Enter the source and the destination vertex..&quot;);
+        scanf(&quot;%d%d&quot;,&amp;i_index,&amp;j_index);
+        if((i_index==-9)&amp;&amp;(j_index==-9))
+           break;
+        arr[i_index][j_index]=arr[j_index][i_index]=1;
+     }
+  }
+  int component()
+  {
+   int i_index,j_index;
+   label=0;
+   for(i_index=1;i_index&lt;=num;i_index++)
+   {
+     if(vis[i_index]==0)
+     {
+       ++label;
+       dfs(i_index);
+     }
+  }
+  return label;
+ }
+  void dfs(int v_index)
+  {
+    int u;
+    vis[v_index]=label;
+
+    for(u=1;u&lt;=num;u++)
+    {
+       if((arr[v_index][u]==1)&amp;&amp;(vis[u]==0))
+           dfs(u);
+    }
+  }</B></FONT>
+</PRE>
+</BODY>
+</HTML>

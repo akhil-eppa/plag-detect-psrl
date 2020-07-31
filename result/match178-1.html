@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+<HEAD>
+ <TITLE>a35_1.c</TITLE>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+  <!--
+   function ZweiFrames(URL1,F1,URL2,F2)
+   {
+    parent.frames[F1].location.href=URL1;
+    parent.frames[F2].location.href=URL2;
+   }
+  //-->
+  </script>
+</HEAD>
+<BODY BGCOLOR="#ffffff" style="margin-left:25">
+<HR>
+<H3><CENTER>a35_1.c</CENTER></H3><HR>
+<PRE>
+<A NAME="0"></A>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+<FONT color="#0000ff"><div style="position:absolute;left:0"><A HREF="javascript:ZweiFrames('match178-0.html#0',2,'match178-top.html#0',1)"><IMG SRC="back.gif" ALT="other" BORDER="0" ALIGN="left"></A></div><B>struct Node
+{
+    int data;
+    struct Node* next;
+};
+struct Node* head;
+void Insert(int data,int n)
+{
+    struct Node* temp1=(struct Node*)(malloc(sizeof(struct Node)));
+    temp1-&gt;data=data;
+    temp1-&gt;next=NULL;
+    if (n==1)
+    {
+        temp1-&gt;next=head;
+        head=temp1;
+        return;
+    }
+    struct Node* temp2=head;
+    int i;
+    for (i=0;i&lt;n-2;i++)
+    {
+        temp2=temp2-&gt;next;//finally will point to (n-1)th node
+    }
+    temp1-&gt;next=temp2-&gt;next;//temp2-&gt;next points to nth node now which temp1 replaces
+    temp2-&gt;next=temp1;
+}
+void Print()
+{
+    struct Node* temp=head;//temp variable is created to avoid changes to global variable head
+    while (temp!=NULL)
+    {
+        printf(&quot;%d &quot;,temp-&gt;data);
+        temp=temp-&gt;next;
+    }
+    printf(&quot;\n&quot;);
+}
+int main()
+{
+    head=NULL;
+    Insert(2,1);
+    Insert(2,2);
+    Insert(5,1);
+    Insert(4,2);
+    Print();
+    return 0;
+
+}</B></FONT>
+</PRE>
+</BODY>
+</HTML>

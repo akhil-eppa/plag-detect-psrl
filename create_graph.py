@@ -7,8 +7,12 @@ jplag = pickle.load(open("acc_jplag.pkl", "rb"))
 moss = pickle.load(open("acc_moss.pkl", "rb"))
 milepost = pickle.load(open("acc_milepost.pkl", "rb"))
 rnn = pickle.load(open("acc_rnn.pkl", "rb"))
+trans = pickle.load(open("acc_transformer.pkl", "rb"))
 
-res = np.array((jplag, moss, milepost, rnn))
+res = np.array((jplag, moss, milepost, rnn, trans * 100))
+print(res.shape)
+print(res.T[0])
+print(res[0])
 
 categories = [
     "variable name change",
@@ -19,10 +23,22 @@ categories = [
     "reordering blocks",
 ]
 
-x_labels = ["JPlag", "MOSS", "Milepost GCC", "Char-RNN"]
+x_labels = ["JPlag", "MOSS", "Milepost GCC", "Char-RNN", "Transformer"]
+xval = np.array([1, 3, 5, 7, 9])
 
-for cat, col in zip(categories, res.T):
-    plt.bar(x_labels, col)
-    plt.title(f"Plagiarism type - {cat}")
-    plt.savefig(f"acc_{cat.replace(' ', '_')}.png")
-    plt.cla()
+# for cat, col in zip(categories, res.T):
+#     plt.bar(x_labels, col)
+#     plt.title(f"Plagiarism type - {cat}")
+#     plt.savefig(f"results/acc_{cat.replace(' ', '_')}.png")
+#     plt.cla()
+
+ax = plt.subplot(111)
+ax.bar(xval - 0.5, res.T[0], width=0.2)
+ax.bar(xval - 0.3, res.T[1], width=0.2)
+ax.bar(xval - 0.1, res.T[2], width=0.2)
+ax.bar(xval + 0.1, res.T[3], width=0.2)
+ax.bar(xval + 0.3, res.T[4], width=0.2)
+ax.bar(xval + 0.5, res.T[5], width=0.2)
+plt.xticks([1, 3, 5, 7, 9], x_labels, rotation=0)
+plt.legend(categories)
+plt.show()
