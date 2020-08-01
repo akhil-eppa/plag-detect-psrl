@@ -9,6 +9,7 @@ userid = 831327210
 
 m = mosspy.Moss(userid, "c")
 
+m.options["m"] = 10000000
 
 # Submission Files
 m.addFilesByWildcard("code_pairs_eval/*.c")

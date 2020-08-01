@@ -24,7 +24,7 @@ categories = [
 ]
 
 x_labels = ["JPlag", "MOSS", "Milepost GCC", "Char-RNN", "Transformer"]
-xval = np.array([1, 3, 5, 7, 9])
+xval = np.array([1, 3, 5, 7, 9, 11])
 
 # for cat, col in zip(categories, res.T):
 #     plt.bar(x_labels, col)
@@ -33,14 +33,14 @@ xval = np.array([1, 3, 5, 7, 9])
 #     plt.cla()
 
 ax = plt.subplot(111)
-ax.bar(xval - 0.5, res.T[0], width=0.2)
-ax.bar(xval - 0.3, res.T[1], width=0.2)
-ax.bar(xval - 0.1, res.T[2], width=0.2)
-ax.bar(xval + 0.1, res.T[3], width=0.2)
-ax.bar(xval + 0.3, res.T[4], width=0.2)
-ax.bar(xval + 0.5, res.T[5], width=0.2)
-plt.xticks([1, 3, 5, 7, 9], x_labels, rotation=0)
-plt.xlabel("Detection method")
+ax.bar(xval - 0.4, res[0], width=0.2)
+ax.bar(xval - 0.2, res[1], width=0.2)
+ax.bar(xval - 0.0, res[2], width=0.2)
+ax.bar(xval + 0.2, res[3], width=0.2)
+ax.bar(xval + 0.4, res[4], width=0.2)
+# ax.bar(xval + 0.5, res.T[5], width=0.2)
+plt.xticks([1, 3, 5, 7, 9, 11], categories, rotation=0)
+plt.xlabel("Plagiarism method")
 plt.ylabel("Accuracy(%)")
-plt.legend(categories)
+plt.legend(x_labels)
 plt.show()
