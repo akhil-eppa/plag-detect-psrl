@@ -3,11 +3,12 @@ import csv
 import pickle
 from pathlib import Path
 
-from lib.milepostExtraction.extractMilepostFeatures import extractMilepostFeatures
-from lib.milepostPredictions import mpEval
-from lib.rnnPredictions.extractRnnFeatures import extractRnnFeatures
-from lib.rnnPredictions import rnnEval
+# from lib.milepostExtraction.extractMilepostFeatures import extractMilepostFeatures
+# from lib.milepostPredictions import mpEval
+# from lib.rnnPredictions.extractRnnFeatures import extractRnnFeatures
+# from lib.rnnPredictions import rnnEval
 from lib.utils import listUtils
+from lib.codebertPredictions import cbEval
 
 ROOT_DIR = Path("../code_sample").resolve()
 files = listUtils.getSubmissions(ROOT_DIR)
@@ -15,10 +16,11 @@ pairs = listUtils.getCombinations(files)
 pickle.dump(pairs, open("result/pairs.pkl", "wb"))
 # extractMilepostFeatures(pairs, ROOT_DIR, train=False)
 # y_pred, y_prob = mpEval.evaluate("milepostExtraction/result/features.csv")
-extractRnnFeatures(pairs, ROOT_DIR)
-y_pred = rnnEval.evaluate("lib/rnnPredictions/result/X.pkl")
+# extractRnnFeatures(pairs, ROOT_DIR)
+# y_pred = rnnEval.evaluate("lib/rnnPredictions/result/X.pkl")
+y_pred = cbEval.evaluate(pairs, ROOT_DIR)
 
-with open("result/report_rnn.csv", "w") as wr:
+with open("result/report_cb.csv", "w") as wr:
     writer = csv.writer(wr)
     # writer.writerow(['File 1', 'File 2', 'Plagiarised', 'Probability'])
     writer.writerow(['File 1', 'File 2', 'Plagiarised'])
