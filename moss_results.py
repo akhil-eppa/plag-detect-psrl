@@ -1,5 +1,6 @@
 import os
 import pickle
+import time
 
 import mosspy
 import numpy as np
@@ -11,26 +12,25 @@ m = mosspy.Moss(userid, "c")
 
 m.options["m"] = 10000000
 
+table1 = []
 # Submission Files
-m.addFilesByWildcard("code_pairs_eval/*.c")
+for i in range(6):
+    # m.addFilesByWildcard(f"code_pairs_eval/{i}/*.c")
+    # url = m.send()  # Submission Report URL
+    # print("Report Url: " + url)
+    # # Save report file
+    # m.saveWebPage(url, f"result/report{i}.html")
 
-url = m.send()  # Submission Report URL
-
-print("Report Url: " + url)
-
-# Save report file
-m.saveWebPage(url, "result/report.html")
-
-html = open("result/report.html").read()
-soup = BeautifulSoup(html, "lxml")
-table = soup.table
-table_rows = table.find_all("tr")
-table = []
-for row in table_rows:
-    cols = row.find_all("td")
-    content = [i.text.split()[0].strip() for i in cols]
-    if content:
-        table.append(content)
+    html = open(f"result/report{i}.html").read()
+    soup = BeautifulSoup(html, "lxml")
+    table = soup.table
+    table_rows = table.find_all("tr")
+    for row in table_rows:
+        cols = row.find_all("td")
+        content = [i.text.split()[0].strip() for i in cols]
+        if content:
+            table1.append(content)
+    time.sleep(10)
 
 pairs = pickle.load(open("extraction/result_test/pairs_graph.pkl", "rb"))
 chk = [0] * len(pairs)
@@ -53,7 +53,7 @@ for pair in pairs:
 
 cnt = [0] * 6
 
-for row in table:
+for row in table1:
     row[0] = os.path.basename(row[0])
     row[1] = os.path.basename(row[1])
     if not chk[mapchk[row[0]]]:
@@ -63,4 +63,5 @@ for row in table:
             chk[mapchk[row[0]]] = 1
 
 yval = np.array(cnt) / np.array(tot) * 100
+print(yval)
 pickle.dump(yval, open("acc_moss.pkl", "wb"))

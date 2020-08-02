@@ -63,9 +63,9 @@ for idx, plagtype in enumerate(n_pairs):
         temp.append("p")
         prog.append(temp)
 
-for f1, f2, _, _ in prog:
-    shutil.copyfile(f1, os.path.join(copy_path, os.path.basename(f1)))
-    shutil.copyfile(f2, os.path.join(copy_path, os.path.basename(f2)))
+for f1, f2, cat, _ in prog:
+    shutil.copyfile(f1, os.path.join(copy_path, str(cat), os.path.basename(f1)))
+    shutil.copyfile(f2, os.path.join(copy_path, str(cat), os.path.basename(f2)))
 
 # for i in a_plag:
 #     temp = []
