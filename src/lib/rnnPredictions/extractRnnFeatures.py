@@ -96,7 +96,11 @@ def extractRnnFeatures(file_pairs, root_dir, train=False):
 
     # v1_arr = pickle.load(open("v1_arr.pkl", "rb"))
     # v2_arr = pickle.load(open("v2_arr.pkl", "rb"))
-    ld_rat, ad, ed, cc_rat, cl_rat = extractTextFeatures(file_pairs, root_dir, "")
+    ld_rat, ad, ed, cc_rat, cl_rat = [
+        np.array(i).reshape(-1, 1)
+        for i in extractTextFeatures(file_pairs, root_dir, "")
+    ]
+    print(ld_rat.shape)
     v1_arr = np.array(v1_arr)
     v2_arr = np.array(v2_arr)
     X = v1_arr - v2_arr
@@ -117,5 +121,6 @@ def extractRnnFeatures(file_pairs, root_dir, train=False):
 
     X = np.concatenate((X, ld_rat, ad, ed, cl_rat, cc_rat), axis=1)
     if train:
+        y_actual = np.array(y_actual).reshape(-1, 1)
         X = np.concatenate((X, y_actual), axis=1)
-    pickle.dump(X, open("lib/rnnPredictions/result/X.pkl"))
+    pickle.dump(X, open("lib/rnnPredictions/result/X.pkl", "wb"))

@@ -26,8 +26,8 @@ added 374 to 434 non plagiarized
 '''
 for i in range(1, 459):
     temp = []
-    temp.append(os.path.join(root_path, str("a" + str(i) + "_1.c")))
-    temp.append(os.path.join(root_path, str("a" + str(i) + "_2.c")))
+    temp.append(os.path.join(str("a" + str(i) + "_1.c")))
+    temp.append(os.path.join(str("a" + str(i) + "_2.c")))
     if i <= 192:
         temp.append("p")
     elif i>192 and i<=434:
@@ -42,8 +42,8 @@ Pairs by Anirudh
 """
 for i in range(1, 424):
     temp = []
-    temp.append(os.path.join(root_path, str("n_" + str(i) + "_1.c")))
-    temp.append(os.path.join(root_path, str("n_" + str(i) + "_2.c")))
+    temp.append(os.path.join(str("n_" + str(i) + "_1.c")))
+    temp.append(os.path.join(str("n_" + str(i) + "_2.c")))
     if i <= 300:
         temp.append("np")
     else:
@@ -75,7 +75,7 @@ print("Number of plagiarized pairs=", p)
 print("Number of non plagiarized pairs=", np)
 print("Total number of pairs=", len(prog))
 
-with open(os.path.join("extraction", "result_train", "pairs.pkl"), "wb") as f:
+with open("pairs.pkl", "wb") as f:
     pickle.dump(prog, f)
 
 

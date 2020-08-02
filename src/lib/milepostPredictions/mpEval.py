@@ -39,6 +39,7 @@ def evaluate(data_path, train=False):
 
         grid = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=2).fit(X, y)
         pickle.dump(grid, open("milepostPredictions/models/svm_pca_prob.pkl", "wb"))
+        return None, None
 
     else:
         X = x
