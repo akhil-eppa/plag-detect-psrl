@@ -18,17 +18,17 @@ def evaluate(data_path, train=False):
     n_components = 30
 
     if train:
-        X = x[:, :-1]
-        y = x[:, -1]
+        X = x.iloc[:, 0:-1]
+        y = x.iloc[:, -1]
         mm_scaler = preprocessing.MinMaxScaler().fit(X)
         encoder = preprocessing.LabelEncoder().fit(y)
-        pickle.dump(mm_scaler, open("milepostPredictions/models/mmscaler.pkl", "wb"))
-        pickle.dump(encoder, open("milepostPredictions/models/encoder.pkl", "wb"))
+        pickle.dump(mm_scaler, open("lib/milepostPredictions/models/mmscaler.pkl", "wb"))
+        pickle.dump(encoder, open("lib/milepostPredictions/models/encoder.pkl", "wb"))
 
         X = mm_scaler.transform(X)
         pca = PCA(n_components).fit(X)
         X = pca.transform(X)
-        pickle.dump(pca, open("milepostPredictions/models/PCA.pkl", "wb"))
+        pickle.dump(pca, open("lib/milepostPredictions/models/PCA.pkl", "wb"))
 
         y = encoder.transform(y)
         param_grid = {
@@ -37,17 +37,17 @@ def evaluate(data_path, train=False):
             "kernel": ["rbf", "poly", "sigmoid"],
         }
 
-        grid = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=2).fit(X, y)
-        pickle.dump(grid, open("milepostPredictions/models/svm_pca_prob.pkl", "wb"))
+        grid = GridSearchCV(svm.SVC(probability=True), param_grid, refit=True, verbose=2).fit(X, y)
+        pickle.dump(grid, open("lib/milepostPredictions/models/svm_pca_prob.pkl", "wb"))
         return None, None
 
     else:
         X = x
-        mm_scaler = pickle.load(open("milepostPredictions/models/mmscaler.pkl", "rb"))
+        mm_scaler = pickle.load(open("lib/milepostPredictions/models/mmscaler.pkl", "rb"))
         X = mm_scaler.transform(X)
-        pca = pickle.load(open("milepostPredictions/models/PCA.pkl", "rb"))
+        pca = pickle.load(open("lib/milepostPredictions/models/PCA.pkl", "rb"))
         X = pca.transform(X)
-        grid = pickle.load(open("milepostPredictions/models/svm_pca_prob.pkl", "rb"))
+        grid = pickle.load(open("lib/milepostPredictions/models/svm_pca_prob.pkl", "rb"))
         y_prob = grid.predict_proba(X)
         y_pred = grid.predict(X)
         return y_pred, y_prob

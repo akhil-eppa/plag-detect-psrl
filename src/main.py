@@ -58,7 +58,7 @@ def main(args):
     if args.method == "milepost":
         extractMilepostFeatures(pairs, root_dir, train=args.train)
         y_pred, y_prob = mpEval.evaluate(
-            "milepostExtraction/result/features.csv", train=args.train
+            "lib/milepostExtraction/result/features.csv", train=args.train
         )
     elif args.method == "rnn":
         extractRnnFeatures(pairs, root_dir, train=args.train)

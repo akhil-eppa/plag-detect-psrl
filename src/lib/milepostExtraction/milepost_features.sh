@@ -8,4 +8,3 @@ for j in /tmp/ici_features_function* ; do
 done
 rm -f /home/src/milepostExtraction/$(basename $1)
 rm -rf /tmp/
-echo "Finished $(basename $1)"

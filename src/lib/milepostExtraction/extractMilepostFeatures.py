@@ -43,7 +43,8 @@ def extractMilepostFeatures(file_pairs, root_dir, train=False):
         if train:
             yval.append(pair[2])
 
-    for path in paths:
+    for idx, path in enumerate(paths, 1):
+        print(f"{idx}/{len(paths)}")
         subprocess.run(
             [
                 "docker",
@@ -90,3 +91,4 @@ def extractMilepostFeatures(file_pairs, root_dir, train=False):
 
     shutil.rmtree(tmpdir)
     subprocess.run(["docker", "stop", "psrl_plagdetect"], check=True)
+    subprocess.run(["docker", "container", "prune", "-f"], check=True)
