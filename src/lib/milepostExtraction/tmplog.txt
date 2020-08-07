@@ -13,7 +13,7 @@ Extracting program features ...
 [featlstn compiled, cpu time used: 0.0290 seconds]
 [featlstn loaded]
 [Compiling ./featuresall]
-[featuresall compiled, cpu time used: 0.2580 seconds]
+[featuresall compiled, cpu time used: 0.2470 seconds]
 [featuresall loaded]
 ICI: work dir  ...
 
